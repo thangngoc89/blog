@@ -1,0 +1,96 @@
+{
+  "private": true,
+  "name": "khoanguyen-dot-me",
+  "homepage": "http://khoanguyen.me/",
+  "scripts": {
+    "start": "babel-node scripts/build --server --dev --devtools",
+    "build": "babel-node scripts/build --static --production --prod"
+  },
+  "engines": {
+    "node": ">=4.2.0",
+    "npm": "^3.0.0"
+  },
+  "statinamic": {
+    "CNAME": true
+  },
+  "config": {
+    "siteName": "Khoa Nguyen",
+    "github": "thangngoc89",
+    "twitter": "khoanguyenme"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-1"
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "react-hmre"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "globals": {
+      "__PROD__": true
+    },
+    "extends": [
+      "standard",
+      "standard-react"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-eslint": "^4.1.6",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.0.1",
+    "babel-preset-stage-1": "^6.3.13",
+    "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev",
+    "css-loader": "^0.17.0",
+    "cssnano": "^3.4.0",
+    "eslint": "^1.10.3",
+    "eslint-config-i-am-meticulous": "^1.0.0",
+    "eslint-config-standard": "^4.4.0",
+    "eslint-config-standard-react": "^1.2.1",
+    "eslint-loader": "^1.2.0",
+    "eslint-plugin-react": "^3.15.0",
+    "eslint-plugin-standard": "^1.3.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.5",
+    "highlight.js": "^8.9.1",
+    "history": "^1.17.0",
+    "immutable": "^3.7.6",
+    "invariant": "^2.2.0",
+    "json-loader": "^0.5.4",
+    "markdown-it": "^5.1.0",
+    "markdown-it-toc-and-anchor": "^1.0.1",
+    "postcss-custom-media": "^5.0.0",
+    "postcss-custom-properties": "^5.0.0",
+    "postcss-loader": "^0.7.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "react-helmet": "^2.3.1",
+    "react-redux": "^2.1.2",
+    "react-router": "^1.0.3",
+    "redux": "^2.0.0",
+    "redux-actions": "^0.9.1",
+    "redux-devtools": "^2.1.5",
+    "redux-thunk": "^0.1.0",
+    "sass-loader": "^3.1.2",
+    "statinamic": "^0.6.1",
+    "style-loader": "^0.12.4",
+    "webpack": "^1.12.11",
+    "whatwg-fetch": "^0.9.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "moment": "^2.11.1"
+  }
+}

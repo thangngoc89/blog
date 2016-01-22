@@ -1,0 +1,15 @@
+@import 'color';
+
+.nav {
+  @extend .navbar;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.link {
+  color: $color-text;
+  font-size: 1.25rem;
+}
