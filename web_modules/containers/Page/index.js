@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import Helmet from 'react-helmet'
 import invariant from 'invariant'
-import Date from 'components/Date'
 
+/**
+ * Base template for others to extends.
+ * DO NOT use it directly
+ */
 export default class Page extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
@@ -24,8 +27,7 @@ export default class Page extends Component {
     const {
       __filename,
       __url,
-      head,
-      body
+      head
     } = this.props
 
     invariant(
@@ -52,14 +54,6 @@ export default class Page extends Component {
         />
         <div className='row'>
           <div className='col-xs-8 center-block'>
-            <h1>{head.title}</h1>
-            <Date date={head.date} />
-            {
-              body &&
-              <div
-                dangerouslySetInnerHTML={{__html: body}}
-              />
-            }
             {this.props.children}
           </div>
         </div>

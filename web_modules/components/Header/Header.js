@@ -23,10 +23,6 @@ export default class Header extends Component {
         >
           Khoa Nguyen
         </Link>
-        { '  ' }
-        <Link to='/nice'>Nice</Link>
-        { '  ' }
-        <Link to='/cach-xem-quang-cao-tren-paidverts'>Post</Link>
       </nav>
     )
   }

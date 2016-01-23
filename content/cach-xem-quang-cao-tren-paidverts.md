@@ -1,4 +1,5 @@
 ---
+layout: Post
 title: Cách xem quảng cáo trên Paidverts
 date: 2014-11-15 17:24:03.000000000 -05:00
 tags: paidverts,mmo

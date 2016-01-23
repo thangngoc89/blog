@@ -1,5 +1,4 @@
 ---
 title: Trang Chủ
+layout: Homepage
 ---
-
-Hello world !
