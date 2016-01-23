@@ -1,0 +1,91 @@
+@import "vars";
+@import "color";
+
+// main sidebar container
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  transform: translate3d(-$sidebar-width, 0, 0);
+  width: $sidebar-width;
+  visibility: hidden;
+  overflow-y: auto;
+  font-size: .875rem;
+  color: $color-border;
+  background-color: #202020;
+
+  backface-visibility: hidden;
+  perspective: 1000;
+  transition: all .3s ease-in-out;
+
+  @media (min-width: 30rem) {
+    .sidebar {
+      font-size: .75rem
+    }
+  }
+
+  & a {
+    font-weight: 400;
+    color: #fff
+  }
+}
+
+.sidebarOpen {
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+}
+
+// sidebar-item
+.item {
+  padding: 1rem;
+
+  & p:last-child {
+    margin-bottom: 0
+  }
+
+  @media (min-width: 48rem) {
+    .item {
+      padding: 1.5rem
+    }
+  }
+}
+
+.avatar {
+  @extend .item;
+  padding-bottom: 0;
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+    border: 5px solid $color-border-inverse;
+    border-radius: 50%;
+    transition: border .3s ease-in-out;
+
+    &:hover {
+      border: 5px solid #fff
+    }
+  }
+}
+
+.nav {
+  border-bottom: 1px solid $color-border-inverse;
+}
+.nav-item {
+  display: block;
+  padding: .5rem 1rem;
+  border-top: 1px solid $color-border-inverse;
+}
+.nav-item.active,
+a.nav-item:focus,
+a.nav-item:hover {
+  text-decoration: none;
+  background-color: $color-border-inverse;
+  border-color: transparent
+}
+
+@media (min-width: 48rem) {
+  .nav-item {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
+  }
+}
