@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-
+import buildConfig from '../config'
 import markdownIt from 'markdown-it'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor'
 import hljs from 'highlight.js'
@@ -13,30 +13,28 @@ import builder from 'statinamic/lib/builder'
 import configurator from 'statinamic/lib/configurator'
 import prepareDefinedValues from 'statinamic/lib/prepare-defined-values'
 
-const config = configurator(pkg)
+const config = {
+  ...buildConfig,
+  ...configurator(pkg)
+}
+
+const paths = config.utils_paths
+const CSS_HASH = (config.dev) ? '[name]__[local]__[hash:base64:5]' : '[hash:base64]'
 
 const webpackConfig = {
   output: {
-    path: path.join(config.cwd, config.destination),
+    path: paths.dist(),
     filename: '[name].js',
-    publicPath: config.baseUrl.path,
+    publicPath: config.baseUrl.path
   },
-
   resolve: {
-    extensions: [
-      // node default extensions
-      '.js',
-      '.json',
-      // for all other extensions specified directly
-      '',
-    ],
-    root: [path.join(config.cwd, 'node_modules')],
+    extensions: ['.js', '.json', ''],
+    root: paths.node()
   },
   resolveLoader: {
-    root: [path.join(config.cwd, 'node_modules')],
+    root: paths.node()
   },
   module: {
-    // ! \\ note that loaders are executed from bottom to top !
     loaders: [
       //
       // statinamic requirement
@@ -45,7 +43,7 @@ const webpackConfig = {
         test: /\.md$/,
         loader: 'statinamic/lib/md-collection-loader' +
           `?${ JSON.stringify({
-            context: path.join(config.cwd, config.source),
+            context: paths.content(),
             basepath: config.baseUrl.path,
             feedsOptions: {
               title: pkg.name,
@@ -67,7 +65,6 @@ const webpackConfig = {
         test: /\.json$/,
         loader: 'json-loader',
       },
-
       // your loaders
       {
         test: /\.js$/,
@@ -89,7 +86,7 @@ const webpackConfig = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader?localIdentName=[path][name]--[local]--[hash:base64:5]&modules' +
+          'css-loader?localIdentName=' + CSS_HASH + '&modules' +
           '!postcss!sass-loader'
         ),
       },
@@ -97,13 +94,13 @@ const webpackConfig = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader?localIdentName=[path][name]--[local]--[hash:base64:5]&modules' +
+          'css-loader?localIdentName=' + CSS_HASH + '&modules' +
           '!postcss'
         ),
       },
       {
         test: /\.(html|ico|jpe?g|png|gif)$/,
-        loader: 'file-loader?name=[path][name].[ext]&context=./content',
+        loader: 'file-loader?name=assets/images/[hash:base64]__[name].[ext]&context=' + paths.content(),
       },
     ],
   },
@@ -120,17 +117,17 @@ const webpackConfig = {
         removeAll: true
       }
     }),
-    require('autoprefixer'),
+    require('autoprefixer')
   ],
   sassLoader: {
     includePaths: [
-      path.join(config.cwd, 'web_modules/styles'),
-      path.join(config.cwd, 'node_modules'),
-      path.join(config.cwd, 'web_modules')
+      paths.client('styles'),
+      paths.client(),
+      paths.node()
     ]
   },
   plugins: [
-    new webpack.DefinePlugin(prepareDefinedValues(config.consts)),
+    new webpack.DefinePlugin(prepareDefinedValues(config.consts))
   ],
   markdownIt: (
     markdownIt({
@@ -145,20 +142,22 @@ const webpackConfig = {
         }
         // ...or fallback to auto
         return hljs.highlightAuto(code).value
-      },
+      }
     })
       .use(markdownItTocAndAnchor, {
-        tocFirstLevel: 2,
+        tocFirstLevel: 2
       })
   ),
 }
 
 builder({
   config,
+  source: paths.content(),
+  dest: paths.dist(),
   clientWebpackConfig: {
     ...webpackConfig,
     entry: {
-      'statinamic-client': path.join(__dirname, 'index-client'),
+      'statinamic-client': paths.base('scripts', 'index-client')
     },
     plugins: [
       ...webpackConfig.plugins,
@@ -176,31 +175,31 @@ builder({
         new webpack.optimize.UglifyJsPlugin({
           compress: {
             warnings: false,
-          },
-        }),
-      ],
-    ],
+          }
+        })
+      ]
+    ]
   },
   staticWebpackConfig: {
     ...webpackConfig,
     entry: {
-      'statinamic-static': path.join(__dirname, 'index-static'),
+      'statinamic-static': paths.base('scripts', 'index-static')
     },
     target: 'node',
     externals: [
-      ...fs.readdirSync('node_modules').filter((x) => x !== '.bin'),
-      'statinamic/lib/md-collection-loader/cache',
+      ...fs.readdirSync('node_modules').filter(x => x !== '.bin'),
+      'statinamic/lib/md-collection-loader/cache'
     ],
     output: {
       ...webpackConfig.output,
       libraryTarget: 'commonjs2',
-      path: path.join(config.cwd, config.destination),
+      path: paths.dist()
     },
     plugins: [
       ...webpackConfig.plugins,
       // extract (and overwrite) statinamic client css
       // poor workaround to avoid having 2 identical files...
-      new ExtractTextPlugin(path.join('..', config.destination, 'statinamic-client.css')),
-    ],
-  },
+      new ExtractTextPlugin('statinamic-client.css')
+    ]
+  }
 })
