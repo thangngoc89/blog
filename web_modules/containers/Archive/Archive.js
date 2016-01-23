@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
 import Page from 'containers/Page'
-
+import moment from 'moment'
 import { connect } from 'react-redux'
-import enhanceCollection from 'statinamic/lib/enhance-collection'
+import _ from 'lodash'
+import ArchiveList from './ArchiveList'
 
 export class Homepage extends Component {
   static propTypes = {
@@ -12,40 +12,34 @@ export class Homepage extends Component {
     collection: PropTypes.array
   };
 
+  // TODO: Refactor me
+  get collection () {
+    // Get all post
+    // sort reverse by date
+    // group by month
+    return _.chain(this.props.collection)
+      .filter((t) => t.layout === 'Post')
+      .sortByOrder(['date'], ['desc'])
+      .uniq('__url')
+      .groupBy((t) => moment(t.date).startOf('month').format())
+      .map(ArchiveList)
+      .value()
+  }
   render () {
     const {
       collection
     } = this.props
+
     return (
       <Page {...this.props}>
       {
         Boolean(!collection || !collection.length) &&
-        <div>
-          { "No entry" }
-        </div>
+        <p>No entry</p>
       }
       {
         Boolean(collection && collection.length) &&
         <div>
-          <ul>
-          {
-            enhanceCollection(collection, {
-              filter: { layout: 'Post' },
-              sort: 'date',
-              reverse: true
-            })
-            .map((item) => {
-              return (
-                <li key={ item.__url }>
-                  <Link to={item.__url}>
-                    {item.title}
-                  </Link>
-                </li>
-              )
-            })
-          }
-          </ul>
-
+          {this.collection}
         </div>
       }
       </Page>

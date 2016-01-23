@@ -95,6 +95,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
+    "lodash": "^3.10.1",
     "moment": "^2.11.1"
   }
 }
