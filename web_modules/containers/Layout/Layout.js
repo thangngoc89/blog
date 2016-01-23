@@ -16,6 +16,7 @@ import styles from './Layout.scss'
 export class Layout extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
+    location: PropTypes.object.isRequired,
     isSidebarOpen: PropTypes.bool.isRequired,
     sidebarToggle: PropTypes.func.isRequired
   };
@@ -28,6 +29,7 @@ export class Layout extends Component {
     const {
       pkg
     } = this.context.metadata
+
     const wrapClass = classnames({
       [styles.wrap]: true,
       [styles.open]: this.props.isSidebarOpen
@@ -42,7 +44,9 @@ export class Layout extends Component {
           ]}
         />
         <Sidebar
+          activePath={this.props.location.pathname}
           isSidebarOpen={this.props.isSidebarOpen}
+          sidebarToggle={this.props.sidebarToggle}
           metadata={pkg}
         />
         <div className={wrapClass}>

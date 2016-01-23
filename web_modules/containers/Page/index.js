@@ -4,7 +4,7 @@ import invariant from 'invariant'
 
 /**
  * Base template for others to extends.
- * DO NOT use it directly
+ * Will render body if no children passed
  */
 export default class Page extends Component {
   static propTypes = {
@@ -54,6 +54,12 @@ export default class Page extends Component {
         />
         <div className='row'>
           <div className='col-xs-8 center-block'>
+            {
+              !this.props.children && this.props.body &&
+              <div
+                dangerouslySetInnerHTML={{__html: this.props.body}}
+              ></div>
+            }
             {this.props.children}
           </div>
         </div>

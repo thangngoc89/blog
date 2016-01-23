@@ -59,6 +59,8 @@
     margin: 0 auto;
     border: 5px solid $color-border-inverse;
     border-radius: 50%;
+    height: 125px;
+    width: 125px;
     transition: border .3s ease-in-out;
 
     &:hover {

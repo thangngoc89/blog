@@ -1,19 +1,24 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router'
+import NavLink from './NavLink'
 import avatarImg from './avatar.jpg'
 import styles from './Sidebar.scss'
 
-export default class SidebarWrapper extends Component {
+export default class Sidebar extends Component {
   static propTypes = {
     isSidebarOpen: PropTypes.bool.isRequired,
-    metadata: PropTypes.object.isRequired
+    activePath: PropTypes.string.isRequired,
+    metadata: PropTypes.object.isRequired,
+    sidebarToggle: PropTypes.func.isRequired
   };
 
   render () {
     const {
       isSidebarOpen,
-      metadata: {config: {slogan, email, github}}
+      sidebarToggle,
+      activePath,
+      metadata: {config: {slogan, ...social}}
     } = this.props
 
     const sidebarClass = classnames({
@@ -24,18 +29,36 @@ export default class SidebarWrapper extends Component {
       <div className={sidebarClass}>
         <div className={styles.avatar}>
           <Link to='/' title='Home'>
-            <img src={avatarImg} height='125px' width='125px' />
+            <img src={avatarImg} />
           </Link>
         </div>
         <div className={styles.item}>
           <p>{slogan}</p>
         </div>
+
         <nav className={styles.nav} role='navigation'>
-          <Link to='/' className={styles['nav-item'] + ' ' + styles['active']}>Home</Link>
-          <Link to='/archive' className={styles['nav-item']}>Archive</Link>
-          <a className={styles['nav-item']} href={`//github.com/${github}`}>GitHub</a>
-          <a className={styles['nav-item']} href={`mailto:${email}`}>Email</a>
+          <NavLink
+            path='/'
+            text='Trang chủ'
+            activePath={activePath}
+            onClick={sidebarToggle}
+          />
+          <NavLink
+            path='/archive'
+            text='Bài viết'
+            activePath={activePath}
+            onClick={sidebarToggle}
+          />
+          <NavLink
+            path='/about'
+            text='Giới thiệu'
+            activePath={activePath}
+            onClick={sidebarToggle}
+          />
+          <a className={styles['nav-item']} href={`//github.com/${social.github}`}>GitHub</a>
+          <a className={styles['nav-item']} href={`mailto:${social.email}`}>Email</a>
         </nav>
+
         <div className={styles.item}>
           <p>
           © 2016. All rights reserved.
