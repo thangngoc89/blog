@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const SIDEBAR_TOGGLE = '@@nav/sidebar/toggle'
+export const SIDEBAR_TOGGLE = 'nav/sidebar/TOGGLE'
 // ------------------------------------
 // Actions
 // ------------------------------------

@@ -1,0 +1,11 @@
+@import "vars";
+
+.wrap {
+  backface-visibility: hidden;
+  perspective: 1000;
+  transition: transform .3s ease-in-out;
+}
+
+.open {
+  transform: translate3d($sidebar-width, 0, 0);
+}

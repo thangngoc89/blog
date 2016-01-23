@@ -1,12 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
-import { connect } from 'react-redux'
-import { actions as navActions } from 'redux/modules/nav'
 
 import NavToggle from './NavToggle'
 import styles from './Header.scss'
 
-export class Header extends Component {
+export default class Header extends Component {
   static propTypes = {
     isSidebarOpen: PropTypes.bool.isRequired,
     sidebarToggle: PropTypes.func.isRequired
@@ -33,9 +31,3 @@ export class Header extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => ({
-  ...state.nav
-})
-
-export default connect(mapStateToProps, navActions)(Header)

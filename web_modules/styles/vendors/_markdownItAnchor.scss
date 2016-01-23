@@ -1,0 +1,15 @@
+.markdownIt-Anchor {
+  position: absolute;
+  left: -1.5rem;
+  opacity: .1;
+  transition: opacity .2s;
+}
+
+h1:hover .markdownIt-Anchor,
+h2:hover .markdownIt-Anchor,
+h3:hover .markdownIt-Anchor,
+h4:hover .markdownIt-Anchor,
+h5:hover .markdownIt-Anchor,
+h6:hover .markdownIt-Anchor {
+  opacity: 1;
+}

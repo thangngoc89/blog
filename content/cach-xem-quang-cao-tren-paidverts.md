@@ -4,7 +4,7 @@ date: 2014-11-15 17:24:03.000000000 -05:00
 tags: paidverts,mmo
 ---
 
-Trong bài trước mình đã [Giới thiệu cơ bản về PaidVerts](//khoanguyen.me/paidverts-ptc/ "PaidVerts – Kiếm từ $1-10/ngày"). Trong bài này mình sẽ tiếp tục hướng dẫn cách xem quảng cáo trên PaidVerts.
+Trong bài trước mình đã [Giới thiệu cơ bản về PaidVerts](/paidverts-ptc/ "PaidVerts – Kiếm từ $1-10/ngày"). Trong bài này mình sẽ tiếp tục hướng dẫn cách xem quảng cáo trên PaidVerts.
 
 # Hướng dẫn xem quảng cáo trên PaidVerts
 

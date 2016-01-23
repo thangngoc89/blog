@@ -1,0 +1,19 @@
+.hljs-comment {
+  opacity: .4;
+}
+
+  .hljs-comment:hover {
+    opacity: .6;
+  }
+
+.hljs-keyword {
+  font-weight: bold;
+}
+
+.hljs-class,
+.hljs-tag,
+.hljs-keyword,
+.hljs-pseudo,
+.hljs-function {
+  color: #7340c4;
+}

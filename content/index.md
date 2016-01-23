@@ -1,5 +1,5 @@
 ---
-title: Hello world
+title: Trang Chủ
 ---
 
 Hello world !

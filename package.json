@@ -14,9 +14,11 @@
     "CNAME": true
   },
   "config": {
+    "slogan": "Viết ngẫu hứng. Chủ yếu chuyện công nghệ",
     "siteName": "Khoa Nguyen",
     "github": "thangngoc89",
-    "twitter": "khoanguyenme"
+    "twitter": "khoanguyenme",
+    "email": "hi@khoanguyen.me"
   },
   "babel": {
     "presets": [
