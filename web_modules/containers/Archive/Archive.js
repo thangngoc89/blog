@@ -12,19 +12,19 @@ export class Homepage extends Component {
     collection: PropTypes.array
   };
 
-  // TODO: Refactor me
   get collection () {
-    // Get all post
+    // Get all post minus draft
     // sort reverse by date
     // group by month
     return _.chain(this.props.collection)
-      .filter((t) => t.layout === 'Post')
+      .filter(t => (t.layout === 'Post') && (t.draft === undefined))
       .sortByOrder(['date'], ['desc'])
       .uniq('__url')
-      .groupBy((t) => moment(t.date).startOf('month').format())
+      .groupBy(t => moment(t.date).startOf('month').format())
       .map(ArchiveList)
       .value()
   }
+
   render () {
     const {
       collection
@@ -48,7 +48,5 @@ export class Homepage extends Component {
 }
 
 export default connect(
-  ({ collection }) => {
-    return { collection }
-  }
+  ({ collection }) => ({ collection })
 )(Homepage)
