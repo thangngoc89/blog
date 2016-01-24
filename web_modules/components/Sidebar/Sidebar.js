@@ -29,7 +29,11 @@ export default class Sidebar extends Component {
         outerContainerId='statinamic'
       >
         <div className={styles.avatar}>
-          <Link to='/' title='Home'>
+          <Link
+            to='/'
+            title='Home'
+            onClick={sidebarToggle}
+          >
             <img src={avatarImg} />
           </Link>
         </div>
