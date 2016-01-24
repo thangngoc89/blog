@@ -10,8 +10,8 @@ pre {
 
 pre, pre code {
   display: block;
-  background: #2d2d2d;
-  color: #cccccc;
+  background: darken($color-background, 10%);
+  border-radius: 5px;
   font-family: $font-code;
   line-height: 1.5;
   padding: 10px;
@@ -21,79 +21,77 @@ code {
   background: $color-divider;
   color: $color-text;
   font-family: $font-code;
-  border: 0;
 }
 
-/*
-Darkula color scheme from the JetBrains family of IDEs
-Get themes here: https://highlightjs.org/static/demo/
-*/
-
+// Get themes here: https://highlightjs.org/static/demo/
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
 
 .hljs {
   display: block;
-  overflow-x: auto;
+  background: white;
   padding: 0.5em;
-  background: #2b2b2b;
+  color: #333333;
+  overflow-x: auto;
 }
 
-.hljs {
-  color: #bababa;
+.hljs-comment,
+.hljs-meta {
+  color: #969896;
 }
 
+.hljs-string,
+.hljs-variable,
+.hljs-template-variable,
 .hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2;
-}
-
-.hljs-bullet,
-.hljs-quote,
-.hljs-link,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal {
-  color: #6896ba;
-}
-
-.hljs-code,
-.hljs-selector-class {
-  color: #a6e22e;
-}
-
-.hljs-emphasis {
-  font-style: italic;
+.hljs-emphasis,
+.hljs-quote {
+  color: #df5000;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-section,
-.hljs-attribute,
-.hljs-name,
-.hljs-variable {
-  color: #cb7832;
+.hljs-type {
+  color: #a71d5d;
 }
 
-.hljs-params {
-  color: #b9b9b9;
-}
-
-.hljs-string,
-.hljs-subst,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
+.hljs-literal,
 .hljs-symbol,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-template-tag,
-.hljs-template-variable,
-.hljs-addition {
-  color: #e0c46c;
+.hljs-bullet,
+.hljs-attribute {
+  color: #0086b3;
 }
 
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-  color: #7f7f7f;
+.hljs-section,
+.hljs-name {
+  color: #63a35c;
+}
+
+.hljs-tag {
+  color: #333333;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #795da3;
+}
+
+.hljs-addition {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.hljs-deletion {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.hljs-link {
+  text-decoration: underline;
 }
