@@ -54,7 +54,9 @@ export class Layout extends Component {
             isSidebarOpen={this.props.isSidebarOpen}
             sidebarToggle={this.props.sidebarToggle}
           />
-          {this.props.children}
+          <div className={styles.content}>
+            {this.props.children}
+          </div>
           <Footer />
         </div>
       </div>

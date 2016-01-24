@@ -53,7 +53,7 @@ export default class Page extends Component {
           meta={meta}
         />
         <div className='row'>
-          <div className='col-xs-8 center-block'>
+          <div className='col-xs-12 col-sm-8 col-md-7 col-lg-6 center-block'>
             {
               !this.props.children && this.props.body &&
               <div

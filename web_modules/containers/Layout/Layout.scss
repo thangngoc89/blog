@@ -3,9 +3,14 @@
 .wrap {
   backface-visibility: hidden;
   perspective: 1000;
-  transition: transform .3s ease-in-out;
+  transition: transform $animation-time ease-in-out;
 }
 
 .open {
   transform: translate3d($sidebar-width, 0, 0);
+}
+
+// This is paddingTop for fixed navbar
+.content {
+  padding-top: $navbar-fixed-top-padding;
 }

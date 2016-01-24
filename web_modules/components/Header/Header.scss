@@ -1,8 +1,11 @@
+@import 'vendors/bootstrap';
 @import 'color';
 
 .nav {
   @extend .navbar;
+  @extend .navbar-fixed-top;
   text-align: center;
+  background: #fff;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;

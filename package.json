@@ -3,7 +3,8 @@
   "name": "khoanguyen-dot-me",
   "homepage": "http://khoanguyen.me/",
   "scripts": {
-    "start": "babel-node scripts/build --server --dev --devtools",
+    "start": "npm run start:noDevTools -- --devtools",
+    "start:noDevTools": "babel-node scripts/build --server --dev",
     "build": "babel-node scripts/build --static --production --prod"
   },
   "engines": {

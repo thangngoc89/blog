@@ -7,7 +7,8 @@ export default class NavLink extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired,
-    activePath: PropTypes.string.isRequired
+    activePath: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
   };
 
   render () {
@@ -22,7 +23,7 @@ export default class NavLink extends Component {
       <Link
         to={path}
         className={className}
-        onClick={this.sidebarToggle}
+        onClick={this.props.onClick}
       >
         {text}
       </Link>
