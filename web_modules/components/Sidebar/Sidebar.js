@@ -13,11 +13,18 @@ export default class Sidebar extends Component {
     sidebarToggle: PropTypes.func.isRequired
   };
 
+  // Poor workaround
+  // in static build, we recive root path
+  // as `//`
+  get activePath () {
+    let a = this.props.activePath
+    return (a === '//') ? '/' : a
+  }
+
   render () {
     const {
       isSidebarOpen,
       sidebarToggle,
-      activePath,
       metadata: {config: {slogan, ...social}}
     } = this.props
 
@@ -45,19 +52,19 @@ export default class Sidebar extends Component {
           <NavLink
             path='/'
             text='Trang chủ'
-            activePath={activePath}
+            activePath={this.activePath}
             onClick={sidebarToggle}
           />
           <NavLink
             path='/archive'
             text='Bài viết'
-            activePath={activePath}
+            activePath={this.activePath}
             onClick={sidebarToggle}
           />
           <NavLink
             path='/about'
             text='Giới thiệu'
-            activePath={activePath}
+            activePath={this.activePath}
             onClick={sidebarToggle}
           />
           <a className={styles['nav-item']} href={`//github.com/${social.github}`}>GitHub</a>
