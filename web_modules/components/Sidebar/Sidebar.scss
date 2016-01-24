@@ -1,17 +1,16 @@
-@import "vars";
-@import "color";
+@import "globals";
 
 // main sidebar container
 :global .bm-menu {
   overflow-y: auto;
   font-size: .875rem;
-  color: $color-border;
-  background-color: $color-text;
+  color: $color-primary;
+  background-color: $color-primary-dark;
   z-index: 1040;
 
   & a {
     font-weight: 400;
-    color: #fff
+    color: $color-white;
   }
 }
 
@@ -37,31 +36,35 @@
 
   img {
     margin: 0 auto;
-    border: 5px solid $color-border-inverse;
+    border: .2rem solid $color-primary;
     border-radius: 50%;
     height: 125px;
     width: 125px;
-    transition: border .3s ease-in-out;
+    filter: grayscale(0%);
+    transition: .5s ease-in-out;
 
     &:hover {
-      border: 5px solid #fff
+      border-color: $color-white;
+      filter: grayscale(70%);
+      transition: .5s ease-in-out;
     }
   }
 }
 
 .nav {
-  border-bottom: 1px solid $color-border-inverse;
+  border-bottom: 1px solid darken($color-primary, 10%);
 }
 .nav-item {
   display: block;
   padding: .5rem 1rem;
-  border-top: 1px solid $color-border-inverse;
+  border-top: 1px solid darken($color-primary, 10%);
 }
 .nav-item.active,
 a.nav-item:focus,
 a.nav-item:hover {
   text-decoration: none;
-  background-color: $color-border-inverse;
+  color: $color-text;
+  background-color: darken($color-primary, 10%);
   border-color: transparent
 }
 

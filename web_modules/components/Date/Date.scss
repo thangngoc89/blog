@@ -1,8 +1,8 @@
-@import "color";
+@import "globals";
 
 .date {
   display: block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
-  color: $color-sub-text;
+  color: $color-text-secondary;
 }

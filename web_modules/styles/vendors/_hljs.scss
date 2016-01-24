@@ -1,12 +1,13 @@
-@import "color";
-@import "vars";
+@import "globals";
 
+$font-code: Menlo, Monaco, Consolas, monospace;
 // Reset word-wrap property
 pre {
   overflow-wrap: initial;
   word-wrap: initial;
   word-break: initial;
 }
+
 pre, pre code {
   display: block;
   background: #2d2d2d;
@@ -17,7 +18,7 @@ pre, pre code {
 }
 
 code {
-  background: $color-border;
+  background: $color-divider;
   color: $color-text;
   font-family: $font-code;
   border: 0;
