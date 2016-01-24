@@ -5,10 +5,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import buildConfig from '../config'
 import markdownIt from 'markdown-it'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
+import markdownItVideo from 'markdown-it-video'
 import hljs from 'highlight.js'
 
 import pkg from '../package.json'
-
 import builder from 'statinamic/lib/builder'
 import configurator from 'statinamic/lib/configurator'
 import prepareDefinedValues from 'statinamic/lib/prepare-defined-values'
@@ -144,9 +144,10 @@ const webpackConfig = {
         return hljs.highlightAuto(code).value
       }
     })
-      .use(markdownItTocAndAnchor, {
-        tocFirstLevel: 2
-      })
+    .use(markdownItTocAndAnchor, {
+      tocFirstLevel: 2
+    })
+    .use(markdownItVideo)
   ),
 }
 

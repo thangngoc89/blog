@@ -75,6 +75,7 @@
     "json-loader": "^0.5.4",
     "markdown-it": "^5.1.0",
     "markdown-it-toc-and-anchor-fork": "^2.1.1",
+    "markdown-it-video": "^0.2.1",
     "node-sass": "^3.4.2",
     "postcss-custom-media": "^5.0.0",
     "postcss-custom-properties": "^5.0.0",
