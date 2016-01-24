@@ -145,7 +145,7 @@ const webpackConfig = {
       }
     })
     .use(markdownItTocAndAnchor, {
-      tocFirstLevel: 2
+      tocFirstLevel: 1
     })
     .use(markdownItVideo)
   ),
