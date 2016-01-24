@@ -1,15 +1,5 @@
 @import "vars";
 
-.wrap {
-  backface-visibility: hidden;
-  perspective: 1000;
-  transition: transform $animation-time ease-in-out;
-}
-
-.open {
-  transform: translate3d($sidebar-width, 0, 0);
-}
-
 // This is paddingTop for fixed navbar
 .content {
   padding-top: $navbar-fixed-top-padding;

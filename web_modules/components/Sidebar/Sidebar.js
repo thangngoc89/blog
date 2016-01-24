@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import classnames from 'classnames'
 import { Link } from 'react-router'
 import NavLink from './NavLink'
 import avatarImg from './avatar.jpg'
 import styles from './Sidebar.scss'
+import { push as Menu } from 'react-burger-menu'
 
 export default class Sidebar extends Component {
   static propTypes = {
@@ -21,12 +21,13 @@ export default class Sidebar extends Component {
       metadata: {config: {slogan, ...social}}
     } = this.props
 
-    const sidebarClass = classnames({
-      [styles.sidebar]: true,
-      [styles.sidebarOpen]: isSidebarOpen
-    })
     return (
-      <div className={sidebarClass}>
+      <Menu
+        onStateChange={({ isOpen }) => sidebarToggle(isOpen)}
+        isOpen={isSidebarOpen}
+        pageWrapId='page-wrap'
+        outerContainerId='statinamic'
+      >
         <div className={styles.avatar}>
           <Link to='/' title='Home'>
             <img src={avatarImg} />
@@ -64,7 +65,7 @@ export default class Sidebar extends Component {
           © 2016. All rights reserved.
           </p>
         </div>
-      </div>
+      </Menu>
     )
   }
 }

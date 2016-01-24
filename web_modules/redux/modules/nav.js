@@ -20,8 +20,16 @@ export const initialState = {
 }
 
 export default handleActions({
-  [SIDEBAR_TOGGLE]: (state) => ({
-    ...state,
-    isSidebarOpen: !state.isSidebarOpen
-  })
+  [SIDEBAR_TOGGLE]: (state, { payload }) => {
+    if (typeof payload === 'boolean') {
+      if (payload === state.isSidebarOpen) {
+        return state
+      }
+    }
+
+    return {
+      ...state,
+      isSidebarOpen: !state.isSidebarOpen
+    }
+  }
 }, initialState)

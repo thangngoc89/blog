@@ -2,37 +2,17 @@
 @import "color";
 
 // main sidebar container
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  transform: translate3d(-$sidebar-width, 0, 0);
-  width: $sidebar-width;
-  visibility: hidden;
+:global .bm-menu {
   overflow-y: auto;
   font-size: .875rem;
   color: $color-border;
-  background-color: #202020;
-  z-index: 100;
-  backface-visibility: hidden;
-  perspective: 1000;
-  transition: all .3s ease-in-out;
-
-  @media (min-width: 30rem) {
-    .sidebar {
-      font-size: .75rem
-    }
-  }
+  background-color: $color-text;
+  z-index: 1040;
 
   & a {
     font-weight: 400;
     color: #fff
   }
-}
-
-.sidebarOpen {
-  transform: translate3d(0, 0, 0);
-  visibility: visible;
 }
 
 // sidebar-item

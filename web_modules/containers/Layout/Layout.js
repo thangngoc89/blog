@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import classnames from 'classnames'
 import Helmet from 'react-helmet'
 
 import Header from 'components/Header'
@@ -30,11 +29,6 @@ export class Layout extends Component {
       pkg
     } = this.context.metadata
 
-    const wrapClass = classnames({
-      [styles.wrap]: true,
-      [styles.open]: this.props.isSidebarOpen
-    })
-
     return (
       <div>
         <Helmet
@@ -49,7 +43,7 @@ export class Layout extends Component {
           sidebarToggle={this.props.sidebarToggle}
           metadata={pkg}
         />
-        <div className={wrapClass}>
+        <div id='page-wrap'>
           <Header
             isSidebarOpen={this.props.isSidebarOpen}
             sidebarToggle={this.props.sidebarToggle}
