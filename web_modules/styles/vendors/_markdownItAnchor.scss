@@ -1,8 +1,15 @@
+@import "responsive";
+
 .markdownIt-Anchor {
   position: absolute;
   left: -1.5rem;
   opacity: .1;
   transition: opacity .2s;
+
+  @include media-breakpoint-down(xs) {
+    position: relative;
+    left: 0;
+	}
 }
 
 h1:hover .markdownIt-Anchor,

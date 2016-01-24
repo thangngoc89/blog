@@ -1,6 +1,12 @@
 @import "color";
 @import "vars";
 
+// Reset word-wrap property
+pre {
+  overflow-wrap: initial;
+  word-wrap: initial;
+  word-break: initial;
+}
 pre, pre code {
   display: block;
   background: #2d2d2d;
@@ -19,7 +25,6 @@ code {
 
 /*
 Darkula color scheme from the JetBrains family of IDEs
-
 Get themes here: https://highlightjs.org/static/demo/
 */
 
