@@ -90,7 +90,7 @@
     "redux-devtools": "^2.1.0",
     "redux-thunk": "^0.1.0",
     "sass-loader": "^3.1.2",
-    "statinamic": "^0.6.1",
+    "statinamic": "git+https://github.com/thangngoc89/statinamic.git#fork",
     "style-loader": "^0.12.4",
     "webpack": "^1.12.11",
     "whatwg-fetch": "^0.9.0"

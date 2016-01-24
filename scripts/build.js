@@ -155,6 +155,10 @@ builder({
   config,
   source: paths.content(),
   dest: paths.dist(),
+  staticAssets: {
+    source: paths.content('images'),
+    route: '/assets/article_images'
+  },
   clientWebpackConfig: {
     ...webpackConfig,
     entry: {
