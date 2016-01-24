@@ -1,12 +1,22 @@
-pre code {
+@import "color";
+@import "vars";
+
+pre, pre code {
   display: block;
   background: #2d2d2d;
   color: #cccccc;
-  font-family: Menlo, Monaco, Consolas, monospace;
+  font-family: $font-code;
   line-height: 1.5;
-  border: 1px solid #ccc;
   padding: 10px;
 }
+
+code {
+  background: $color-border;
+  color: $color-text;
+  font-family: $font-code;
+  border: 0;
+}
+
 /*
 Darkula color scheme from the JetBrains family of IDEs
 

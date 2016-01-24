@@ -19,7 +19,8 @@
     "siteName": "Khoa Nguyen",
     "github": "thangngoc89",
     "twitter": "khoanguyenme",
-    "email": "hi@khoanguyen.me"
+    "email": "hi@khoanguyen.me",
+    "edit-on-github": "https://github.com/thangngoc89/blog-posts/blob/master/"
   },
   "babel": {
     "presets": [
