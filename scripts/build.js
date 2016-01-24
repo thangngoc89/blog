@@ -4,7 +4,7 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import buildConfig from '../config'
 import markdownIt from 'markdown-it'
-import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor'
+import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
 import hljs from 'highlight.js'
 
 import pkg from '../package.json'
