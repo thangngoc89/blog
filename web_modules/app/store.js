@@ -13,14 +13,12 @@ const store = createStore(
   }),
   // initialState
   {
-    ...(typeof window !== 'undefined') && window.__INITIAL_STATE__,
-
     // static build optimization
     ...__PROD__ && {
       collection:
         minifyCollection(require('statinamic/lib/md-collection-loader/cache'))
     },
-
+    ...(typeof window !== 'undefined') && window.__INITIAL_STATE__,
     layouts
   }
 )
