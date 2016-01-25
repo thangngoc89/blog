@@ -30,6 +30,7 @@ export default class Sidebar extends Component {
 
     return (
       <Menu
+        width={300}
         onStateChange={({ isOpen }) => sidebarToggle(isOpen)}
         isOpen={isSidebarOpen}
         pageWrapId='page-wrap'
@@ -71,7 +72,7 @@ export default class Sidebar extends Component {
           <a className={styles['nav-item']} href={`mailto:${social.email}`}>Email</a>
         </nav>
 
-        <div className={styles.item}>
+        <div className={styles.copyright}>
           <p>
           © 2016. All rights reserved.
           </p>

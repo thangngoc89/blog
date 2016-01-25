@@ -7,8 +7,8 @@
   z-index: $z-index-highest;
   text-align: center;
   background: $color-background;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding: .2rem 0;
+  opacity: .9;
   border-bottom: 2px solid $color-divider;
 }
 
@@ -18,7 +18,7 @@
 	position: relative;
 	font-size: $font-size-huge;
 	display: inline-block;
-	font-weight: 900;
+	font-weight: $font-weight-bolder;
 	overflow: hidden;
 	color: $color-primary;
 
@@ -43,7 +43,7 @@
   	right: 0;
   	background: $color-primary-contrast;
   	transform: translate3d(-100%,0,0);
-  	transition: transform 0.4s;
+  	transition: transform 0.2s;
   	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
   }
 
@@ -59,7 +59,7 @@
   	color: #424242;
   	white-space: nowrap;
   	width: 0%;
-  	transition: width 0.4s 0.3s;
+  	transition: width 0.3s 0.2s;
   }
 
   &:hover::before {

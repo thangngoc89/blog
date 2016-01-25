@@ -3,7 +3,7 @@
 // main sidebar container
 :global .bm-menu {
   overflow-y: auto;
-  font-size: .875rem;
+  font-size: $font-size-tiny;
   color: $color-primary;
   background-color: $color-primary-dark;
   z-index: 1040;
@@ -18,14 +18,12 @@
 .item {
   padding: 1rem;
 
-  & p:last-child {
-    margin-bottom: 0
+  @include media-breakpoint-down(sm) {
+    padding: 1.5rem
   }
 
-  @media (min-width: 48rem) {
-    .item {
-      padding: 1.5rem
-    }
+  & p:last-child {
+    margin-bottom: 0
   }
 }
 
@@ -51,6 +49,10 @@
   }
 }
 
+.copyright {
+  @extend .item;
+  font-size: $font-size-tiny;
+}
 .nav {
   border-bottom: 1px solid darken($color-primary, 10%);
 }
@@ -65,12 +67,10 @@ a.nav-item:hover {
   text-decoration: none;
   color: $color-text;
   background-color: darken($color-primary, 10%);
-  border-color: transparent
-}
+  border-color: transparent;
 
-@media (min-width: 48rem) {
-  .nav-item {
+  @include media-breakpoint-down(sm) {
     padding-left: 1.5rem;
-    padding-right: 1.5rem
+    padding-right: 1.5rem;
   }
 }

@@ -4,13 +4,17 @@
   cursor: pointer;
   padding: 10px 35px 16px 0px;
   position: absolute;
-  top: 1.4rem;
+  top: 1.2rem;
   left: 1rem;
   display: block;
   width: 32px;
   height: 16px;
   transition: .2s;
   transition-delay: .15s;
+
+  @include media-breakpoint-down(sm) {
+    top: 1rem;
+  }
 }
 
 .nav-toggle span, .nav-toggle span:before, .nav-toggle span:after {

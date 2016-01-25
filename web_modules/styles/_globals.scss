@@ -1,4 +1,5 @@
 @import "color";
+@import "responsive";
 //-- Color configuration
 $color-divider: $palette-grey-200 !default;
 $color-background: $color-white !default;
@@ -27,6 +28,7 @@ $font-weight-thin: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-semi-bold: 500 !default;
 $font-weight-bold: 700 !default;
+$font-weight-bolder: 900 !default;
 
 //-- Indexes
 $z-index-highest: 300;

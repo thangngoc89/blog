@@ -7,13 +7,13 @@ $enable-flex: true;
 
 // Reset and dependencies
 @import "bootstrap/scss/normalize";
-@import "bootstrap/scss/print";
+// @import "bootstrap/scss/print";
 
 // Core CSS
 @import "bootstrap/scss/reboot";
 // @import "bootstrap/scss/type";
 // @import "bootstrap/scss/images";
-// @import "bootstrap/scss/code";
+@import "bootstrap/scss/code";
 @import "bootstrap/scss/grid";
 // @import "bootstrap/scss/tables";
 // @import "bootstrap/scss/forms";
@@ -25,7 +25,7 @@ $enable-flex: true;
 // @import "bootstrap/scss/button-group";
 // @import "bootstrap/scss/input-group";
 // @import "bootstrap/scss/custom-forms";
-@import "bootstrap/scss/nav";
+// @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 // @import "bootstrap/scss/card";
 // @import "bootstrap/scss/breadcrumb";

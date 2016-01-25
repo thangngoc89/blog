@@ -28,15 +28,12 @@ export default class Post extends Component {
 
     return (
       <Page {...this.props}>
-        <h1>{head.title}</h1>
+        <h1 className={styles.title}>{head.title}</h1>
         <Date date={head.date} />
-        {
-          body &&
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{__html: body}}
-          ></div>
-        }
+        <article
+          className={styles.content}
+          dangerouslySetInnerHTML={{__html: body}}
+        ></article>
         <GitHubEditLink
           baseUrl={config['edit-on-github']}
           fileName={this.props.__filename}

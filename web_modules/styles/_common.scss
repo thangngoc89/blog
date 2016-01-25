@@ -1,14 +1,19 @@
 @import "globals";
+@import "responsive";
 
-body {
-  overflow-x: hidden;
+html, body {
   font-family: $preferred-font;
-  font-size: $unit;
+  font-size: 20px !important;
   color: $color-text;
+
+  @include media-breakpoint-down(sm) {
+    font-size: 16px !important;
+  }
+
 }
 
 h1, h2, h3 {
-  font-weight: 400;
+  font-weight: $font-weight-bolder;
 }
 
 h1, h2, h3, h5, h6 {
@@ -21,7 +26,8 @@ a {
 }
 
 a:hover {
-  color: $color-accent-dark;
+  color: $color-accent;
+  text-decoration: none;
 }
 
 blockquote {

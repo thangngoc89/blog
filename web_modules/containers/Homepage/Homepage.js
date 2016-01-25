@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import PostItem from './PostItem'
 import { Link } from 'react-router'
+import styles from './HomePage.scss'
 
 export class Homepage extends Component {
   static propTypes = {
@@ -17,7 +18,7 @@ export class Homepage extends Component {
       .filter(t => (t.layout === 'Post') && (t.draft === undefined))
       .sortByOrder(['date'], ['desc'])
       .uniq('__url')
-      .slice(0, 5)
+      .slice(0, 10)
       .map(PostItem)
       .value()
   }
@@ -39,8 +40,11 @@ export class Homepage extends Component {
             {this.collection}
           </div>
         }
-        <Link to='/archive'>
-          Xem tất cả bài viết
+        <Link
+          className={styles.all}
+          to='/archive'
+        >
+          Bài viết cũ hơn
         </Link>
       </Page>
     )
