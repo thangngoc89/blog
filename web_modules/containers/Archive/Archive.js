@@ -20,7 +20,7 @@ export class Homepage extends Component {
       .filter(t => (t.layout === 'Post') && (t.draft === undefined))
       .sortByOrder(['date'], ['desc'])
       .uniq('__url')
-      .groupBy(t => moment(t.date).startOf('month').format())
+      .groupBy(t => moment(t.date).utc().startOf('month').format())
       .map(ArchiveList)
       .value()
   }

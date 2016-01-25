@@ -8,7 +8,7 @@ export default class Date extends Component {
   };
 
   render () {
-    const date = moment(this.props.date).format('DD MMM YYYY')
+    const date = moment(this.props.date).utc().format('DD MMM YYYY')
     return (
       <span className={styles.date}>{date}</span>
     )

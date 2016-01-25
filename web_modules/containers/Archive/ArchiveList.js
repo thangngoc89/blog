@@ -6,7 +6,7 @@ import _ from 'lodash'
 import styles from './ArchiveList.scss'
 
 const PostLink = ({ item }) => {
-  const day = moment(item.date).format('DD')
+  const day = moment(item.date).utc().format('DD')
   return (
     <p className={styles.link}>
       {day} {' - '}
