@@ -5,15 +5,18 @@ import styles from './PostItem.scss'
 
 const PostItem = ({__url, date, title}) => {
   return (
-    <section key={__url}>
+    <article
+      key={__url}
+      className={styles.article}
+    >
       <Link
         to={__url}
         className={styles.title}
       >
         <h2>{title}</h2>
       </Link>
-      <Date date={date} />
-    </section>
+      <Date date={date} className={styles.date} />
+    </article>
   )
 }
 

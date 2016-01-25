@@ -1,16 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import moment from 'moment'
-import styles from './Date.scss'
 
-export default class Date extends Component {
-  static propTypes = {
-    date: PropTypes.string
-  };
-
-  render () {
-    const date = moment(this.props.date).utc().format('DD MMM YYYY')
-    return (
-      <span className={styles.date}>{date}</span>
-    )
-  }
+const Date = (props) => {
+  const date = moment(props.date).utc().format('DD MMM YYYY')
+  return (
+    <span {...props}>{date}</span>
+  )
 }
+
+Date.propTypes = {
+  date: PropTypes.string
+}
+
+export default Date

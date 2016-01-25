@@ -3,3 +3,21 @@
 .title {
   color: $color-text;
 }
+
+.date {
+  display: block;
+  font-style: italic;
+  font-size: $font-size-small;
+}
+
+.article {
+  margin: 3rem 2rem;
+
+  @include media-breakpoint-down(sm) {
+    margin: 2rem .5rem;
+  }
+  
+  &:first-of-type {
+    margin-top: 0rem;
+  }
+}

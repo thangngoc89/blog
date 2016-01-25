@@ -3,10 +3,10 @@
 // main sidebar container
 :global .bm-menu {
   overflow-y: auto;
-  font-size: $font-size-tiny;
+  font-size: $font-size-small;
   color: $color-primary;
   background-color: $color-primary-dark;
-  z-index: 1040;
+  z-index: $z-index-highest;
 
   & a {
     font-weight: 400;

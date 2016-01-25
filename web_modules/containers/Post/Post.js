@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Page from 'containers/Page'
 import Date from 'components/Date'
+import ReadTime from 'components/ReadTime'
 import GitHubEditLink from 'components/GitHubEditLink'
 import styles from './Post.scss'
 
@@ -11,7 +12,8 @@ export default class Post extends Component {
   static propTypes = {
     __filename: PropTypes.string.isRequired,
     head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired
+    body: PropTypes.string.isRequired,
+    rawBody: PropTypes.string.isRequired
   };
 
   static contextTypes = {
@@ -21,7 +23,8 @@ export default class Post extends Component {
   render () {
     const {
       head,
-      body
+      body,
+      rawBody
     } = this.props
 
     const {pkg: { config }} = this.context.metadata
@@ -29,7 +32,15 @@ export default class Post extends Component {
     return (
       <Page {...this.props}>
         <h1 className={styles.title}>{head.title}</h1>
-        <Date date={head.date} />
+        <Date
+          date={head.date}
+          className={styles.date}
+        />
+        <ReadTime
+          text={rawBody}
+          className={styles.readTime}
+        />
+
         <article
           className={styles.content}
           dangerouslySetInnerHTML={{__html: body}}
