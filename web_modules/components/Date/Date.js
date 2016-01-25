@@ -8,15 +8,7 @@ export default class Date extends Component {
   };
 
   render () {
-    if (this.props.date === undefined) {
-      return (<span></span>)
-    }
-    let date = moment(this.props.date)
-    const diff = moment.duration(moment().diff(date)).asDays()
-
-    // If less than a month, show a human readable string
-    date = (diff < 30) ? date.toNow() : date.format('DD-MM-YYYY')
-
+    const date = moment(this.props.date).format('DD MMM YYYY')
     return (
       <span className={styles.date}>{date}</span>
     )
