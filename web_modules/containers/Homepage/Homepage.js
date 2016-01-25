@@ -16,8 +16,8 @@ export class Homepage extends Component {
   get collection () {
     return _.chain(this.props.collection)
       .filter(t => (t.layout === 'Post') && (t.draft === undefined))
-      .sortByOrder(['date'], ['desc'])
-      .uniq('__url')
+      .orderBy(['date'], ['desc'])
+      .uniqBy('__url')
       .slice(0, 10)
       .map(PostItem)
       .value()

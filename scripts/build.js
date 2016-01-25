@@ -127,7 +127,10 @@ const webpackConfig = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin(prepareDefinedValues(config.consts))
+    new webpack.DefinePlugin({
+      ...prepareDefinedValues(config.consts),
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
   ],
   markdownIt: (
     markdownIt({
@@ -156,8 +159,8 @@ builder({
   source: paths.content(),
   dest: paths.dist(),
   staticAssets: {
-    source: paths.content('images'),
-    route: '/assets/article_images'
+    path: 'images',
+    route: 'assets/article_images'
   },
   clientWebpackConfig: {
     ...webpackConfig,

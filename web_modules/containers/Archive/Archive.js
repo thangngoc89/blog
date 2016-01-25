@@ -18,8 +18,8 @@ export class Homepage extends Component {
     // group by month
     return _.chain(this.props.collection)
       .filter(t => (t.layout === 'Post') && (t.draft === undefined))
-      .sortByOrder(['date'], ['desc'])
-      .uniq('__url')
+      .orderBy(['date'], ['desc'])
+      .uniqBy('__url')
       .groupBy(t => moment(t.date).utc().startOf('month').format())
       .map(ArchiveList)
       .value()
