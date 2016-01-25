@@ -6,23 +6,21 @@ import minifyCollection from 'statinamic/lib/md-collection-loader/minify'
 
 import * as layouts from 'containers'
 
-const store = createStore(
-  combineReducers({
-    ...statinamicReducers,
-    ...rootReducer
-  }),
-  // initialState
-  {
-    ...(typeof window !== 'undefined') && window.__INITIAL_STATE__,
+const initialState = {
+  // static build optimization
+  ...__PROD__ && {
+    collection:
+      minifyCollection(require('statinamic/lib/md-collection-loader/cache'))
+  },
+  ...(typeof window !== 'undefined') && window.__INITIAL_STATE__,
+  layouts
+}
 
-    // static build optimization
-    ...__PROD__ && {
-      collection:
-        minifyCollection(require('statinamic/lib/md-collection-loader/cache'))
-    },
+const reducer = combineReducers({
+  ...statinamicReducers,
+  ...rootReducer
+})
 
-    layouts
-  }
-)
+const store = createStore(reducer, initialState)
 
 export default store
