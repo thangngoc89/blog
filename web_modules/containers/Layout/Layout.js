@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Header from 'components/Header'
 import Footer from 'components/Footer'
 import Sidebar from 'components/Sidebar'
+import GATracker from 'containers/GATracker'
 
 import { connect } from 'react-redux'
 import { actions as navActions } from 'redux/modules/nav'
@@ -11,11 +12,13 @@ import { actions as navActions } from 'redux/modules/nav'
 import styles from './Layout.scss'
 /**
  * Base layout handle Header, Sidebar and Footer
+ * TODO: Refactor me
  */
 export class Layout extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
     location: PropTypes.object.isRequired,
+    params: PropTypes.object,
     isSidebarOpen: PropTypes.bool.isRequired,
     sidebarToggle: PropTypes.func.isRequired
   };
@@ -30,7 +33,7 @@ export class Layout extends Component {
     } = this.context.metadata
 
     return (
-      <div>
+      <GATracker params={this.props.params}>
         <Helmet
           meta={[
             {property: 'og:site_name', content: pkg.config.name},
@@ -53,7 +56,7 @@ export class Layout extends Component {
           </div>
           <Footer />
         </div>
-      </div>
+      </GATracker>
     )
   }
 }

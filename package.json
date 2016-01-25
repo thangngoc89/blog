@@ -21,7 +21,8 @@
     "github": "thangngoc89",
     "twitter": "khoanguyenme",
     "email": "hi@khoanguyen.me",
-    "edit-on-github": "https://github.com/thangngoc89/blog-posts/blob/master/"
+    "edit-on-github": "https://github.com/thangngoc89/blog-posts/blob/master/",
+    "googleAnalyticsUA": "UA-56785612-1"
   },
   "babel": {
     "presets": [
@@ -40,6 +41,7 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "globals": {
+      "__DEV__": true,
       "__PROD__": true
     },
     "extends": [
@@ -104,6 +106,7 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash": "^3.10.1",
-    "moment": "^2.11.1"
+    "moment": "^2.11.1",
+    "react-ga": "^1.2.0"
   }
 }
