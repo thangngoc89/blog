@@ -10,6 +10,11 @@ const PostItem = ({__url, date, title, draft}) => {
     [styles.draft]: draft
   })
 
+  const linkClass = classnames({
+    [styles.title]: true,
+    [styles.titleDraft]: draft
+  })
+
   return (
     <article
       key={__url}
@@ -17,9 +22,9 @@ const PostItem = ({__url, date, title, draft}) => {
     >
       <Link
         to={__url}
-        className={styles.title}
+        className={linkClass}
       >
-        <h2>{title}</h2>
+        {title}
       </Link>
       <Date date={date} className={styles.date} />
     </article>
