@@ -46,20 +46,21 @@ const webpackConfig = {
           feedsOptions: {
             title: pkg.config.siteName,
             site_url: pkg.homepage,
-          },
-          feeds: {
-            'feed.xml': {
-              collectionOptions: {
-                filter: {
-                  layout: 'Post',
-                  draft: undefined
-                },
-                sort: 'date',
-                reverse: true,
-                limit: 20
-              }
-            }
           }
+          // feeds: {
+          //   'feed.xml': {
+          //     collectionOptions: {
+          //       filters: [
+          //         { layout: 'Post' },
+          //         { draft: undefined },
+          //         { draft: false }
+          //       ],
+          //       sort: 'date',
+          //       reverse: true,
+          //       limit: 20
+          //     }
+          //   }
+          // }
         }
       },
       {
