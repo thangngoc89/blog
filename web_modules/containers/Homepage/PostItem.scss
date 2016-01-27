@@ -10,14 +10,26 @@
   font-size: $font-size-small;
 }
 
+
 .article {
-  margin: 3rem 2rem;
+  margin: .5rem 1rem;
+  padding: 1.5rem 1.5rem 0 1.5rem;
 
   @include media-breakpoint-down(sm) {
-    margin: 2rem .5rem;
+    padding: 1rem 1rem 0 1rem;
   }
-  
+
   &:first-of-type {
     margin-top: 0rem;
+  }
+}
+
+
+.draft {
+  background: rgba($color-accent, .2);
+  padding-bottom: 1.5rem;
+
+  @include media-breakpoint-down(sm) {
+    padding-bottom: 1rem;
   }
 }

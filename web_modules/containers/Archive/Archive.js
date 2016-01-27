@@ -13,11 +13,17 @@ export class Homepage extends Component {
   };
 
   get collection () {
-    // Get all post minus draft
+    let value = _.chain(this.props.collection)
+      .filter(t => t.layout === 'Post')
+
+    // Exclude draft in production build
+    if (__PROD__) {
+      value = value
+       .filter(t => t.draft === undefined)
+    }
     // sort reverse by date
     // group by month
-    return _.chain(this.props.collection)
-      .filter(t => (t.layout === 'Post') && (t.draft === undefined))
+    return value
       .orderBy(['date'], ['desc'])
       .uniqBy('__url')
       .groupBy(t => moment(t.date).utc().startOf('month').format())

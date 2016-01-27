@@ -2,15 +2,22 @@ import React, { PropTypes } from 'react'
 import moment from 'moment'
 import { Link } from 'react-router'
 import _ from 'lodash'
+import classnames from 'classnames'
 
 import styles from './ArchiveList.scss'
 
 const PostLink = ({ item }) => {
   const day = moment(item.date).utc().format('DD')
+  const linkClassName = classnames({
+    [styles.draft]: item.draft
+  })
   return (
     <p className={styles.link}>
       {day} {' - '}
-      <Link to={item.__url}>
+      <Link
+        to={item.__url}
+        className={linkClassName}
+      >
         {item.title}
       </Link>
     </p>

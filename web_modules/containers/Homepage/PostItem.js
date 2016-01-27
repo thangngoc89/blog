@@ -1,13 +1,19 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import Date from 'components/Date'
+import classnames from 'classnames'
 import styles from './PostItem.scss'
 
-const PostItem = ({__url, date, title}) => {
+const PostItem = ({__url, date, title, draft}) => {
+  const articleClass = classnames({
+    [styles.article]: true,
+    [styles.draft]: draft
+  })
+
   return (
     <article
       key={__url}
-      className={styles.article}
+      className={articleClass}
     >
       <Link
         to={__url}
@@ -21,8 +27,10 @@ const PostItem = ({__url, date, title}) => {
 }
 
 PostItem.propTypes = {
-  head: PropTypes.object.isRequired,
-  body: PropTypes.string.isRequired
+  __url: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  draft: PropTypes.boolean
 }
 
 export default PostItem

@@ -14,8 +14,15 @@ export class Homepage extends Component {
   };
 
   get collection () {
-    return _.chain(this.props.collection)
-      .filter(t => (t.layout === 'Post') && (t.draft === undefined))
+    let value = _.chain(this.props.collection)
+      .filter(t => t.layout === 'Post')
+
+    // Exclude draft in production build
+    if (__PROD__) {
+      value = value
+       .filter(t => t.draft === undefined)
+    }
+    return value
       .orderBy(['date'], ['desc'])
       .uniqBy('__url')
       .slice(0, 10)
