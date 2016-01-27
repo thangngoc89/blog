@@ -13,56 +13,17 @@
 }
 
 .link {
-  outline: none;
 	text-decoration: none;
-	position: relative;
 	font-size: $font-size-huge;
-	display: inline-block;
 	font-weight: $font-weight-bolder;
-	overflow: hidden;
-	color: $color-primary;
+	color: $color-text;
 
-  &:visited {
-    color: $color-primary;
+  &:visited, &:hover, &:active {
+    color: $color-text;
+    text-decoration: none;
   }
 
-  a {
-    color: $color-primary-dark;
-  }
   &:hover {
-	   color: $color-primary;
-  }
-
-  &:after {
-  	content: '';
-  	position: absolute;
-  	height: 16px;
-  	width: 100%;
-  	top: 50%;
-  	margin-top: -8px;
-  	right: 0;
-  	background: $color-primary-contrast;
-  	transform: translate3d(-100%,0,0);
-  	transition: transform 0.2s;
-  	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
-  }
-
-  &:hover::after {
-	   transform: translate3d(100%,0,0);
-  }
-
-  &:before {
-	  content: 'Khoa Nguyen';
-	  position: absolute;
-  	z-index: 2;
-  	overflow: hidden;
-  	color: #424242;
-  	white-space: nowrap;
-  	width: 0%;
-  	transition: width 0.3s 0.2s;
-  }
-
-  &:hover::before {
-	  width: 100%;
+    color: $color-primary;
   }
 }
