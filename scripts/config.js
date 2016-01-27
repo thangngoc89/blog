@@ -1,5 +1,7 @@
 /* eslint key-spacing:0 spaced-comment:0 */
 import path from 'path'
+import pkg from '../package.json'
+import configurator from 'statinamic/lib/configurator'
 
 const config = {
   // ----------------------------------
@@ -8,7 +10,8 @@ const config = {
   path_base   : path.resolve(__dirname, '../'),
   dir_client  : 'web_modules',
   dir_content : 'content',
-  dir_dist    : 'dist'
+  dir_dist    : 'dist',
+  ...configurator(pkg)
 }
 
 // ------------------------------------

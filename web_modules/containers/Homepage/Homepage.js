@@ -14,20 +14,19 @@ export class Homepage extends Component {
   };
 
   get collection () {
-    let value = _.chain(this.props.collection)
-      .filter(t => t.layout === 'Post')
+    let value = this.props.collection
 
+    value = value.filter(t => t.layout === 'Post')
     // Exclude draft in production build
     if (__PROD__) {
-      value = value
-       .filter(t => t.draft === undefined)
+      value = value.filter(t => t.draft === undefined)
     }
+    value = _.orderBy(value, ['date'], ['desc'])
+    value = _.uniqBy(value, '__url')
+
     return value
-      .orderBy(['date'], ['desc'])
-      .uniqBy('__url')
       .slice(0, 10)
       .map(PostItem)
-      .value()
   }
 
   render () {

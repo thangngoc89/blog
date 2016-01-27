@@ -2,26 +2,24 @@ import fs from 'fs'
 import path from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import buildConfig from '../config'
 import markdownIt from 'markdown-it'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
 import markdownItVideo from 'markdown-it-video'
 import hljs from 'highlight.js'
 
-import pkg from '../package.json'
 import builder from 'statinamic/lib/builder'
-import configurator from 'statinamic/lib/configurator'
 import prepareDefinedValues from 'statinamic/lib/prepare-defined-values'
 
-const config = {
-  ...buildConfig,
-  ...configurator(pkg)
-}
+import pkg from '../package.json'
+import config from './config'
 
 const paths = config.utils_paths
 const CSS_HASH = (config.dev) ? '[name]__[local]__[hash:base64:5]' : '[hash:base64]'
 
 const webpackConfig = {
+  ...config.dev && {
+    devtool: 'eval'
+  },
   output: {
     path: paths.dist(),
     filename: '[name].js',
@@ -41,25 +39,28 @@ const webpackConfig = {
       //
       {
         test: /\.md$/,
-        loader: 'statinamic/lib/md-collection-loader' +
-          `?${ JSON.stringify({
-            context: paths.content(),
-            basepath: config.baseUrl.path,
-            feedsOptions: {
-              title: pkg.name,
-              site_url: pkg.homepage,
-            },
-            feeds: {
-              'feed.xml': {
-                collectionOptions: {
-                  filter: { layout: 'Post' },
-                  sort: 'date',
-                  reverse: true,
-                  limit: 20,
+        loader: 'statinamic/lib/md-collection-loader',
+        query: {
+          context: paths.content(),
+          basepath: config.baseUrl.path,
+          feedsOptions: {
+            title: pkg.config.siteName,
+            site_url: pkg.homepage,
+          },
+          feeds: {
+            'feed.xml': {
+              collectionOptions: {
+                filter: {
+                  layout: 'Post',
+                  draft: undefined
                 },
-              },
-            },
-          }) }`,
+                sort: 'date',
+                reverse: true,
+                limit: 20
+              }
+            }
+          }
+        }
       },
       {
         test: /\.json$/,
@@ -169,11 +170,6 @@ builder({
     },
     plugins: [
       ...webpackConfig.plugins,
-      // ! \\ the static build below will extract the exact same thing in the
-      // same file, but here we use extract plugin to REMOVE REDUNDANT CSS
-      // from the build. Since there is a static build that is used for the
-      // first viewed page (which contains all css), we don't need styles in
-      // the JS too.
       new ExtractTextPlugin(
         '[name].css',
         { disable: config.dev }
@@ -181,8 +177,9 @@ builder({
       ...config.prod && [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
+          sourceMap: false,
           compress: {
-            warnings: false,
+            warnings: false
           }
         })
       ]

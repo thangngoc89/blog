@@ -13,22 +13,23 @@ export class Homepage extends Component {
   };
 
   get collection () {
-    let value = _.chain(this.props.collection)
-      .filter(t => t.layout === 'Post')
+    let value = this.props.collection
 
+    value = value.filter(t => t.layout === 'Post')
     // Exclude draft in production build
     if (__PROD__) {
-      value = value
-       .filter(t => t.draft === undefined)
+      value = value.filter(t => t.draft === undefined)
     }
-    // sort reverse by date
-    // group by month
+    value = _.orderBy(value, ['date'], ['desc'])
+    value = _.uniqBy(value, '__url')
+    value = _.groupBy(value, t =>
+      moment(t.date)
+        .utc()
+        .startOf('month')
+        .format()
+    )
+    value = _.map(value, ArchiveList)
     return value
-      .orderBy(['date'], ['desc'])
-      .uniqBy('__url')
-      .groupBy(t => moment(t.date).utc().startOf('month').format())
-      .map(ArchiveList)
-      .value()
   }
 
   render () {
