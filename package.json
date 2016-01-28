@@ -90,7 +90,7 @@
     "postcss-custom-properties": "^5.0.0",
     "postcss-loader": "^0.7.0",
     "react": "^0.14.6",
-    "react-burger-menu": "^1.4.13",
+    "react-burger-menu": "^1.5.0",
     "react-dom": "^0.14.6",
     "react-helmet": "^2.3.1",
     "react-redux": "^4.0.6",
