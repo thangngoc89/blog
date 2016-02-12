@@ -67,7 +67,7 @@
     "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev",
     "css-loader": "^0.17.0",
     "cssnano": "^3.4.0",
-    "eslint": "^1.10.3",
+    "eslint": "^2.0.0",
     "eslint-config-i-am-meticulous": "^1.0.0",
     "eslint-config-standard": "^4.4.0",
     "eslint-config-standard-react": "^1.2.1",
