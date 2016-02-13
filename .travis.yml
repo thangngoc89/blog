@@ -1,0 +1,26 @@
+language: node_js
+sudo: false
+node_js:
+  - 4
+  - 5
+matrix:
+  fast_finish: true
+
+script:
+  - git submodule foreach git pull origin master
+  - npm run build
+
+before_deploy:
+  - git config --global user.email "gh-pages@localhost"
+  - git config --global user.name "npm gh-pages"
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: npm run deploy
+  'on':
+    branch: master
+    node: '5'
+env:
+  global:
+    # GITHUB_TOKEN
+    - secure: KkhG4Avd5Pezy2cTnhD3F1BC37r2V/F/xUAfS/M44RfrUGINZLO3R01kPe+4OTxb9F4cd2ycY7Y9xI5FNqp9cMvrh/ZBYP5xJYYOi9B2jXnqAOtoMTxOPLXYcG1dTRRY5huomXk+56sQYDWYX2d6GRQZT8FqNRv/jiZcZ6XJf2Tj+hfM5dfA5pmNTlF/V83CLTBi1HftFvgUSih5TdxEwJIGWt6t/ZT+QZnSssbL1fPbJ+kxv4It8Q6tAcnr2wo7ptmPOqYfy2HznW7UJ7RJOkakz5uEJJQX3/cAOWPzBsHirGEdHIXUsxlEwbCnlxQPxv2/ja0k9dgCFy8qy4q417yeBo2A9wMDClF7YxtTlAjrFYmI4J29Uqvi4jb5pEkMOmvb0a73VDWnCr+sr2x5b6gXNATND3fR7Tc1Gs96qVAOJSMJ+yfQBdeo/rJjJ1eqw+9QQDsOMBzI9u/p87qjv+Yn4QwLmIZELidnT8GUfrjB7dcuxk2P+R5IzmBynWPxwkxS4uAg/OatoXkmMvPF1fj1IcQWWJKh/7hAOlL5f+gTegqS8yWG+oPISuYmUWP7A5q0JD3I8IvpqD25qczp0IA/jddoJBQCYJIcGuYRaa+PpEx12TB4B0Ot+OVmNyUUKUkUYlnQSJWW3t9zNagTmZGaqyEyWsWIPJ0DRkSoAkg=
