@@ -106,7 +106,7 @@ export default {
         }
         // ...or fallback to auto
         return hljs.highlightAuto(code).value
-      },
+      }
     })
     .use(markdownItTocAndAnchor, {
       tocFirstLevel: 1
@@ -123,15 +123,17 @@ export default {
       CLIENT: true,
       REDUX_DEVTOOLS: Boolean(process.env.REDUX_DEVTOOLS),
     } }),
-
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['app-1-vendor']
+    }),
     ...config.production && [
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,
         },
-      }),
-    ],
+      })
+    ]
   ],
 
   // ↓ HANDLE WITH CARE ↓ \\

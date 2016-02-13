@@ -52,8 +52,22 @@ export default {
     ...webpackConfig.output,
     libraryTarget: 'var',
     filename: '[name].[hash].js',
+    ...config.production && {
+      filename: '[name].[chunkhash].js'
+    }
   },
   entry: {
-    'statinamic-client': path.join(__dirname, 'index-client'),
-  },
+    'app-1-vendor': [
+      'react',
+      'react-redux',
+      'react-helmet',
+      'redux-actions',
+      'react-router',
+      'redux',
+      'whatwg-fetch',
+      'moment',
+      'classnames'
+    ],
+    'app-2-client': path.join(__dirname, 'index-client')
+  }
 }
