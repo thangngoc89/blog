@@ -85,7 +85,7 @@
     "markdown-it-toc-and-anchor-fork": "^2.1.1",
     "markdown-it-video": "^0.2.1",
     "node-sass": "^3.4.2",
-    "postcss-loader": "^0.7.0",
+    "postcss-loader": "^0.8.1",
     "react": "^0.14.6",
     "react-burger-menu": "^1.5.1",
     "react-dom": "^0.14.6",
