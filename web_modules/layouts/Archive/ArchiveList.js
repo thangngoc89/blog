@@ -6,6 +6,8 @@ import classnames from 'classnames'
 
 import styles from './ArchiveList.scss'
 
+moment.locale('vi')
+
 const PostLink = ({ item }) => {
   const day = moment(item.date).utc().format('DD')
   const linkClassName = classnames({
@@ -28,7 +30,7 @@ PostLink.propTypes = {
 }
 
 const ArchiveList = (group) => {
-  const month = moment(group[0].date).format('MMMM YY')
+  const month = moment(group[0].date).format('MMMM/YYYY')
   const posts = _.map(group, (item) => <PostLink key={item.__url} item={item} />)
 
   return (
