@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import Page from 'containers/Page'
-import Date from 'components/Date'
-import ReadTime from 'components/ReadTime'
-import GitHubEditLink from 'components/GitHubEditLink'
+import Page from '../Page'
+import Date from '../../Date'
+import ReadTime from '../../ReadTime'
+import GitHubEditLink from '../../GitHubEditLink'
 import styles from './Post.scss'
 
 /**

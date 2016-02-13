@@ -1,20 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import Helmet from 'react-helmet'
 
-import Header from 'components/Header'
-import Footer from 'components/Footer'
-import Sidebar from 'components/Sidebar'
-import GATracker from 'containers/GATracker'
+import Header from '../Header'
+import Sidebar from '../Sidebar'
+import GATracker from '../GATracker'
 
 import { connect } from 'react-redux'
-import { actions as navActions } from 'redux/modules/nav'
+import { actions as navActions } from '../redux/modules/nav'
 
-import styles from './Layout.scss'
+import styles from './LayoutContainer.scss'
 /**
  * Base layout handle Header, Sidebar and Footer
  * TODO: Refactor me
  */
-export class Layout extends Component {
+export class LayoutContainer extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
     location: PropTypes.object.isRequired,
@@ -54,7 +53,6 @@ export class Layout extends Component {
           <div className={styles.content}>
             {this.props.children}
           </div>
-          <Footer />
         </div>
       </GATracker>
     )
@@ -65,4 +63,4 @@ const mapStateToProps = (state) => ({
   ...state.nav
 })
 
-export default connect(mapStateToProps, navActions)(Layout)
+export default connect(mapStateToProps, navActions)(LayoutContainer)

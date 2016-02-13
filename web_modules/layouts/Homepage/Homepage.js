@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import Page from 'containers/Page'
+import Page from '../Page'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import PostItem from './PostItem'
@@ -9,20 +9,22 @@ import styles from './HomePage.scss'
 export class Homepage extends Component {
   static propTypes = {
     head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired,
-    collection: PropTypes.array
+    body: PropTypes.string.isRequired
+  };
+
+  static contextTypes = {
+    collection: PropTypes.array.isRequired
   };
 
   get collection () {
-    let value = this.props.collection
-
+    let value = this.context.collection
     value = value.filter(t => t.layout === 'Post')
+    value = _.uniqBy(value, '__url')
+    value = _.orderBy(value, ['date'], ['desc'])
     // Exclude draft in production build
-    if (__PROD__) {
+    if (process.env.NODE_ENV === 'production') {
       value = value.filter(t => t.draft === undefined)
     }
-    value = _.orderBy(value, ['date'], ['desc'])
-    value = _.uniqBy(value, '__url')
 
     return value
       .slice(0, 10)
@@ -32,7 +34,7 @@ export class Homepage extends Component {
   render () {
     const {
       collection
-    } = this.props
+    } = this.context
 
     return (
       <Page {...this.props}>

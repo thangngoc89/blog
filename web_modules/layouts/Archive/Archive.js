@@ -1,27 +1,29 @@
 import React, { Component, PropTypes } from 'react'
-import Page from 'containers/Page'
+import Page from '../Page'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import ArchiveList from './ArchiveList'
 
-export class Homepage extends Component {
+export class Archive extends Component {
   static propTypes = {
     head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired,
-    collection: PropTypes.array
+    body: PropTypes.string.isRequired
+  };
+
+  static contextTypes = {
+    collection: PropTypes.array.isRequired
   };
 
   get collection () {
-    let value = this.props.collection
-
+    let value = this.context.collection
     value = value.filter(t => t.layout === 'Post')
-    // Exclude draft in production build
-    if (__PROD__) {
-      value = value.filter(t => t.draft === undefined)
-    }
     value = _.orderBy(value, ['date'], ['desc'])
     value = _.uniqBy(value, '__url')
+    // Exclude draft in production build
+    if (process.env.NODE_ENV === 'production') {
+      value = value.filter(t => t.draft === undefined)
+    }
     value = _.groupBy(value, t =>
       moment(t.date)
         .utc()
@@ -35,7 +37,7 @@ export class Homepage extends Component {
   render () {
     const {
       collection
-    } = this.props
+    } = this.context
 
     return (
       <Page {...this.props}>
@@ -56,4 +58,4 @@ export class Homepage extends Component {
 
 export default connect(
   ({ collection }) => ({ collection })
-)(Homepage)
+)(Archive)

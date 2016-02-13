@@ -9,7 +9,7 @@ const Date = (props) => {
 }
 
 Date.propTypes = {
-  date: PropTypes.string
+  date: PropTypes.any
 }
 
 export default Date

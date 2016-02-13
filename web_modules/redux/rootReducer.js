@@ -1,4 +1,4 @@
-import nav from 'redux/modules/nav'
+import nav from './modules/nav'
 
 export default {
   nav

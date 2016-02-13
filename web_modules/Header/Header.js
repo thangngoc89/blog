@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import NavToggle from 'components/SidebarToggle'
+import NavToggle from '../SidebarToggle'
 import styles from './Header.scss'
 
 const Header = ({isSidebarOpen, sidebarToggle}) => {
