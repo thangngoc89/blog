@@ -1,4 +1,3 @@
-import { createAction, handleActions } from 'redux-actions'
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -6,20 +5,19 @@ export const SIDEBAR_TOGGLE = 'nav/sidebar/TOGGLE'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const sidebarToggle = createAction(SIDEBAR_TOGGLE)
+export const sidebarToggle = (value) => ({
+  type: SIDEBAR_TOGGLE,
+  payload: value
+})
 
 export const actions = {
   sidebarToggle
 }
 
 // ------------------------------------
-// Reducer
+// Action Handlers
 // ------------------------------------
-export const initialState = {
-  isSidebarOpen: false
-}
-
-export default handleActions({
+const ACTION_HANDLERS = {
   [SIDEBAR_TOGGLE]: (state, { payload }) => {
     if (typeof payload === 'boolean') {
       if (payload === state.isSidebarOpen) {
@@ -32,4 +30,17 @@ export default handleActions({
       isSidebarOpen: !state.isSidebarOpen
     }
   }
-}, initialState)
+}
+
+// ------------------------------------
+// Reducer
+// ------------------------------------
+export const initialState = {
+  isSidebarOpen: false
+}
+
+export default function navReducer (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
+
+  return handler ? handler(state, action) : state
+}

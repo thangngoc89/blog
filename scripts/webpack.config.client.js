@@ -67,7 +67,6 @@ export default {
       'react',
       'react-redux',
       'react-helmet',
-      'redux-actions',
       'react-router',
       'redux',
       'whatwg-fetch',
