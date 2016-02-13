@@ -40,7 +40,7 @@ export default {
             babelrc: false,
 
           }),
-          'eslint-loader?fix',
+          // 'eslint-loader?fix',
         ],
         exclude: /node_modules/,
       },
