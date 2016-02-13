@@ -1,5 +1,5 @@
 # My personal blog
-[![Travis](https://img.shields.io/travis/thangngoc89/blog.svg?style=flat-square)](https://travis-ci.org/thangngoc89/blog)
+[![Travis](https://img.shields.io/travis/thangngoc89/blog/master.svg?style=flat-square)](https://travis-ci.org/thangngoc89/blog)
 
 # Technical specifications
 
