@@ -32,7 +32,7 @@ export default class Page extends Component {
 
     invariant(
       typeof head.title === 'string',
-      `Your page '${ __filename }' needs a title`
+      `Your page '${__filename}' needs a title`
     )
 
     const meta = [
@@ -42,7 +42,7 @@ export default class Page extends Component {
       // { property: "og:description", content: pageDescription(body) },
       {name: 'twitter:card', content: 'summary'},
       {name: 'twitter:title', content: head.title},
-      {name: 'twitter:creator', content: `@${ pkg.config.twitter }`}
+      {name: 'twitter:creator', content: `@${pkg.config.twitter}`}
       // { name: "twitter:description", content: pageDescription(body) },
     ]
 
@@ -56,9 +56,9 @@ export default class Page extends Component {
           <div className='col-xs-12 col-sm-10 col-md-8 center-block'>
             {
               !this.props.children && this.props.body &&
-              <div
-                dangerouslySetInnerHTML={{__html: this.props.body}}
-              ></div>
+                <div
+                  dangerouslySetInnerHTML={{__html: this.props.body}}
+                ></div>
             }
             {this.props.children}
           </div>

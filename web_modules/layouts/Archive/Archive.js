@@ -17,14 +17,14 @@ export class Archive extends Component {
 
   get collection () {
     let value = this.context.collection
-    value = value.filter(t => t.layout === 'Post')
+    value = value.filter((t) => t.layout === 'Post')
     value = _.orderBy(value, ['date'], ['desc'])
     value = _.uniqBy(value, '__url')
     // Exclude draft in production build
     if (process.env.NODE_ENV === 'production') {
-      value = value.filter(t => t.draft === undefined)
+      value = value.filter((t) => t.draft === undefined)
     }
-    value = _.groupBy(value, t =>
+    value = _.groupBy(value, (t) =>
       moment(t.date)
         .utc()
         .startOf('month')
@@ -43,13 +43,11 @@ export class Archive extends Component {
       <Page {...this.props}>
       {
         Boolean(!collection || !collection.length) &&
-        <p>No entry</p>
+          <p>No entry</p>
       }
       {
         Boolean(collection && collection.length) &&
-        <div>
-          {this.collection}
-        </div>
+          <div>{this.collection}</div>
       }
       </Page>
     )
