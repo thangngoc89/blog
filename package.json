@@ -6,7 +6,7 @@
     "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
     "build": "NODE_ENV=production npm run statinamic -- --static --production",
-    "deploy": "babel-node scripts/deploy"
+    "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "statinamic": {
     "assets": {
