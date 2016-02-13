@@ -8,7 +8,7 @@ import LayoutContainer from '../LayoutContainer'
 
 // routes
 export default (
-  <Route component={ LayoutContainer }>
-    <Route path='*' component={ PageContainer } />
+  <Route component={LayoutContainer}>
+    <Route path='*' component={PageContainer} />
   </Route>
 )

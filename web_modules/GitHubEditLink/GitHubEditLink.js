@@ -8,7 +8,7 @@ const GitHubEditLink = ({ baseUrl, fileName }) => {
       <hr />
       <p>
         Bài viết sai chính tả? Có điểm chưa rõ ràng?
-        { '  ' }
+        {'  '}
         <a href={url} target='_blank'>
           Sửa bài viết trên Github
         </a>
