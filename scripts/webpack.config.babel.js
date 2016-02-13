@@ -129,7 +129,9 @@ export default {
         compress: {
           warnings: false,
         },
-      })
+      }),
+      // http://stackoverflow.com/a/25426019
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /vi/),
     ]
   ],
 
