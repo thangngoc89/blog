@@ -1,9 +1,9 @@
 import ghPages from 'gh-pages'
-import config from './config'
+import { join } from 'path'
 
-const paths = config.utils_paths
+const dist = join(__dirname, '../dist')
 
-ghPages.publish(paths.dist(), {
+ghPages.publish(dist, {
   branch: 'master',
   repo: 'https://' + process.env.GH_TOKEN + '@github.com/thangngoc89/thangngoc89.github.io.git',
 }, (err) => {
