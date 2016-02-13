@@ -123,9 +123,6 @@ export default {
       CLIENT: true,
       REDUX_DEVTOOLS: Boolean(process.env.REDUX_DEVTOOLS),
     } }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['app-1-vendor']
-    }),
     ...config.production && [
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({

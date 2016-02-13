@@ -1,4 +1,5 @@
 import path from 'path'
+import webpack from 'webpack'
 
 import config from './config.js'
 import webpackConfig from './webpack.config.babel.js'
@@ -45,7 +46,12 @@ export default {
       },
     ],
   },
-
+  plugins: [
+    ...webpackConfig.plugins,
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['app-1-vendor']
+    })
+  ],
   // ↓ HANDLE WITH CARE ↓ \\
 
   output: {
