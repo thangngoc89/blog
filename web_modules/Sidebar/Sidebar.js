@@ -13,12 +13,21 @@ export default class Sidebar extends Component {
     sidebarToggle: PropTypes.func.isRequired
   };
 
+  constructor (props) {
+    super(props)
+    this.handleMenuChange = this.handleMenuChange.bind(this)
+  }
+  
   // Poor workaround
   // in static build, we recive root path
   // as `//`
   get activePath () {
     let a = this.props.activePath
     return (a === '//') ? '/' : a
+  }
+
+  handleMenuChange ({ isOpen }) {
+    sidebarToggle(isOpen)
   }
 
   render () {
@@ -31,7 +40,7 @@ export default class Sidebar extends Component {
     return (
       <Menu
         width={300}
-        onStateChange={({ isOpen }) => sidebarToggle(isOpen)}
+        onStateChange={this.handleMenuChange}
         isOpen={isSidebarOpen}
         pageWrapId='page-wrap'
         outerContainerId='statinamic'

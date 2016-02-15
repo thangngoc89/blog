@@ -53,8 +53,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
-    "babel-cli": "^6.4.5",
-    "babel-core": "^6.4.5",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.1",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",
     "babel-plugin-lodash": "^2.0.1",
@@ -64,7 +64,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
-    "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev",
+    "bootstrap": "git+https://github.com/twbs/bootstrap.git#6ec9aa34a4b6d43b593b97f9b207410eff8f0152",
     "css-loader": "^0.17.0",
     "cssnano": "^3.4.0",
     "eslint": "^2.0.0",
@@ -98,7 +98,7 @@
     "redux-devtools-log-monitor": "^1.0.2",
     "redux-thunk": "^1.0.3",
     "sass-loader": "^3.1.2",
-    "statinamic": "^0.7.0",
+    "statinamic": "^0.7.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.11",
     "whatwg-fetch": "^0.11.0"
