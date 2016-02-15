@@ -5,7 +5,7 @@
   "scripts": {
     "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
-    "build": "NODE_ENV=production npm run statinamic -- --static --production",
+    "build": "npm run statinamic -- --static --production",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "statinamic": {
@@ -13,7 +13,8 @@
       "path": "images",
       "route": "assets/article_images"
     },
-    "CNAME": true
+    "CNAME": true,
+    "open": false
   },
   "config": {
     "slogan": "Viết ngẫu hứng. Chủ yếu chuyện công nghệ",

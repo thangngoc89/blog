@@ -17,7 +17,7 @@ export default class Sidebar extends Component {
     super(props)
     this.handleMenuChange = this.handleMenuChange.bind(this)
   }
-  
+
   // Poor workaround
   // in static build, we recive root path
   // as `//`
@@ -27,7 +27,7 @@ export default class Sidebar extends Component {
   }
 
   handleMenuChange ({ isOpen }) {
-    sidebarToggle(isOpen)
+    this.props.sidebarToggle(isOpen)
   }
 
   render () {
