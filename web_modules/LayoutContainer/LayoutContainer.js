@@ -35,7 +35,7 @@ export class LayoutContainer extends Component {
       <GATracker params={this.props.params}>
         <Helmet
           meta={[
-            {property: 'og:site_name', content: pkg.config.name},
+            {property: 'og:site_name', content: pkg.config.siteName},
             {name: 'twitter:site', content: `@${pkg.config.twitter}`}
           ]}
         />
