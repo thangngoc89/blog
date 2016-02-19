@@ -8,7 +8,7 @@ matrix:
 
 script:
   - git submodule foreach git pull origin master
-  - npm run build
+  - npm test
 
 before_deploy:
   - git config --global user.email "gh-pages@localhost"
