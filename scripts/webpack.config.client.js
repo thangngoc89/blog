@@ -14,7 +14,7 @@ export default {
       ...webpackConfig.module.loaders,
       {
         test: /\.json$/,
-        loader: 'json-loader',
+        loader: 'json-loader'
       },
       {
         test: /\.js$/,
@@ -32,19 +32,18 @@ export default {
             // add hot loading/error reporting for development
             presets: [
               ...pkg.babel.presets,
-              ...config.dev && [ 'babel-preset-react-hmre' ],
+              ...config.dev && [ 'babel-preset-react-hmre' ]
             ],
             // forget 'statinamic' env
             env: { ...pkg.babel.env, 'statinamic': undefined },
             // prevent babel going to use your original config
-            babelrc: false,
-
+            babelrc: false
           }),
-          'eslint-loader?fix',
+          'eslint-loader?fix'
         ],
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
   plugins: [
     ...webpackConfig.plugins,

@@ -3,6 +3,8 @@
   "name": "khoanguyen-dot-me",
   "homepage": "https://khoanguyen.me/",
   "scripts": {
+    "lint:js": "eslint --ignore-path .gitignore --fix .",
+    "lint:md": "remark --quiet --frail content",
     "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
     "build": "npm run statinamic -- --static --production",
@@ -52,6 +54,21 @@
       "standard-react"
     ]
   },
+  "remarkConfig": {
+    "plugins": {
+      "lint": {
+        "maximum-heading-length": false,
+        "maximum-line-length": false,
+        "no-html": false,
+        "no-heading-punctuation": false,
+        "no-multiple-toplevel-headings": false,
+        "no-shortcut-reference-link": false,
+        "no-undefined-references": false,
+        "list-item-indent": "space",
+        "list-item-spacing": false
+      }
+    }
+  },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
     "babel-cli": "^6.5.1",
@@ -98,6 +115,8 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
     "redux-thunk": "^1.0.3",
+    "remark": "^4.1.1",
+    "remark-lint": "^3.0.0",
     "sass-loader": "^3.1.2",
     "statinamic": "^0.7.1",
     "style-loader": "^0.13.0",
