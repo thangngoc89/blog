@@ -35,10 +35,12 @@ export default class Page extends Component {
       `Your page '${__filename}' needs a title`
     )
 
+    const url = (__url === '//') ? '' : __url.slice(1)
+
     const meta = [
       {property: 'og:title', content: head.title},
       {property: 'og:type', content: 'article'},
-      {property: 'og:url', content: __url},
+      {property: 'og:url', content: pkg.homepage + url},
       // { property: "og:description", content: pageDescription(body) },
       {name: 'twitter:card', content: 'summary'},
       {name: 'twitter:title', content: head.title},

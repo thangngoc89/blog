@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "khoanguyen-dot-me",
-  "homepage": "http://khoanguyen.me/",
+  "homepage": "https://khoanguyen.me/",
   "scripts": {
     "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
