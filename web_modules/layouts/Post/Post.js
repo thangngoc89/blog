@@ -45,6 +45,13 @@ export default class Post extends Component {
           className={styles.content}
           dangerouslySetInnerHTML={{__html: body}}
         ></article>
+
+        {
+          head.translate &&
+            <a href={head.translate.url}>
+              Translated from original post by {head.translate.author}
+            </a>
+        }
         <GitHubEditLink
           baseUrl={config['edit-on-github']}
           fileName={this.props.__filename}
