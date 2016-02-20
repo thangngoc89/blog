@@ -19,20 +19,20 @@ export default {
           `?${JSON.stringify({
             context: path.join(config.cwd, config.source),
             basepath: config.baseUrl.path,
-            feedsOptions: {
-              title: pkg.config.sitename,
-              site_url: pkg.homepage
-            },
-            feeds: {
-              'feed.xml': {
-                collectionOptions: {
-                  filter: { layout: 'Post' },
-                  sort: 'date',
-                  reverse: true,
-                  limit: 20
-                }
-              }
-            }
+            // feedsOptions: {
+            //   title: pkg.config.sitename,
+            //   site_url: pkg.homepage
+            // },
+            // feeds: {
+            //   'feed.xml': {
+            //     collectionOptions: {
+            //       filter: { layout: 'Post' },
+            //       sort: 'date',
+            //       reverse: true,
+            //       limit: 20
+            //     }
+            //   }
+            // }
           })}`
       },
       {
