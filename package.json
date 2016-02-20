@@ -82,6 +82,7 @@
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
     "bootstrap": "git+https://github.com/twbs/bootstrap.git#6ec9aa34a4b6d43b593b97f9b207410eff8f0152",
+    "catch-links": "^2.0.0",
     "css-loader": "^0.17.0",
     "cssnano": "^3.4.0",
     "eslint": "^2.0.0",
