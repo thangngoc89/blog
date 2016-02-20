@@ -4,13 +4,13 @@
 
 .nav {
   @extend .navbar;
-  @extend .navbar-fixed-top;
   box-shadow: 0 0 .6rem rgba(0, 0, 0, 0.2);
   z-index: $z-index-highest;
   background: $color-background;
   padding: .2rem 0;
   opacity: .9;
   border-top: 3px solid $color-accent;
+  margin-bottom: 2rem;
 }
 
 .brand {

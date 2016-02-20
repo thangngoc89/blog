@@ -5,7 +5,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import GATracker from '../components/GATracker'
 
-import styles from './LayoutContainer.scss'
 /**
  * Base layout handle Header, Sidebar and Footer
  * TODO: Refactor me
@@ -35,9 +34,7 @@ export class LayoutContainer extends Component {
           ]}
         />
         <Header />
-        <div className={styles.content}>
-          {this.props.children}
-        </div>
+        {this.props.children}
         <Footer />
       </GATracker>
     )
