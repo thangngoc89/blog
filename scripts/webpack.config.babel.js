@@ -9,7 +9,7 @@ import config from './config.js'
 
 export default {
   ...config.dev && {
-    devtools: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map'
   },
   module: {
     loaders: [
