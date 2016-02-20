@@ -37,14 +37,22 @@ export class Homepage extends Component {
     } = this.context
 
     return (
-      <Page {...this.props}>
+      <Page
+        {...this.props}
+        className='col-sm-12 col-md-10'
+      >
+        <p className={styles.latestPosts}>Bài viết mới nhất</p>
         {
           Boolean(!collection || !collection.length) &&
             <p>No entry</p>
         }
         {
           Boolean(collection && collection.length) &&
-            <div>{this.collection}</div>
+            <div className='container'>
+              <div className='row'>
+                {this.collection}
+              </div>
+            </div>
         }
         <Link
           className={styles.all}

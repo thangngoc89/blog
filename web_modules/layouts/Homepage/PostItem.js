@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import Date from '../../Date'
 import classnames from 'classnames'
+
+import Date from '../../components/Date'
+import Tag from '../../components/Tag'
 import styles from './PostItem.scss'
 
-const PostItem = ({__url, date, title, draft}) => {
+const PostItem = ({__url, date, title, draft, tags}) => {
   const articleClass = classnames({
     [styles.article]: true,
     [styles.draft]: draft
@@ -26,6 +28,17 @@ const PostItem = ({__url, date, title, draft}) => {
       >
         {title}
       </Link>
+      {
+        tags &&
+        Array.isArray(tags) &&
+          <p>
+            {
+              tags.map((tag) =>
+                <Tag key={tag} name={tag} />
+              )
+            }
+          </p>
+      }
       <Date date={date} className={styles.date} />
     </article>
   )
@@ -35,7 +48,8 @@ PostItem.propTypes = {
   __url: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  draft: PropTypes.boolean
+  draft: PropTypes.boolean,
+  tags: PropTypes.array
 }
 
 export default PostItem

@@ -1,5 +1,11 @@
 @import "globals";
 
+.latestPosts {
+  font-size: $font-size-big;
+  font-weight: $font-weight-bold;
+  text-align: center;
+}
+
 .all {
   text-align: center;
   white-space: nowrap;

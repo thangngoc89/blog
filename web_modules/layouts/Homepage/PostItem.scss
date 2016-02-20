@@ -1,4 +1,5 @@
 @import "globals";
+@import "vendors/bootstrap";
 
 .title {
   color: $color-text;
@@ -15,24 +16,18 @@
 
 .date {
   display: block;
+  color: $color-primary;
   font-style: italic;
-  font-size: $font-size-small;
+  font-size: $font-size-tiny;
 }
 
 
 .article {
-  margin: .5rem 1rem;
-  padding: 1.5rem 1.5rem 0 1.5rem;
-
-  @include media-breakpoint-down(sm) {
-    padding: 1rem 1rem 0 1rem;
-  }
-
-  &:first-of-type {
-    margin-top: 0rem;
-  }
+  @extend .col-md-6;
+  @extend .col-xs-12;
+  padding: 1.5rem 1rem;
+  border-bottom: 2px solid darken($color-divider, .2);
 }
-
 
 .draft {
   background: rgba($color-accent, .2);

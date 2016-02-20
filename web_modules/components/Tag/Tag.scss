@@ -1,0 +1,10 @@
+@import "globals";
+
+.tag {
+  color: $color-text;
+  font-size: $font-size-tiny;
+  border-radius: 0.4rem;
+  background: $color-divider;
+  padding: 0.2rem 0.6rem;
+  margin-right: 0.4rem;
+}
