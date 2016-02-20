@@ -2,7 +2,9 @@ import React from 'react'
 
 const PageLoading = () => {
   return (
-    <span>Loading ... </span>
+    <div style={{textAlign: 'center'}}>
+      <span>Loading... </span>
+    </div>
   )
 }
 
