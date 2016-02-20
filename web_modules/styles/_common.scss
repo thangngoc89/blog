@@ -3,13 +3,20 @@
 
 html, body {
   font-family: $preferred-font;
-  font-size: 20px !important;
+  font-size: 18px !important;
   color: $color-text;
 
   @include media-breakpoint-down(sm) {
     font-size: 16px !important;
   }
+}
 
+body::before {
+  display: none;
+  content: "small";
+  @include media-breakpoint-up(md) {
+    content: "large";
+  }
 }
 
 h1, h2, h3 {
