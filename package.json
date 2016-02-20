@@ -9,8 +9,7 @@
     "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
     "build": "npm run statinamic -- --static --production",
-    "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist",
-    "test": "npm run lint && npm run build"
+    "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "statinamic": {
     "assets": "images",
@@ -84,7 +83,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
-    "bootstrap": "git+https://github.com/twbs/bootstrap.git#6ec9aa34a4b6d43b593b97f9b207410eff8f0152",
+    "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
     "cross-env": "^1.0.7",
     "css-loader": "^0.17.0",
     "cssnano": "^3.4.0",
