@@ -84,7 +84,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
-    "bootstrap": "git+https://github.com/twbs/bootstrap.git#6ec9aa34a4b6d43b593b97f9b207410eff8f0152",
+    "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
     "cross-env": "^1.0.7",
     "css-loader": "^0.17.0",
     "cssnano": "^3.4.0",
