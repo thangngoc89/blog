@@ -1,4 +1,15 @@
 @import "globals";
+@import "vendors/bootstrap";
+
+.contentColumn {
+  @extend .col-xs-12;
+  @extend .col-sm-11;
+  @extend .col-md-8;
+}
+
+.withBorder {
+  border-right: 2px solid $color-divider;
+}
 
 .title {
   font-size: $font-size-huge;
@@ -20,7 +31,7 @@
   font-size: $font-size-small;
 }
 
-.content {
+.article {
   // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
   overflow-wrap: break-word;
   word-wrap: break-word;

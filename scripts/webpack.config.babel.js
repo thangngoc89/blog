@@ -4,7 +4,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
 import markdownItVideo from 'markdown-it-video'
 
-import pkg from '../package.json'
 import config from './config.js'
 
 export default {
@@ -18,7 +17,7 @@ export default {
         loader: 'statinamic/lib/md-collection-loader' +
           `?${JSON.stringify({
             context: path.join(config.cwd, config.source),
-            basepath: config.baseUrl.path,
+            basepath: config.baseUrl.path
             // feedsOptions: {
             //   title: pkg.config.sitename,
             //   site_url: pkg.homepage

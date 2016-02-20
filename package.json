@@ -48,6 +48,9 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-no-bind": 0
+    },
     "extends": [
       "standard",
       "standard-react"
@@ -108,6 +111,7 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-helmet": "^2.3.1",
+    "react-overlays": "^0.6.0",
     "react-redux": "^4.3.0",
     "react-router": "^2.0.0",
     "redux": "^3.3.1",
@@ -128,6 +132,7 @@
     "lodash": "^4.3.0",
     "moment": "^2.11.1",
     "react-ga": "^1.2.0",
-    "reading-time": "^1.0.2"
+    "reading-time": "^1.0.2",
+    "waypoints": "^4.0.0"
   }
 }
