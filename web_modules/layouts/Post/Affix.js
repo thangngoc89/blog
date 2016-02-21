@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import AutoAffix from 'react-overlays/lib/AutoAffix'
 import styles from './Affix.scss'
 import cx from 'classnames'
+import smoothScroll from 'smoothscroll' // Auto bound to global click event
 
 if (typeof window !== 'undefined') {
   // DANGER >_< Global variable
@@ -30,7 +31,10 @@ const listAnchors = () => {
       .map((node) => ({
         level: node.parentNode.nodeName.toLowerCase(), // H1 -> h1
         href: node.getAttribute('href'),
-        text: node.nextSibling.nodeValue.trim()
+        text: node.parentNode.innerHTML
+          .replace(/(<([^>]+)>)/ig, '')
+          .replace('#', '')
+          .trim()
       }))
   }
 
@@ -48,6 +52,7 @@ export default class Affix extends Component {
     this.state = {
       activeAnchor: ''
     }
+    this.handleAnchorClick = this.handleAnchorClick.bind(this)
   }
 
   componentDidMount () {
@@ -66,14 +71,23 @@ export default class Affix extends Component {
   }
 
   attachWayPoints () {
+    const me = this
     getAnchors()
       .forEach((element) =>
         new window.Waypoint({
           element,
-          handler: (/* direction */) => {
-            this.setState({
-              activeAnchor: element.getAttribute('href')
-            })
+          offset: '20%',
+          handler: function (direction) {
+            if (direction === 'down' || !this.previous()) {
+              me.setState({
+                activeAnchor: this.element.getAttribute('href')
+              })
+            }
+            else if (direction === 'up') {
+              me.setState({
+                activeAnchor: this.previous().element.getAttribute('href')
+              })
+            }
           }
         })
       )
@@ -83,7 +97,10 @@ export default class Affix extends Component {
    * Set anchor active state when click on anchor link
    * @param  {string} href
    */
-  handleAnchorClick (href) {
+  handleAnchorClick (e) {
+    e.preventDefault()
+    const href = e.target.getAttribute('href')
+    smoothScroll(document.getElementById(href.slice(1)))
     this.setState({
       activeAnchor: href
     })
@@ -109,7 +126,7 @@ export default class Affix extends Component {
         >
           <a
             href={anchor.href}
-            onClick={() => this.handleAnchorClick(anchor.href)}
+            onClick={this.handleAnchorClick}
           >
             {anchor.text}
           </a>
@@ -127,7 +144,7 @@ export default class Affix extends Component {
       >
         <ul
           className={styles.ul}
-          style={{maxWidth: '350px'}}
+          style={{maxWidth: '300px'}}
         >
           {this.getList()}
         </ul>
