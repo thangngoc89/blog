@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 import styles from './Header.scss'
 import Icon from '../Icon'
 import SearchForm from '../SearchForm'
 
-class Header extends Component {
+export default class Header extends Component {
   constructor () {
     super()
     this.state = {
@@ -68,5 +68,3 @@ class Header extends Component {
     )
   }
 }
-
-export default Header

@@ -6,7 +6,7 @@ import Icon from '../Icon'
 export default class SearchFrom extends Component {
   static propTypes = {
     open: PropTypes.bool.isRequired,
-    handleToggleSearch: PropTypes.func.isRequired,
+    handleToggleSearch: PropTypes.func.isRequired
   };
 
   render () {

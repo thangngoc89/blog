@@ -5,18 +5,18 @@
 .search {
   @extend .container-fluid;
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-	transition: all 0.5s ease-in-out;
-	transform: translate(0px, -100%) scale(0, 0);
+  transition: all 0.5s ease-in-out;
+  transform: translate(0, -100%) scale(0, 0);
   opacity: 0;
 }
 
 .open {
-	transform: translate(0px, 0px) scale(1, 1);
+  transform: translate(0, 0) scale(1, 1);
   opacity: 1;
 }
 
@@ -36,7 +36,7 @@
   background: rgba(0, 0, 0, 0);
   font-size: 2rem;
   font-weight: $font-weight-bold;
-  border: 0px;
+  border: 0;
   outline: none;
   width: 100%;
   text-align: center;
@@ -61,7 +61,8 @@
   width: 70%;
   margin-top: 2rem;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #000;
     background: #fff;
   }
@@ -75,7 +76,8 @@
   cursor: pointer;
   font-size: 3rem;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: #fff;
   }
 }
