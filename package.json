@@ -23,7 +23,8 @@
     "twitter": "khoanguyenme",
     "email": "hi@khoanguyen.me",
     "edit-on-github": "https://github.com/thangngoc89/blog-posts/blob/master/",
-    "googleAnalyticsUA": "UA-56785612-1"
+    "googleAnalyticsUA": "UA-56785612-1",
+    "disqus": "khoanguyenme"
   },
   "babel": {
     "presets": [
@@ -130,6 +131,7 @@
     "classnames": "^2.2.3",
     "lodash": "^4.3.0",
     "moment": "^2.11.1",
+    "react-disqus-thread": "^0.3.1",
     "react-ga": "^1.2.0",
     "reading-time": "^1.0.2",
     "smoothscroll": "^0.2.2",

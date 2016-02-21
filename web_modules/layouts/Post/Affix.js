@@ -82,8 +82,7 @@ export default class Affix extends Component {
               me.setState({
                 activeAnchor: this.element.getAttribute('href')
               })
-            }
-            else if (direction === 'up') {
+            } else if (direction === 'up') {
               me.setState({
                 activeAnchor: this.previous().element.getAttribute('href')
               })
