@@ -1,0 +1,81 @@
+@import "globals";
+@import "responsive";
+@import "vendors/bootstrap";
+
+.search {
+  @extend .container-fluid;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+	transition: all 0.5s ease-in-out;
+	transform: translate(0px, -100%) scale(0, 0);
+  opacity: 0;
+}
+
+.open {
+	transform: translate(0px, 0px) scale(1, 1);
+  opacity: 1;
+}
+
+.form {
+  @extend .col-xs-11;
+  @extend .col-sm-10;
+  @extend .col-md-9;
+
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.input {
+  color: #fff;
+  background: rgba(0, 0, 0, 0);
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  border: 0px;
+  outline: none;
+  width: 100%;
+  text-align: center;
+  width: 80%;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 3rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 4rem;
+  }
+}
+
+.btn {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0.3rem solid #fff;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: $font-weight-bold;
+  color: #fff;
+  width: 70%;
+  margin-top: 2rem;
+
+  &:hover, &:focus {
+    color: #000;
+    background: #fff;
+  }
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 3rem;
+
+  &:hover, &:focus {
+    color: #fff;
+  }
+}

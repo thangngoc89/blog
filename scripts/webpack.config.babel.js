@@ -66,6 +66,10 @@ export default {
         test: /\.(html|ico|jpe?g|png|gif|svg)$/,
         loader: 'file-loader?name=assets/images/[hash:base64]__[name].[ext]&context=' +
         path.join(config.cwd, config.destination)
+      },
+      {
+        test   : /\.(ttf|eot|svg|woff)(\?[a-z0-9]+)?$/,
+        loader : 'file-loader?name=font/[hash:base64].[ext]'
       }
     ]
   },
