@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Helmet from 'react-helmet'
 import cx from 'classnames'
+import Disqus from 'react-disqus-thread'
 
 import getScreenSize from '../../utils/get-screen-size'
 
@@ -99,6 +100,12 @@ export default class Post extends Component {
             <GitHubEditLink
               baseUrl={config['edit-on-github']}
               fileName={this.props.__filename}
+            />
+            <Disqus
+              shortname={pkg.config.disqus}
+              identifier={head.date}
+              title={head.title}
+              url={pkg.homepage + url}
             />
           </div>
           {
