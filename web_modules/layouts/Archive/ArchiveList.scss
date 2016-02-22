@@ -3,11 +3,12 @@
 }
 
 .draft {
-  &:before {
+  &::before {
     content: "[Draft] ";
     color: red;
   }
 }
+
 .month {
   font-size: 130%;
   text-transform: uppercase;

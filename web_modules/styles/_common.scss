@@ -1,7 +1,8 @@
 @import "globals";
 @import "responsive";
 
-html, body {
+html,
+body {
   font-family: $preferred-font;
   font-size: 18px !important;
   color: $color-text;
@@ -14,31 +15,39 @@ html, body {
 body::before {
   display: none;
   content: "small";
+
   @include media-breakpoint-up(md) {
     content: "large";
   }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: $font-weight-bolder;
 }
 
-h1, h2, h3, h5, h6 {
+h1,
+h2,
+h3,
+h5,
+h6 {
   position: relative;
 }
 
 a {
   color: $color-accent;
   text-decoration: none;
-}
 
-a:hover {
-  color: $color-accent;
-  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $color-accent;
+    text-decoration: none;
+  }
 }
 
 blockquote {
-  opacity: .6;
+  opacity: 0.6;
   margin: 2rem 0;
   padding-left: 1.5rem;
   border-left: 4px solid $color-primary;
