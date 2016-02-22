@@ -1,14 +1,19 @@
 @import "globals";
 
 $font-code: Menlo, Monaco, Consolas, monospace;
-// Reset word-wrap property
+
+/**
+ *  Reset word-wrap property
+ */
+
 pre {
   overflow-wrap: initial;
   word-wrap: initial;
   word-break: initial;
 }
 
-pre, pre code {
+pre,
+pre code {
   display: block;
   background: darken($color-background, 10%);
   border-radius: 5px;
@@ -23,7 +28,6 @@ code {
   font-family: $font-code;
 }
 
-// Get themes here: https://highlightjs.org/static/demo/
 /**
  * GitHub Gist Theme
  * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
@@ -33,7 +37,7 @@ code {
   display: block;
   background: white;
   padding: 0.5em;
-  color: #333333;
+  color: #333;
   overflow-x: auto;
 }
 
@@ -70,7 +74,7 @@ code {
 }
 
 .hljs-tag {
-  color: #333333;
+  color: #333;
 }
 
 .hljs-title,

@@ -17,7 +17,8 @@
   text-align: center;
 }
 
-.readTime, .date  {
+.readTime,
+.date {
   color: $color-text-secondary;
   font-style: italic;
   display: block;
@@ -31,8 +32,8 @@
   font-size: $font-size-small;
 }
 
+// https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
 .article {
-  // https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-all;

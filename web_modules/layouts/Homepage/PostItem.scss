@@ -8,7 +8,7 @@
 }
 
 .titleDraft {
-  &:before {
+  &::before {
     content: "[Draft] ";
     color: red;
   }
@@ -21,16 +21,15 @@
   font-size: $font-size-tiny;
 }
 
-
 .article {
   @extend .col-md-6;
   @extend .col-xs-12;
   padding: 1.5rem 1rem;
-  border-bottom: 2px solid darken($color-divider, .2);
+  border-bottom: 2px solid darken($color-divider, 0.2);
 }
 
 .draft {
-  background: rgba($color-accent, .2);
+  background: rgba($color-accent, 0.2);
   padding-bottom: 1.5rem;
 
   @include media-breakpoint-down(sm) {

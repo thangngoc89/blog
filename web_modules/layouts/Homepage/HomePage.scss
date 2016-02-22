@@ -20,13 +20,15 @@
   color: $color-accent;
   font-size: $font-size-normal;
   font-weight: $font-weight-bolder;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   border: 1px solid $color-accent;
 
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   transition-property: color;
 
-  &:hover, &:active, &:focus {
+  &:hover,
+  &:active,
+  &:focus {
     color: $color-accent-contrast;
     background: $color-accent;
     text-decoration: none;

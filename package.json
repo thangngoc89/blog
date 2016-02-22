@@ -5,7 +5,8 @@
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",
     "lint:md": "remark --quiet --frail content",
-    "lint": "npm run lint:js && npm run lint:md",
+    "lint:css": "stylelint web_modules/**/**/*.scss --syntax scss",
+    "lint": "npm run lint:js && npm run lint:md && npm run lint:css",
     "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
     "build": "npm run statinamic -- --static --production",
@@ -55,6 +56,12 @@
       "standard",
       "standard-react"
     ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "value-list-comma-newline-after": null
+    }
   },
   "remarkConfig": {
     "plugins": {
@@ -124,6 +131,8 @@
     "sass-loader": "^3.1.2",
     "statinamic": "^0.7.1",
     "style-loader": "^0.13.0",
+    "stylelint": "^4.4.0",
+    "stylelint-config-standard": "^3.0.0",
     "webpack": "^1.12.11",
     "whatwg-fetch": "^0.9.0"
   },
