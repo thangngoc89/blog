@@ -10,10 +10,10 @@ import cx from 'classnames'
 export default class Page extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
-    __filename: PropTypes.string.isRequired,
+    __filename: PropTypes.string/* .isRequired */,
     __url: PropTypes.string.isRequired,
     head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired,
+    body: PropTypes.string/* .isRequired */,
     className: PropTypes.string
   };
 
@@ -37,16 +37,14 @@ export default class Page extends Component {
       typeof head.title === 'string',
       `Your page '${__filename}' needs a title`
     )
-
-    const url = (__url === '//') ? '' : __url.slice(1)
-
+    const title = head.title + ' - ' + pkg.config.siteName
     const meta = [
-      {property: 'og:title', content: head.title},
+      {property: 'og:title', content: title},
       {property: 'og:type', content: 'article'},
-      {property: 'og:url', content: pkg.homepage + url},
+      {property: 'og:url', content: pkg.homepage + __url},
       // { property: "og:description", content: pageDescription(body) },
       {name: 'twitter:card', content: 'summary'},
-      {name: 'twitter:title', content: head.title},
+      {name: 'twitter:title', content: title},
       {name: 'twitter:creator', content: `@${pkg.config.twitter}`}
       // { name: "twitter:description", content: pageDescription(body) },
     ]
@@ -58,7 +56,7 @@ export default class Page extends Component {
     return (
       <div className='container-fluid'>
         <Helmet
-          title={head.title}
+          title={title}
           meta={meta}
         />
         <div className='row'>

@@ -1,24 +1,18 @@
 import React from 'react'
-import { Route, browserHistory } from 'react-router'
+import { Route } from 'react-router'
 import PageContainer from 'statinamic/lib/PageContainer'
-import catchLinks from './catchLinks'
-
+import Homepage from '../routes/Homepage'
+import Archive from '../routes/Archive'
 import '../styles/global.styles'
+
 // components
 import LayoutContainer from '../LayoutContainer'
 
-if (typeof window !== 'undefined') {
-  const article = document.getElementsByTagName('article')
-
-  if (article) {
-    catchLinks(article[0], (href) => {
-      browserHistory.push(href)
-    })
-  }
-}
 // routes
 export default (
   <Route component={LayoutContainer}>
+    <Route path='/' component={Homepage} />
+    <Route path='/archive' component={Archive} />
     <Route path='*' component={PageContainer} />
   </Route>
 )
