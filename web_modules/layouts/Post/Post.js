@@ -2,12 +2,14 @@ import React, { Component, PropTypes } from 'react'
 import cx from 'classnames'
 import Helmet from 'react-helmet'
 import { WindowResizeListener } from 'react-window-resize-listener'
+import { Link } from 'react-router'
 
 import Date from '../../components/Date'
 import ReadTime from '../../components/ReadTime'
 import GitHubEditLink from '../../components/GitHubEditLink'
 import Affix from './Affix'
 import Disqus from '../../components/Comment'
+import Icon from '../../components/Icon'
 import styles from './Post.scss'
 
 /**
@@ -19,7 +21,8 @@ export default class Post extends Component {
     __url: PropTypes.string.isRequired,
     head: PropTypes.object.isRequired,
     body: PropTypes.string.isRequired,
-    rawBody: PropTypes.string.isRequired
+    rawBody: PropTypes.string.isRequired,
+    sibling: PropTypes.object.isRequired
   };
 
   static contextTypes = {
@@ -80,7 +83,8 @@ export default class Post extends Component {
       head,
       body,
       rawBody,
-      __url
+      __url,
+      sibling
     } = this.props
 
     const {pkg: { config }} = this.context.metadata
@@ -137,9 +141,35 @@ export default class Post extends Component {
 
             {
               head.translate &&
-                <a href={head.translate.url}>
+                <a
+                  href={head.translate.url}
+                  target='_blank'
+                  className={styles.translate}
+                >
                   Translated from original post by {head.translate.author}
                 </a>
+            }
+            {
+              sibling.previous &&
+                <div
+                  className={styles.siblingLeft}
+                >
+                  <Link to={sibling.previous.__url}>
+                    <Icon icon='left-open-big' />
+                    {sibling.previous.title}
+                  </Link>
+                </div>
+            }
+            {
+              sibling.next &&
+                <div
+                  className={styles.siblingRight}
+                >
+                  <Link to={sibling.next.__url}>
+                    {sibling.next.title}
+                    <Icon icon='right-open-big' />
+                  </Link>
+                </div>
             }
             <GitHubEditLink
               baseUrl={config['edit-on-github']}
