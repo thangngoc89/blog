@@ -45,7 +45,7 @@ export default class Header extends Component {
           <Link
             className={styles.navLink}
             activeClassName={styles.navLinkActive}
-            to='/about'
+            to='/about/'
           >
             <Icon icon='user' />
             <span>Giới thiệu</span>
@@ -53,7 +53,7 @@ export default class Header extends Component {
           <Link
             className={styles.navLink}
             activeClassName={styles.navLinkActive}
-            to='/archive'
+            to='/archive/'
           >
             <Icon icon='bookmark' />
             <span>Bài viết</span>

@@ -1,15 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import Page from '../Page'
+import Page from '../../layouts/Page'
 import moment from 'moment'
 import _ from 'lodash'
 import ArchiveList from './ArchiveList'
 
 export default class Archive extends Component {
-  static propTypes = {
-    head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired
-  };
-
   static contextTypes = {
     collection: PropTypes.array.isRequired
   };
@@ -39,7 +34,12 @@ export default class Archive extends Component {
     } = this.context
 
     return (
-      <Page {...this.props}>
+      <Page
+        head={{
+          title: 'Bài viết'
+        }}
+        __url='/article'
+      >
       {
         Boolean(!collection || !collection.length) &&
           <p>No entry</p>

@@ -1,16 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import Page from '../Page'
+import Page from '../../layouts/Page'
 import _ from 'lodash'
 import PostItem from './PostItem'
 import { Link } from 'react-router'
 import styles from './HomePage.scss'
 
 export default class Homepage extends Component {
-  static propTypes = {
-    head: PropTypes.object.isRequired,
-    body: PropTypes.string.isRequired
-  };
-
   static contextTypes = {
     collection: PropTypes.array.isRequired
   };
@@ -37,7 +32,10 @@ export default class Homepage extends Component {
 
     return (
       <Page
-        {...this.props}
+        head={{
+          title: 'Trang chủ'
+        }}
+        __url='/'
         className='col-sm-12 col-md-10'
       >
         <p className={styles.latestPosts}>Bài viết mới nhất</p>
