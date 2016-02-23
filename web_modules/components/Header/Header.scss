@@ -4,58 +4,49 @@
 
 .nav {
   @extend .navbar;
+  @extend .navbar-full;
   box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
-  z-index: $z-index-highest;
   background: $color-background;
-  padding: 0.2rem 0;
-  opacity: 0.9;
   border-top: 3px solid $color-accent;
   margin-bottom: 2rem;
 }
 
 .brand {
-  @extend .col-md-6;
-  @extend .col-xs-12;
-
-  @include media-breakpoint-up(xs) {
-    text-align: center;
-  }
-
-  @include media-breakpoint-up(md) {
-    text-align: left;
-  }
-
-  > a {
-    text-decoration: none;
-    font-size: $font-size-big;
-    color: $color-text;
-
-    &:visited,
-    &:focus,
-    &:hover,
-    &:active {
-      color: $color-text;
-      text-decoration: none;
-    }
-  }
+  @extend .navbar-brand;
+  font-size: $font-size-big;
+  text-decoration: none;
 }
 
 .navLink {
-  @extend .col-md-6;
-  @extend .col-xs-12;
+  @extend .pull-xs-right;
+  @extend .nav-item;
+  padding: 0.6rem 1rem;
+  font-size: $font-size-small;
+  background: $color-background;
+  border: 0;
+  color: $color-accent;
+  border-right: 1px solid $color-divider;
+  text-decoration: none;
 
-  @include media-breakpoint-up(xs) {
-    text-align: center;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background: rgba($color-accent, 0.2);
   }
 
-  @include media-breakpoint-up(md) {
-    text-align: right;
+  @include media-breakpoint-down(sm) {
+    padding: 0.6rem 0.7rem;
+    & > span {
+      display: none;
+    }
   }
 
-  > a {
-    font-size: $font-size-small;
-    vertical-align: middle;
-    vertical-align: -webkit-baseline-middle;
-    padding: 0.5rem 1rem;
+  @include media-breakpoint-down(xs) {
+    padding: 0.6rem 0.5rem;
   }
+}
+
+.navLinkActive {
+  text-decoration: none;
+  background: rgba($color-accent, 0.2);
 }

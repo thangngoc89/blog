@@ -3,6 +3,8 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
 import markdownItVideo from 'markdown-it-video'
+import StatinamicAgoliaPlugin from '../web_modules/utils/statinamic-agolia-plugin'
+import pkg from '../package.json'
 
 import config from './config.js'
 
@@ -14,25 +16,25 @@ export default {
     loaders: [
       { // statinamic requirement
         test: /\.md$/,
-        loader: 'statinamic/lib/md-collection-loader' +
-          `?${JSON.stringify({
+        loader: 'statinamic/lib/md-collection-loader?' +
+          JSON.stringify({
             context: path.join(config.cwd, config.source),
-            basepath: config.baseUrl.path
-            // feedsOptions: {
-            //   title: pkg.config.sitename,
-            //   site_url: pkg.homepage
-            // },
-            // feeds: {
-            //   'feed.xml': {
-            //     collectionOptions: {
-            //       filter: { layout: 'Post' },
-            //       sort: 'date',
-            //       reverse: true,
-            //       limit: 20
-            //     }
-            //   }
-            // }
-          })}`
+            basepath: config.baseUrl.path,
+            feedsOptions: {
+              title: pkg.config.sitename,
+              site_url: pkg.homepage
+            },
+            feeds: {
+              'feed.xml': {
+                collectionOptions: {
+                  filter: (item) => (item.layout === 'Post' && !item.draft),
+                  sort: 'date',
+                  reverse: true,
+                  limit: 20
+                }
+              }
+            }
+          })
       },
       {
         test: /\global.styles$/,
@@ -66,6 +68,10 @@ export default {
         test: /\.(html|ico|jpe?g|png|gif|svg)$/,
         loader: 'file-loader?name=assets/images/[hash:base64]__[name].[ext]&context=' +
         path.join(config.cwd, config.destination)
+      },
+      {
+        test: /\.(ttf|eot|svg|woff)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=font/[hash:base64].[ext]'
       }
     ]
   },
@@ -131,7 +137,27 @@ export default {
       }),
       // http://stackoverflow.com/a/25426019
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /vi/)
-    ]
+    ],
+    // Only export new search data on Travis
+    new StatinamicAgoliaPlugin({
+      when: () => {
+        // const env = process.env
+        // return (
+        //   env.production &&
+        //   env.TRAVIS &&
+        //   env.TRAVIS_NODE_VERSION.startsWith('5') &&
+        //   env.TRAVIS_BRANCH === 'master' &&
+        //   env.PACKAGE_MANAGER === 'npm'
+        // )
+        return false
+      },
+      appId: '24C9AMVZXS',
+      adminKey: process.env.AGOLIA_ADMIN_KEY,
+      indexName: 'khoanguyenblog',
+      collectionOptions: {
+        filter: (item) => (item.layout === 'Post' && !item.draft)
+      }
+    })
   ],
 
   // ↓ HANDLE WITH CARE ↓ \\
