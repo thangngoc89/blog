@@ -52,3 +52,24 @@
     display: block;
   }
 }
+
+.translate {
+  display: block;
+  text-align: right;
+  color: $color-primary;
+  font-size: $font-size-tiny;
+}
+
+.sibling {
+  padding: 2rem 0 0 0;
+}
+
+.siblingRight {
+  @extend .sibling;
+
+  text-align: right;
+}
+
+.siblingLeft {
+  @extend .sibling;
+}

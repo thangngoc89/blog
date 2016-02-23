@@ -55,6 +55,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "884cfc3e6e2d456dd2a2ca0dbb9e6337",
+      "css": "left-open-big",
+      "code": 59394,
+      "src": "entypo"
+    },
+    {
+      "uid": "004882ab2d5c418c5b2060e80596279b",
+      "css": "right-open-big",
+      "code": 59402,
+      "src": "entypo"
+    },
+    {
       "uid": "517522647a556192fbc78aa391b7b0c2",
       "css": "cancel-circled",
       "code": 59401,
