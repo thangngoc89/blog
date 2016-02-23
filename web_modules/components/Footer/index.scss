@@ -1,8 +1,32 @@
 @import "globals";
+@import "vendors/bootstrap";
 
 .footer {
-  text-align: center;
+  @extend .container-fluid;
+  margin-top: 2rem;
+  border-top: 1px solid $color-divider;
+  padding: 2rem 3rem 1rem 3rem;
+  color: $color-primary;
   font-size: $font-size-tiny;
+  line-height: $font-size-tiny;
   font-weight: $font-weight-thin;
-  padding: 1rem;
+
+  > p {
+    margin-bottom: 0.2rem;
+  }
+
+  .heart {
+    color: red;
+    font-size: $font-size-small;
+  }
+}
+
+.copyright,
+.info {
+  @extend .col-xs-12;
+  @extend .col-md-6;
+}
+
+.copyright {
+  text-align: right;
 }
