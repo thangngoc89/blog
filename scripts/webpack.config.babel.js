@@ -141,15 +141,15 @@ export default {
     // Only export new search data on Travis
     new StatinamicAgoliaPlugin({
       when: () => {
-        const env = process.env
-
-        return (
-          env.production &&
-          env.TRAVIS &&
-          env.TRAVIS_NODE_VERSION.startsWith('5') &&
-          env.TRAVIS_BRANCH === 'master' &&
-          env.PACKAGE_MANAGER === 'npm'
-        )
+        // const env = process.env
+        // return (
+        //   env.production &&
+        //   env.TRAVIS &&
+        //   env.TRAVIS_NODE_VERSION.startsWith('5') &&
+        //   env.TRAVIS_BRANCH === 'master' &&
+        //   env.PACKAGE_MANAGER === 'npm'
+        // )
+        return false
       },
       appId: '24C9AMVZXS',
       adminKey: process.env.AGOLIA_ADMIN_KEY,

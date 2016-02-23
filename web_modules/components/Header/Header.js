@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 import styles from './Header.scss'
 import Icon from '../Icon'
-import SearchForm from '../SearchForm'
+// import SearchForm from '../SearchForm'
 
 export default class Header extends Component {
   constructor () {
@@ -22,10 +22,12 @@ export default class Header extends Component {
   render () {
     return (
       <nav className={styles.nav}>
-        <SearchForm
-          open={this.state.open}
-          handleToggleSearch={this.handleToggleSearch}
-        />
+        {/*
+          <SearchForm
+            open={this.state.open}
+            handleToggleSearch={this.handleToggleSearch}
+          />
+        */}
         <div className='container'>
           <Link
             className={styles.brand}
@@ -56,13 +58,15 @@ export default class Header extends Component {
             <Icon icon='bookmark' />
             <span>Bài viết</span>
           </Link>
-          <button
-            className={styles.navLink}
-            onClick={() => this.handleToggleSearch(true)}
-          >
-            <Icon icon='search' />
-            <span>Tìm kiếm</span>
-          </button>
+          {/*
+            <button
+              className={styles.navLink}
+              onClick={() => this.handleToggleSearch(true)}
+            >
+              <Icon icon='search' />
+              <span>Tìm kiếm</span>
+            </button>
+          */}
         </div>
       </nav>
     )
