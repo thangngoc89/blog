@@ -3,11 +3,22 @@ import AutoAffix from 'react-overlays/lib/AutoAffix'
 import styles from './Affix.scss'
 import cx from 'classnames'
 import smoothScroll from 'smoothscroll' // Auto bound to global click event
+import _ from 'lodash'
 
 if (typeof window !== 'undefined') {
   // DANGER >_< Global variable
   require('waypoints/lib/noframework.waypoints.js')
 }
+
+/**
+ * Debounce change location.hash with out scrolling or changing history
+ * @return {void}
+ */
+const replaceHash = _.debounce((href) => {
+  if (window.history.replaceState) {
+    window.history.replaceState(null, null, href)
+  }
+}, 100)
 
 /**
  * Get list of markdownIt-Anchor node
@@ -47,6 +58,7 @@ export default class PostAffixWrapper extends Component {
       activeAnchor: ''
     }
     this.handleAnchorClick = this.handleAnchorClick.bind(this)
+    this.updateHrefChange = this.updateHrefChange.bind(this)
   }
 
   componentDidMount () {
@@ -71,19 +83,21 @@ export default class PostAffixWrapper extends Component {
           offset: '20%',
           handler: function (direction) {
             if (direction === 'down' || !this.previous()) {
-              me.setState({
-                activeAnchor: this.element.getAttribute('href')
-              })
+              me.updateHrefChange(this.element.getAttribute('href'))
             } else if (direction === 'up') {
-              me.setState({
-                activeAnchor: this.previous().element.getAttribute('href')
-              })
+              me.updateHrefChange(this.previous().element.getAttribute('href'))
             }
           }
         })
       )
   }
 
+  updateHrefChange (href) {
+    replaceHash(href)
+    this.setState({
+      activeAnchor: href
+    })
+  }
   /**
    * Set anchor active state when click on anchor link
    * @param  {string} href
