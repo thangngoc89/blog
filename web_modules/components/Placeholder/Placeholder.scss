@@ -1,0 +1,21 @@
+@import "globals";
+
+.block {
+  background-color: $color-divider;
+  margin: 1rem 0 0 0;
+  text-align: center;
+  white-space: nowrap;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25rem;
+  }
+}
+
+.placeholder {
+  display: inline-block;
+  vertical-align: middle;
+}

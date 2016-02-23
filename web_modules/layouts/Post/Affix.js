@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import AutoAffix from 'react-overlays/lib/AutoAffix'
-import styles from './Affix.scss'
 import cx from 'classnames'
 import smoothScroll from 'smoothscroll' // Auto bound to global click event
 import _ from 'lodash'
 
-if (typeof window !== 'undefined') {
-  // DANGER >_< Global variable
-  require('waypoints/lib/noframework.waypoints.js')
-}
+import '../../utils/load-waypoints'
+import styles from './Affix.scss'
 
 /**
  * Debounce change location.hash with out scrolling or changing history
