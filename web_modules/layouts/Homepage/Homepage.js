@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import Page from '../Page'
-import { connect } from 'react-redux'
 import _ from 'lodash'
 import PostItem from './PostItem'
 import { Link } from 'react-router'
 import styles from './HomePage.scss'
 
-export class Homepage extends Component {
+export default class Homepage extends Component {
   static propTypes = {
     head: PropTypes.object.isRequired,
     body: PropTypes.string.isRequired
@@ -64,7 +63,3 @@ export class Homepage extends Component {
     )
   }
 }
-
-export default connect(
-  ({ collection }) => ({ collection })
-)(Homepage)

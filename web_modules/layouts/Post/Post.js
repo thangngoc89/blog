@@ -1,14 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import cx from 'classnames'
 import Helmet from 'react-helmet'
-import Disqus from 'react-disqus-thread'
 import { WindowResizeListener } from 'react-window-resize-listener'
 
 import Date from '../../components/Date'
 import ReadTime from '../../components/ReadTime'
 import GitHubEditLink from '../../components/GitHubEditLink'
 import Affix from './Affix'
-
+import Disqus from '../../components/Comment'
 import styles from './Post.scss'
 
 /**
@@ -146,15 +145,12 @@ export default class Post extends Component {
               baseUrl={config['edit-on-github']}
               fileName={this.props.__filename}
             />
-            {
-              process.env.NODE_ENV === 'production' &&
-                <Disqus
-                  shortname={pkg.config.disqus}
-                  identifier={head.date}
-                  title={head.title}
-                  url={pkg.homepage + url}
-                />
-            }
+            <Disqus
+              shortname={pkg.config.disqus}
+              identifier={head.date}
+              title={head.title}
+              url={pkg.homepage + url}
+            />
           </div>
           {
             this.isTocVisible &&

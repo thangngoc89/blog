@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import Page from '../Page'
 import moment from 'moment'
-import { connect } from 'react-redux'
 import _ from 'lodash'
 import ArchiveList from './ArchiveList'
 
-export class Archive extends Component {
+export default class Archive extends Component {
   static propTypes = {
     head: PropTypes.object.isRequired,
     body: PropTypes.string.isRequired
@@ -53,7 +52,3 @@ export class Archive extends Component {
     )
   }
 }
-
-export default connect(
-  ({ collection }) => ({ collection })
-)(Archive)
