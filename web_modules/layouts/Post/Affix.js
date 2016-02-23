@@ -14,41 +14,35 @@ if (typeof window !== 'undefined') {
  * @return {array}
  */
 const getAnchors = () => {
-  if (typeof window !== 'undefined') {
-    const anchors = document.getElementsByClassName('markdownIt-Anchor')
-    return Object.keys(anchors)
-      .map((key) => anchors[key])
-  }
+  const anchors = document.getElementsByClassName('markdownIt-Anchor')
+  return Object.keys(anchors)
+    .map((key) => anchors[key])
 }
 
 /**
  * Get processed list of anchor nodes
  * @return {array}
  */
-const listAnchors = () => {
-  if (typeof window !== 'undefined') {
-    return getAnchors()
-      .map((node) => ({
-        level: node.parentNode.nodeName.toLowerCase(), // H1 -> h1
-        href: node.getAttribute('href'),
-        text: node.parentNode.innerHTML
-          .replace(/(<([^>]+)>)/ig, '')
-          .replace('#', '')
-          .trim()
-      }))
-  }
+const listAnchors = () => (
+  getAnchors()
+    .map((node) => ({
+      level: node.parentNode.nodeName.toLowerCase(), // H1 -> h1
+      href: node.getAttribute('href'),
+      text: node.parentNode.innerHTML
+        .replace(/(<([^>]+)>)/ig, '')
+        .replace('#', '')
+        .trim()
+    }))
+)
 
-  return []
-}
-
-export default class Affix extends Component {
+export default class PostAffixWrapper extends Component {
   static propTypes = {
-    container: PropTypes.any
+    container: PropTypes.any,
+    width: PropTypes.number.isRequired
   };
 
   constructor (props) {
     super(props)
-    this.doIHaveDOMYet = false // isomorphic trick
     this.state = {
       activeAnchor: ''
     }
@@ -57,8 +51,6 @@ export default class Affix extends Component {
 
   componentDidMount () {
     this.attachWayPoints()
-    this.doIHaveDOMYet = true
-    this.forceUpdate()
   }
 
   componentWillReceiveProps () {
@@ -106,13 +98,6 @@ export default class Affix extends Component {
   }
 
   getList () {
-    if (
-      typeof window === 'undefined' ||
-      !this.doIHaveDOMYet
-    ) {
-      return null
-    }
-
     return listAnchors().map((anchor) => {
       const className = cx(styles[`toc-${anchor.level}`], {
         [styles.active]: this.state.activeAnchor === anchor.href
@@ -143,7 +128,7 @@ export default class Affix extends Component {
       >
         <ul
           className={styles.ul}
-          style={{maxWidth: '300px'}}
+          style={{width: this.props.width}}
         >
           {this.getList()}
         </ul>

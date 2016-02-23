@@ -14,7 +14,7 @@ const Footer = () => {
           <p>
             <a
               target='_blank'
-              href="https://github.com/thangngoc89/blog"
+              href='https://github.com/thangngoc89/blog'
             >
               Source code available under MIT License
             </a>

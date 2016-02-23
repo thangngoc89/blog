@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import Helmet from 'react-helmet'
 import cx from 'classnames'
+import Helmet from 'react-helmet'
 import Disqus from 'react-disqus-thread'
-
-import getScreenSize from '../../utils/get-screen-size'
+import { WindowResizeListener } from 'react-window-resize-listener'
 
 import Date from '../../components/Date'
 import ReadTime from '../../components/ReadTime'
@@ -27,6 +26,51 @@ export default class Post extends Component {
   static contextTypes = {
     metadata: PropTypes.object.isRequired
   };
+
+  constructor (props) {
+    super(props)
+    const { toc = true } = props.head
+
+    this.state = {
+      isMounted: false,
+      affixWidth: 0,
+      toc
+    }
+    this.calculateAffixWidth = this.calculateAffixWidth.bind(this)
+  }
+
+  componentDidMount () {
+    this.mounted()
+    this.calculateAffixWidth()
+  }
+
+  componentDidUpdate () {
+    this.calculateAffixWidth()
+  }
+
+  calculateAffixWidth () {
+    const containerWidth = this._container.getBoundingClientRect().width
+    const contentWidth = this._content.getBoundingClientRect().width
+    const affixWidth = containerWidth - contentWidth - 50
+
+    if (affixWidth !== this.state.affixWidth) {
+      this.setState({
+        affixWidth
+      })
+    }
+  }
+
+  mounted () {
+    this.setState({
+      isMounted: true
+    })
+  }
+
+  get isTocVisible () {
+    return this.state.toc &&
+      this.state.isMounted &&
+      this.state.affixWidth > 200
+  }
 
   render () {
     const {
@@ -55,27 +99,28 @@ export default class Post extends Component {
       // { name: "twitter:description", content: pageDescription(body) },
     ]
 
-    let { toc = true } = head
-
-    // Disable toc on sm and xs screen
-    let screenSize = getScreenSize()
-
-    if (screenSize === 'small') {
-      toc = false
-    }
     const divClass = cx(styles.contentColumn, {
-      [styles.withBorder]: toc,
-      'center-block': !toc
+      [styles.withBorder]: this.isTocVisible,
+      'center-block': !this.isTocVisible
     })
 
     return (
-      <div className='container'>
+      <div
+        className='container'
+        ref={(ref) => { this._container = ref }}
+      >
+        <WindowResizeListener
+          onResize={() => { this.calculateAffixWidth() }}
+        />
         <Helmet
           title={head.title}
           meta={meta}
         />
         <div className='row'>
-          <div className={divClass}>
+          <div
+            className={divClass}
+            ref={(ref) => { this._content = ref }}
+          >
             <h1 className={styles.title}>{head.title}</h1>
             <Date
               date={head.date}
@@ -101,16 +146,22 @@ export default class Post extends Component {
               baseUrl={config['edit-on-github']}
               fileName={this.props.__filename}
             />
-            <Disqus
-              shortname={pkg.config.disqus}
-              identifier={head.date}
-              title={head.title}
-              url={pkg.homepage + url}
-            />
+            {
+              process.env.NODE_ENV === 'production' &&
+                <Disqus
+                  shortname={pkg.config.disqus}
+                  identifier={head.date}
+                  title={head.title}
+                  url={pkg.homepage + url}
+                />
+            }
           </div>
           {
-            toc &&
-              <Affix container={this} />
+            this.isTocVisible &&
+              <Affix
+                width={this.state.affixWidth}
+                container={this._container}
+              />
           }
         </div>
       </div>
