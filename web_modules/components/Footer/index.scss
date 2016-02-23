@@ -1,5 +1,6 @@
 @import "globals";
 @import "vendors/bootstrap";
+@import "responsive";
 
 .footer {
   @extend .container-fluid;
@@ -29,4 +30,8 @@
 
 .copyright {
   text-align: right;
+
+  @include media-breakpoint-down(sm) {
+    text-align: left;
+  }
 }
