@@ -25,6 +25,10 @@ export default class Comment extends Component {
     this.attachWaypoint()
   }
 
+  componentWillUnmount () {
+    this.destroyWaypoint()
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     if (
       this.props.identifier === nextProps.identifier &&
@@ -35,8 +39,12 @@ export default class Comment extends Component {
     return true
   }
 
+  /**
+   * Attach Waypoint to comment div
+   * @return {Void}
+   */
   attachWaypoint () {
-    new window.Waypoint({
+    this._waypoint = new window.Waypoint({
       element: this._div,
       offset: 'bottom-in-view',
       handler: () => {
@@ -45,6 +53,16 @@ export default class Comment extends Component {
         }
       }
     })
+  }
+
+  /**
+   * Destroy attached waypoint
+   * @return {void}
+   */
+  destroyWaypoint () {
+    if (this._waypoint) {
+      this._waypoint.destroy()
+    }
   }
 
   render () {
