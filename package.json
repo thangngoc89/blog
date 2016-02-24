@@ -33,6 +33,9 @@
       "babel-preset-es2015",
       "babel-preset-stage-1"
     ],
+    "plugins": [
+      "babel-plugin-transform-runtime"
+    ],
     "env": {
       "statinamic": {
         "plugins": [
@@ -86,11 +89,13 @@
     "babel-loader": "^6.2.1",
     "babel-plugin-lodash": "^2.0.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.2.2",
+    "babel-plugin-transform-runtime": "^6.5.2",
     "babel-plugin-webpack-loaders": "^0.3.2",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
+    "babel-runtime": "^6.5.0",
     "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
     "chalk": "^1.1.1",
     "cross-env": "^1.0.7",
@@ -147,8 +152,10 @@
     "moment": "^2.11.1",
     "react-disqus-thread": "^0.3.1",
     "react-ga": "^1.2.0",
+    "react-progress-bar-plus": "^0.2.3",
     "react-window-resize-listener": "^1.0.0",
     "reading-time": "^1.0.2",
+    "recompose": "^0.15.0",
     "smoothscroll": "^0.2.2",
     "waypoints": "^4.0.0"
   }
