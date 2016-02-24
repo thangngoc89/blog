@@ -24,6 +24,7 @@ export default {
           JSON.stringify({
             ...pkg.babel,
             plugins: [
+              ...pkg.babel.plugins && pkg.babel.plugins,
               ...config.production && [
                 'transform-react-remove-prop-types',
                 'babel-plugin-lodash'
