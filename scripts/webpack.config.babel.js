@@ -126,7 +126,8 @@ export default {
         config.production ? 'production' : process.env.NODE_ENV
       ),
       CLIENT: true,
-      REDUX_DEVTOOLS: Boolean(process.env.REDUX_DEVTOOLS)
+      REDUX_DEVTOOLS: Boolean(process.env.REDUX_DEVTOOLS),
+      STATINAMIC_PATHNAME: JSON.stringify(process.env.STATINAMIC_PATHNAME)
     } }),
     ...config.production && [
       new webpack.optimize.DedupePlugin(),

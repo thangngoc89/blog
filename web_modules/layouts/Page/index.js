@@ -42,11 +42,12 @@ export default class Page extends Component {
       {property: 'og:title', content: title},
       {property: 'og:type', content: 'article'},
       {property: 'og:url', content: pkg.homepage + __url},
-      // { property: "og:description", content: pageDescription(body) },
+      {property: 'og:description', content: head.description},
       {name: 'twitter:card', content: 'summary'},
       {name: 'twitter:title', content: title},
-      {name: 'twitter:creator', content: `@${pkg.config.twitter}`}
-      // { name: "twitter:description", content: pageDescription(body) },
+      {name: 'twitter:creator', content: `@${pkg.config.twitter}`},
+      {name: 'twitter:description', content: head.description},
+      {name: 'description', content: head.description}
     ]
     const divClass = cx({
       'center-block': true,

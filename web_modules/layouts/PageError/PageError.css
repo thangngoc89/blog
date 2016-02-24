@@ -1,0 +1,15 @@
+.container {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.oops {
+  margin-bottom: 4rem;
+  font-size: 4rem;
+  color: #ddd;
+}
+
+.title {
+  margin: 3rem 0;
+  font-size: 2rem;
+}
