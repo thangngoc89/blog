@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
 import markdownItVideo from 'markdown-it-video'
 import StatinamicAgoliaPlugin from '../web_modules/utils/statinamic-agolia-plugin'
-import pkg from '../package.json'
+// import pkg from '../package.json'
 
 import config from './config.js'
 
@@ -19,21 +19,21 @@ export default {
         loader: 'statinamic/lib/md-collection-loader?' +
           JSON.stringify({
             context: path.join(config.cwd, config.source),
-            basepath: config.baseUrl.path,
-            feedsOptions: {
-              title: pkg.config.sitename,
-              site_url: pkg.homepage
-            },
-            feeds: {
-              'feed.xml': {
-                collectionOptions: {
-                  filter: (item) => (item.layout === 'Post' && !item.draft),
-                  sort: 'date',
-                  reverse: true,
-                  limit: 20
-                }
-              }
-            }
+            basepath: config.baseUrl.path
+          //   feedsOptions: {
+          //     title: pkg.config.sitename,
+          //     site_url: pkg.homepage
+          //   },
+          //   feeds: {
+          //     'feed.xml': {
+          //       collectionOptions: {
+          //         filter: (item) => (item.layout === 'Post' && !item.draft),
+          //         sort: 'date',
+          //         reverse: true,
+          //         limit: 20
+          //       }
+          //     }
+          //   }
           })
       },
       {
@@ -130,7 +130,7 @@ export default {
       STATINAMIC_PATHNAME: JSON.stringify(process.env.STATINAMIC_PATHNAME)
     } }),
     ...config.production && [
-      new webpack.optimize.DedupePlugin(),
+      // new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false

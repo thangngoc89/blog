@@ -49,7 +49,7 @@ export default {
   plugins: [
     ...webpackConfig.plugins,
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['app-1-vendor']
+      names: ['w-1-vendor', 'manifest']
     })
   ],
   // ↓ HANDLE WITH CARE ↓ \\
@@ -63,7 +63,7 @@ export default {
     }
   },
   entry: {
-    'app-1-vendor': [
+    'w-1-vendor': [
       'react',
       'react-redux',
       'react-helmet',
@@ -73,6 +73,6 @@ export default {
       'moment',
       'classnames'
     ],
-    'app-2-client': path.join(__dirname, 'index-client')
+    'w-2-client': path.join(__dirname, 'index-client')
   }
 }
