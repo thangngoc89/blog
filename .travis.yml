@@ -33,3 +33,4 @@ deploy:
   'on':
     branch: master
     node: '5'
+    condition: PACKAGE_MANAGER=npm
