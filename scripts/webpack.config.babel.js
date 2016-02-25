@@ -130,7 +130,7 @@ export default {
       STATINAMIC_PATHNAME: JSON.stringify(process.env.STATINAMIC_PATHNAME)
     } }),
     ...config.production && [
-      // new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
