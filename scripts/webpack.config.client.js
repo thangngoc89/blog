@@ -1,5 +1,4 @@
 import path from 'path'
-import webpack from 'webpack'
 
 import config from './config.js'
 import webpackConfig from './webpack.config.babel.js'
@@ -46,12 +45,6 @@ export default {
       }
     ]
   },
-  plugins: [
-    ...webpackConfig.plugins,
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['w-1-vendor', 'manifest']
-    })
-  ],
   // ↓ HANDLE WITH CARE ↓ \\
 
   output: {
@@ -63,16 +56,16 @@ export default {
     }
   },
   entry: {
-    'w-1-vendor': [
-      'react',
-      'react-redux',
-      'react-helmet',
-      'react-router',
-      'redux',
-      'whatwg-fetch',
-      'moment',
-      'classnames'
-    ],
+    // 'w-1-vendor': [
+    //   'react',
+    //   'react-redux',
+    //   'react-helmet',
+    //   'react-router',
+    //   'redux',
+    //   'whatwg-fetch',
+    //   'moment',
+    //   'classnames'
+    // ],
     'w-2-client': path.join(__dirname, 'index-client')
   }
 }
