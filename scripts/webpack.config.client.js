@@ -48,9 +48,9 @@ export default {
   },
   plugins: [
     ...webpackConfig.plugins,
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['w-1-vendor', 'manifest']
-    })
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   names: ['w-1-vendor', 'manifest']
+    // })
   ],
   // ↓ HANDLE WITH CARE ↓ \\
 
@@ -63,16 +63,16 @@ export default {
     }
   },
   entry: {
-    'w-1-vendor': [
-      'react',
-      'react-redux',
-      'react-helmet',
-      'react-router',
-      'redux',
-      'whatwg-fetch',
-      'moment',
-      'classnames'
-    ],
+    // 'w-1-vendor': [
+    //   'react',
+    //   'react-redux',
+    //   'react-helmet',
+    //   'react-router',
+    //   'redux',
+    //   'whatwg-fetch',
+    //   'moment',
+    //   'classnames'
+    // ],
     'w-2-client': path.join(__dirname, 'index-client')
   }
 }
