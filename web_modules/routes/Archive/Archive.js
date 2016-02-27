@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import Page from '../../layouts/Page'
 import moment from 'moment'
-import _ from 'lodash'
+import groupBy from 'lodash/groupBy'
+import map from 'lodash/map'
+import enhanceCollection from 'statinamic/lib/enhance-collection'
+
 import ArchiveList from './ArchiveList'
+import Page from '../../layouts/Page'
 
 export default class Archive extends Component {
   static contextTypes = {
@@ -10,22 +13,26 @@ export default class Archive extends Component {
   };
 
   get collection () {
-    let value = this.context.collection
-    value = value.filter((t) => t.layout === 'Post')
-    value = _.orderBy(value, ['date'], ['desc'])
-    value = _.uniqBy(value, '__url')
-    // Exclude draft in production build
-    if (process.env.NODE_ENV === 'production') {
-      value = value.filter((t) => t.draft === undefined)
-    }
-    value = _.groupBy(value, (t) =>
+    let collection = enhanceCollection(this.context.collection, {
+      filter: (t) => {
+        const isPost = t.layout === 'Post'
+        if (process.env.NODE_ENV === 'production') {
+          return (t.draft === undefined && isPost)
+        }
+        return isPost
+      },
+      sort: 'date',
+      reverse: true
+    })
+
+    collection = groupBy(collection, (t) =>
       moment(t.date)
         .utc()
         .startOf('month')
         .format()
     )
-    value = _.map(value, ArchiveList)
-    return value
+    collection = map(collection, ArchiveList)
+    return collection
   }
 
   render () {

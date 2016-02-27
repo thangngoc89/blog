@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import Page from '../../layouts/Page'
-import _ from 'lodash'
 import PostItem from './PostItem'
 import { Link } from 'react-router'
 import styles from './HomePage.scss'
+import enhanceCollection from 'statinamic/lib/enhance-collection'
 
 export default class Homepage extends Component {
   static contextTypes = {
@@ -11,18 +11,18 @@ export default class Homepage extends Component {
   };
 
   get collection () {
-    let value = this.context.collection
-    value = value.filter((t) => t.layout === 'Post')
-    value = _.uniqBy(value, '__url')
-    value = _.orderBy(value, ['date'], ['desc'])
-    // Exclude draft in production build
-    if (process.env.NODE_ENV === 'production') {
-      value = value.filter((t) => t.draft === undefined)
-    }
-
-    return value
-      .slice(0, 10)
-      .map(PostItem)
+    return enhanceCollection(this.context.collection, {
+      filter: (t) => {
+        const isPost = t.layout === 'Post'
+        if (process.env.NODE_ENV === 'production') {
+          return (t.draft === undefined && isPost)
+        }
+        return isPost
+      },
+      sort: 'date',
+      reverse: true,
+      limit: 10
+    }).map(PostItem)
   }
 
   render () {
