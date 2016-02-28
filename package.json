@@ -15,7 +15,8 @@
   "statinamic": {
     "assets": "images",
     "CNAME": true,
-    "open": false
+    "open": false,
+    "appcache": true
   },
   "config": {
     "slogan": "Viết ngẫu hứng. Chủ yếu chuyện công nghệ",
