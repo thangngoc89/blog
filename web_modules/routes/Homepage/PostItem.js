@@ -7,13 +7,11 @@ import Tag from '../../components/Tag'
 import styles from './PostItem.scss'
 
 const PostItem = ({__url, date, title, draft, tags, description}) => {
-  const articleClass = classnames({
-    [styles.article]: true,
+  const articleClass = classnames(styles.article, {
     [styles.draft]: draft
   })
 
-  const linkClass = classnames({
-    [styles.title]: true,
+  const linkClass = classnames(styles.title, {
     [styles.titleDraft]: draft
   })
 
