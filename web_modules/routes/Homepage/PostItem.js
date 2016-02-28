@@ -6,7 +6,7 @@ import Date from '../../components/Date'
 import Tag from '../../components/Tag'
 import styles from './PostItem.scss'
 
-const PostItem = ({__url, date, title, draft, tags}) => {
+const PostItem = ({__url, date, title, draft, tags, description}) => {
   const articleClass = classnames({
     [styles.article]: true,
     [styles.draft]: draft
@@ -28,18 +28,20 @@ const PostItem = ({__url, date, title, draft, tags}) => {
       >
         {title}
       </Link>
+      <p>
+        {
+          tags &&
+          Array.isArray(tags) &&
+            tags.map((tag) =>
+              <Tag key={tag} name={tag} />
+            )
+        }
+        <Date date={date} className={styles.date} />
+      </p>
       {
-        tags &&
-        Array.isArray(tags) &&
-          <p>
-            {
-              tags.map((tag) =>
-                <Tag key={tag} name={tag} />
-              )
-            }
-          </p>
+        description &&
+          <p className={styles.description}>{description}</p>
       }
-      <Date date={date} className={styles.date} />
     </article>
   )
 }
@@ -48,6 +50,7 @@ PostItem.propTypes = {
   __url: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  description: PropTypes.string,
   draft: PropTypes.boolean,
   tags: PropTypes.array
 }

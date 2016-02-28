@@ -4,6 +4,7 @@ import PostItem from './PostItem'
 import { Link } from 'react-router'
 import styles from './HomePage.scss'
 import enhanceCollection from 'statinamic/lib/enhance-collection'
+import Icon from '../../components/Icon'
 
 export default class Homepage extends Component {
   static contextTypes = {
@@ -36,7 +37,6 @@ export default class Homepage extends Component {
           title: 'Trang chủ'
         }}
         __url='/'
-        className='col-sm-12 col-md-10'
       >
         <p className={styles.latestPosts}>Bài viết mới nhất</p>
         {
@@ -45,18 +45,17 @@ export default class Homepage extends Component {
         }
         {
           Boolean(collection && collection.length) &&
-            <div className='container'>
-              <div className='row'>
-                {this.collection}
-              </div>
-            </div>
+            <div>{this.collection}</div>
         }
-        <Link
-          className={styles.all}
-          to='/archive'
-        >
-          Bài viết cũ hơn
-        </Link>
+        <div className={styles.btnWrapper}>
+          <Link
+            className={styles.btnOlder}
+            to='/archive/'
+          >
+            Bài viết cũ hơn
+            <Icon icon='right-open-big' />
+          </Link>
+        </div>
       </Page>
     )
   }

@@ -7,7 +7,6 @@
   @extend .navbar-full;
   box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
   background: $color-background;
-  // border-top: 3px solid $color-accent;
   margin-bottom: 2rem;
 }
 
@@ -15,6 +14,10 @@
   @extend .navbar-brand;
   font-size: $font-size-big;
   text-decoration: none;
+
+  @include media-breakpoint-down(xs) {
+    font-size: $font-size-normal;
+  }
 }
 
 .navLink {

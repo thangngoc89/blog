@@ -89,17 +89,17 @@ export default class Post extends Component {
 
     const {pkg: { config }} = this.context.metadata
 
-    const url = (__url === '//') ? '' : __url.slice(1)
-
+    const title = head.title + ' - ' + pkg.config.siteName
     const meta = [
-      {property: 'og:title', content: head.title},
+      {property: 'og:title', content: title},
       {property: 'og:type', content: 'article'},
-      {property: 'og:url', content: pkg.homepage + url},
-      // { property: "og:description", content: pageDescription(body) },
+      {property: 'og:url', content: pkg.homepage + __url.slice(1)},
+      {property: 'og:description', content: head.description},
       {name: 'twitter:card', content: 'summary'},
-      {name: 'twitter:title', content: head.title},
-      {name: 'twitter:creator', content: `@${pkg.config.twitter}`}
-      // { name: "twitter:description", content: pageDescription(body) },
+      {name: 'twitter:title', content: title},
+      {name: 'twitter:creator', content: `@${pkg.config.twitter}`},
+      {name: 'twitter:description', content: head.description},
+      {name: 'description', content: head.description}
     ]
 
     const divClass = cx(styles.contentColumn, {
@@ -179,7 +179,7 @@ export default class Post extends Component {
               shortname={pkg.config.disqus}
               identifier={head.date}
               title={head.title}
-              url={pkg.homepage + url}
+              url={pkg.homepage + __url.slice(1)}
             />
           </div>
           {

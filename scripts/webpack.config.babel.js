@@ -19,7 +19,10 @@ export default {
         loader: 'statinamic/lib/md-collection-loader?' +
           JSON.stringify({
             context: path.join(config.cwd, config.source),
-            basepath: config.baseUrl.path
+            basepath: config.baseUrl.path,
+            description: {
+              pruneLength: 200
+            }
           //   feedsOptions: {
           //     title: pkg.config.sitename,
           //     site_url: pkg.homepage

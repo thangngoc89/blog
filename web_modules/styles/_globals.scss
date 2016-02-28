@@ -8,8 +8,8 @@ $color-text-secondary: $palette-grey-600 !default;
 
 $color-primary: $palette-grey-500 !default;
 $color-primary-dark: $palette-grey-900 !default;
-$color-accent: $palette-indigo-a200 !default;
-$color-accent-dark: $palette-indigo-a700 !default;
+$color-accent: #0085a1 !default;
+$color-accent-dark: darken(#0085a1, 0.4) !default;
 $color-primary-contrast: $color-dark-contrast !default;
 $color-accent-contrast: $color-dark-contrast !default;
 
@@ -17,7 +17,7 @@ $color-accent-contrast: $color-dark-contrast !default;
 $unit: 1rem !default;
 
 // -- Fonts
-$preferred-font: "Helvetica", "Arial", sans-serif !default;
+$preferred-font: 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 
 $font-size: 1.6 * $unit !default;
 $font-size-tiny: 0.8 * $unit !default;

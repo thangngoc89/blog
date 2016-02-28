@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'statinamic/lib/Link'
 import styles from './Header.scss'
 import Icon from '../Icon'
 // import SearchForm from '../SearchForm'
