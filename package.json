@@ -96,7 +96,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
-    "babel-runtime": "^6.5.0",
+    "babel-runtime": "^6.6.1",
     "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
     "chalk": "^1.1.1",
     "cross-env": "^1.0.7",
