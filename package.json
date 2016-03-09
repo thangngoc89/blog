@@ -117,7 +117,7 @@
     "highlight.js": "^9.1.0",
     "history": "^2.0.0",
     "imports-loader": "^0.6.5",
-    "invariant": "^2.2.0",
+    "invariant": "^2.2.1",
     "json-loader": "^0.5.4",
     "markdown-it": "^6.0.0",
     "markdown-it-toc-and-anchor-fork": "^2.1.1",
