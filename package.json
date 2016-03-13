@@ -3,6 +3,8 @@
   "name": "khoanguyen-dot-me",
   "homepage": "https://khoanguyen.me/",
   "scripts": {
+    "git-init": "git submodule init && git submodule update",
+    "git-update": "git submodule foreach git pull origin master",
     "lint:js": "eslint --ignore-path .gitignore --fix .",
     "lint:md": "remark --quiet --frail content",
     "lint:css": "stylelint web_modules/**/**/*.scss --syntax scss",
