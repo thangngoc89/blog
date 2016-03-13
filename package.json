@@ -9,7 +9,7 @@
     "lint:md": "remark --quiet --frail content",
     "lint:css": "stylelint web_modules/**/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:md && npm run lint:css",
-    "statinamic": "BABEL_ENV=statinamic DEBUG=statinamic:* babel-node scripts/build",
+    "statinamic": "BABEL_ENV=statinamic BABEL_DISABLE_CACHE=1 DEBUG=statinamic:* babel-node scripts/build",
     "start": "npm run statinamic -- --server --dev",
     "build": "npm run statinamic -- --static --production",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
