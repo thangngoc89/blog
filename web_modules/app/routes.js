@@ -3,6 +3,7 @@ import { Route } from 'react-router'
 import PageContainer from 'statinamic/lib/PageContainer'
 import Homepage from '../routes/Homepage'
 import Archive from '../routes/Archive'
+import Tag from '../routes/Tag'
 import '../styles/global.styles'
 
 // components
@@ -13,6 +14,7 @@ export default (
   <Route component={LayoutContainer}>
     <Route path='/' component={Homepage} />
     <Route path='/archive' component={Archive} />
+    <Route path='/tags/:tag' component={Tag} />
     <Route path='*' component={PageContainer} />
   </Route>
 )

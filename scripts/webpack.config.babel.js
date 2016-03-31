@@ -4,6 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor-fork'
 import markdownItVideo from 'markdown-it-video'
 import StatinamicAgoliaPlugin from '../web_modules/utils/statinamic-agolia-plugin'
+import StatinamicTaggingPlugin from '../web_modules/utils/tagging-plugin'
 // import pkg from '../package.json'
 
 import config from './config.js'
@@ -161,7 +162,8 @@ export default {
       collectionOptions: {
         filter: (item) => (item.layout === 'Post' && !item.draft)
       }
-    })
+    }),
+    new StatinamicTaggingPlugin()
   ],
 
   // ↓ HANDLE WITH CARE ↓ \\
