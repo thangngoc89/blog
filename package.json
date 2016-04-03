@@ -138,7 +138,7 @@
     "redux-devtools-log-monitor": "^1.0.2",
     "redux-thunk": "^1.0.3",
     "remark": "^4.1.1",
-    "remark-lint": "^3.0.0",
+    "remark-lint": "^3.1.0",
     "sass-loader": "^3.1.2",
     "statinamic": "^0.8.0",
     "strip-markdown": "^0.3.1",
