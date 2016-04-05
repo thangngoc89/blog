@@ -80,7 +80,8 @@
         "no-shortcut-reference-link": false,
         "no-undefined-references": false,
         "list-item-indent": "space",
-        "list-item-spacing": false
+        "list-item-spacing": false,
+        "no-emphasis-as-heading": false
       }
     }
   },
