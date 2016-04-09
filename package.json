@@ -156,7 +156,7 @@
     "moment": "^2.11.1",
     "react-disqus-thread": "^0.3.1",
     "react-ga": "^1.2.0",
-    "react-progress-bar-plus": "^0.2.3",
+    "react-progress-bar-plus": "^1.0.0",
     "react-window-resize-listener": "^1.0.0",
     "reading-time": "^1.0.2",
     "recompose": "^0.15.0",
