@@ -37,7 +37,9 @@
       "production": {
         "plugins": [
           "babel-plugin-lodash",
-          "transform-react-remove-prop-types"
+          "transform-react-remove-prop-types",
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
         ]
       }
     },
@@ -90,6 +92,8 @@
     "babel-eslint": "^6.0.0",
     "babel-loader": "^6.2.1",
     "babel-plugin-lodash": "^2.0.1",
+    "babel-plugin-transform-react-constant-elements": "^6.5.0",
+    "babel-plugin-transform-react-inline-elements": "^6.6.5",
     "babel-plugin-transform-react-remove-prop-types": "^0.2.2",
     "babel-plugin-transform-runtime": "^6.5.2",
     "babel-plugin-webpack-loaders": "^0.3.2",
