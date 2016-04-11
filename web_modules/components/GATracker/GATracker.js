@@ -46,10 +46,6 @@ export default class GATracker extends Component {
   }
 
   render() {
-    return (
-      <div>
-        { this.props.children }
-      </div>
-    )
+    return React.Children.only(this.props.children)
   }
 }
