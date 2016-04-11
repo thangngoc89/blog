@@ -1,44 +1,44 @@
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
-import classnames from 'classnames'
+import React, { PropTypes } from "react"
+import { Link } from "react-router"
+import classnames from "classnames"
 
-import Date from '../../components/Date'
-import Tag from '../../components/Tag'
-import styles from './PostItem.scss'
+import Date from "../../components/Date"
+import Tag from "../../components/Tag"
+import styles from "./PostItem.scss"
 
-const PostItem = ({__url, date, title, draft, tags, description}) => {
+const PostItem = ({ __url, date, title, draft, tags, description }) => {
   const articleClass = classnames(styles.article, {
-    [styles.draft]: draft
+    [styles.draft]: draft,
   })
 
   const linkClass = classnames(styles.title, {
-    [styles.titleDraft]: draft
+    [styles.titleDraft]: draft,
   })
 
   return (
     <article
-      key={__url}
-      className={articleClass}
+      key={ __url }
+      className={ articleClass }
     >
       <Link
-        to={__url}
-        className={linkClass}
+        to={ __url }
+        className={ linkClass }
       >
-        {title}
+        { title }
       </Link>
       <p>
         {
           tags &&
           Array.isArray(tags) &&
             tags.map((tag) =>
-              <Tag key={tag} name={tag} />
+              <Tag key={ tag } name={ tag } />
             )
         }
-        <Date date={date} className={styles.date} />
+        <Date date={ date } className={ styles.date } />
       </p>
       {
         description &&
-          <p className={styles.description}>{description}</p>
+          <p className={ styles.description }>{ description }</p>
       }
     </article>
   )
@@ -50,7 +50,7 @@ PostItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   draft: PropTypes.boolean,
-  tags: PropTypes.array
+  tags: PropTypes.array,
 }
 
 export default PostItem

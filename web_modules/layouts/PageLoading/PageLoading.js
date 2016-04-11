@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 
 const PageLoading = () => {
   return (
-    <div style={{textAlign: 'center'}}>
+    <div style={ { textAlign: "center" } }>
       <span>Loading... </span>
     </div>
   )

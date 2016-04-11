@@ -1,22 +1,22 @@
-import React, { Component, PropTypes } from 'react'
-import Post from './Post'
-import _ from 'lodash'
+import React, { Component, PropTypes } from "react"
+import Post from "./Post"
+import _ from "lodash"
 
 export default class PostConnect extends Component {
   static propTypes = {
-    __filename: PropTypes.string.isRequired
+    __filename: PropTypes.string.isRequired,
   };
 
   static contextTypes = {
-    collection: PropTypes.array.isRequired
+    collection: PropTypes.array.isRequired,
   };
 
-  get sibling () {
+  get sibling() {
     let collection = this.context.collection
-    collection = collection.filter((item) => item.layout === 'Post')
-    collection = _.uniqBy(collection, '__url')
-    collection = _.orderBy(collection, ['date'], ['asc'])
-    if (process.env.NODE_ENV === 'production') {
+    collection = collection.filter((item) => item.layout === "Post")
+    collection = _.uniqBy(collection, "__url")
+    collection = _.orderBy(collection, [ "date" ], [ "asc" ])
+    if (process.env.NODE_ENV === "production") {
       collection = collection.filter((t) => t.draft === undefined)
     }
     const currentPost = collection
@@ -27,14 +27,14 @@ export default class PostConnect extends Component {
 
     return {
       ...(i !== 0) && { previous: collection[i - 1] },
-      ...(i !== last) && { next: collection[i + 1] }
+      ...(i !== last) && { next: collection[i + 1] },
     }
   }
 
-  render () {
+  render() {
     return (
       <Post
-        sibling={this.sibling}
+        sibling={ this.sibling }
         {...this.props}
       />
     )

@@ -1,19 +1,19 @@
-import React, { PropTypes } from 'react'
-import styles from './Tag.scss'
+import React, { PropTypes } from "react"
+import styles from "./Tag.scss"
 
 const Tag = ({ name, ...props }) => {
   return (
     <span
-      className={styles.tag}
+      className={ styles.tag }
       {...props}
     >
-      #{name}
+      #{ name }
     </span>
   )
 }
 
 Tag.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
 }
 
 export default Tag

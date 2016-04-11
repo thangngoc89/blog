@@ -2,7 +2,6 @@ language: node_js
 sudo: false
 node_js:
   - 5
-  - 4
 env:
   global:
     # GITHUB_TOKEN
@@ -10,15 +9,7 @@ env:
     # AGOLIA_ADMIN_KEY
     - secure: qRet/3IGPewMjlrPhz9tTKy3Z+c7ubavksNNAsAjD9K7Sy0ksTpl1s3iTOowR8gWXuJLVSYEyOWGoy/pS025ytkJ1yCgj8zadzPOqtTiszp3Jy4cz+E5S8ZkWv3XQfGr3xMsgRpAfbhlGzRDvoR0yGJ4Ibfddu5YN9voDwBfaeKCXX924IoKfL2TOSnXHKnCoKU96wMoVb+gME3R1yc5nXyGeupk57TLH3VaRdcdSsFasG4bsVV+ORyrIoUDNaMbt4qpPYcYFcDVXUorUJGWupF2awYwkBKOEV69NorjCSrvAXwBBh2b73nZUmX4ji90BFmhv3OCRGu87FTehcYUlZt2ApJeEKMPpgxVVt8+Abd33vahEhy0j57M3seGP1WN5rhk8G8J2sN5DJ67x9Ta8F0ggRbW4oZm10Yr0S8zHmp1nW4ZSTAo9JLAlFFgKJE4JlyRDv2FGf8e/nXJugFno5VXXbzD994NzBX4Q7ClfqwiiBFHuMGkGr7hDqW2YRvC5Ia7bEoBqghxyMJix9PF4cfzKeOhscJPz9iu+F+9pYomezB3dT1NRLR5CZ/W1NDvZwpSVWDhYfmDzjQFNOVUh85eBDcPAzw/MEXUHkayPqAbtCP30hOhTxaXe48crdeiacG92oVLJIDq6UhFdwel3dM14JWvPdlZY9ibWg40Emc=
     - NPM_CONFIG_PROGRESS="false"
-  matrix:
-    - PACKAGE_MANAGER=npm
-    - PACKAGE_MANAGER=pnpm
-matrix:
-  allow_failures:
-    - env: PACKAGE_MANAGER=pnpm
-  fast_finish: true
-install:
-  - bash build.sh
+
 before_script:
   - git submodule foreach git pull origin master
 script:
@@ -33,4 +24,3 @@ deploy:
   'on':
     branch: master
     node: '5'
-    condition: PACKAGE_MANAGER=npm

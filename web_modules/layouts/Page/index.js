@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
-import Helmet from 'react-helmet'
-import invariant from 'invariant'
-import cx from 'classnames'
+import React, { Component, PropTypes } from "react"
+import Helmet from "react-helmet"
+import invariant from "invariant"
+import cx from "classnames"
 
 /**
  * Base template for others to extends.
@@ -14,61 +14,60 @@ export default class Page extends Component {
     __url: PropTypes.string.isRequired,
     head: PropTypes.object.isRequired,
     body: PropTypes.string/* .isRequired */,
-    className: PropTypes.string
+    className: PropTypes.string,
   };
 
   static contextTypes = {
-    metadata: PropTypes.object.isRequired
+    metadata: PropTypes.object.isRequired,
   };
 
-  render () {
+  render() {
     const {
-      pkg
+      pkg,
     } = this.context.metadata
 
     const {
       __filename,
       __url,
       head,
-      className
+      className,
     } = this.props
 
     invariant(
-      typeof head.title === 'string',
+      typeof head.title === "string",
       `Your page '${__filename}' needs a title`
     )
-    const title = head.title + ' - ' + pkg.config.siteName
+    const title = head.title + " - " + pkg.config.siteName
     const meta = [
-      {property: 'og:title', content: title},
-      {property: 'og:type', content: 'article'},
-      {property: 'og:url', content: pkg.homepage + __url},
-      {property: 'og:description', content: head.description},
-      {name: 'twitter:card', content: 'summary'},
-      {name: 'twitter:title', content: title},
-      {name: 'twitter:creator', content: `@${pkg.config.twitter}`},
-      {name: 'twitter:description', content: head.description},
-      {name: 'description', content: head.description}
+      { property: "og:title", content: title },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: pkg.homepage + __url },
+      { property: "og:description", content: head.description },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:creator", content: `@${pkg.config.twitter}` },
+      { name: "twitter:description", content: head.description },
+      { name: "description", content: head.description },
     ]
-    const divClass = cx({
-      'center-block': true,
-      'col-xs-12 col-sm-11 col-md-8': !className,
-      [className]: className
+    const divClass = cx("center-block", {
+      "col-xs-12 col-sm-11 col-md-8": !className,
+      [className]: className,
     })
     return (
-      <div className='container-fluid'>
+      <div className="container-fluid">
         <Helmet
-          title={title}
-          meta={meta}
+          title={ title }
+          meta={ meta }
         />
-        <div className='row'>
-          <div className={divClass}>
+        <div className="row">
+          <div className={ divClass }>
             {
               !this.props.children && this.props.body &&
                 <div
-                  dangerouslySetInnerHTML={{__html: this.props.body}}
+                  dangerouslySetInnerHTML={ { __html: this.props.body } }
                 ></div>
             }
-            {this.props.children}
+            { this.props.children }
           </div>
         </div>
       </div>

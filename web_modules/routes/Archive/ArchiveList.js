@@ -1,42 +1,43 @@
-import React, { PropTypes } from 'react'
-import moment from 'moment'
-import { Link } from 'react-router'
-import _ from 'lodash'
-import classnames from 'classnames'
+/* eslint-disable react/no-multi-comp */
+import React, { PropTypes } from "react"
+import moment from "moment"
+import { Link } from "react-router"
+import _ from "lodash"
+import classnames from "classnames"
 
-import styles from './ArchiveList.scss'
+import styles from "./ArchiveList.scss"
 
-moment.locale('vi')
+moment.locale("vi")
 
 const PostLink = ({ item }) => {
-  const day = moment(item.date).utc().format('DD')
+  const day = moment(item.date).utc().format("DD")
   const linkClassName = classnames({
-    [styles.draft]: item.draft
+    [styles.draft]: item.draft,
   })
   return (
-    <p className={styles.link}>
-      {day} {' - '}
+    <p className={ styles.link }>
+      { day } { ' - ' }
       <Link
-        to={item.__url}
-        className={linkClassName}
+        to={ item.__url }
+        className={ linkClassName }
       >
-        {item.title}
+        { item.title }
       </Link>
     </p>
   )
 }
 PostLink.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
 }
 
 const ArchiveList = (group) => {
-  const month = moment(group[0].date).format('MMMM/YYYY')
-  const posts = _.map(group, (item) => <PostLink key={item.__url} item={item} />)
+  const month = moment(group[0].date).format("MMMM/YYYY")
+  const posts = _.map(group, (item) => <PostLink key={ item.__url } item={ item } />)
 
   return (
-    <div key={month}>
-      <p className={styles.month}>{month}</p>
-      {posts}
+    <div key={ month }>
+      <p className={ styles.month }>{ month }</p>
+      { posts }
     </div>
   )
 }

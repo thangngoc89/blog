@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react'
-import readingTime from 'reading-time'
-import moment from 'moment'
-moment.locale('vi')
+import React, { PropTypes } from "react"
+import readingTime from "reading-time"
+import moment from "moment"
+moment.locale("vi")
 
 const ReadTime = (props) => {
   const time = readingTime(props.text)
@@ -9,13 +9,13 @@ const ReadTime = (props) => {
 
   return (
     <span {...props}>
-      ~ {timeToString}
+      ~ { timeToString }
     </span>
   )
 }
 
 ReadTime.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
 }
 
 export default ReadTime

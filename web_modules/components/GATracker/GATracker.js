@@ -1,54 +1,54 @@
-import React, { Component, PropTypes } from 'react'
-import ga from 'react-ga'
+import React, { Component, PropTypes } from "react"
+import ga from "react-ga"
 
-const isBrowser = (typeof window !== 'undefined')
-const isProduction = process.env.NODE_ENV === 'production'
+const isBrowser = (typeof window !== "undefined")
+const isProduction = process.env.NODE_ENV === "production"
 
 export default class GATracker extends Component {
   static propTypes = {
-    children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-    params: PropTypes.object.isRequired
+    children: PropTypes.oneOfType([ PropTypes.array, PropTypes.object ]),
+    params: PropTypes.object.isRequired,
   };
 
   static contextTypes = {
-    metadata: PropTypes.object.isRequired
+    metadata: PropTypes.object.isRequired,
   };
 
-  componentWillMount () {
+  componentWillMount() {
     const {
       pkg: {
-        config: {googleAnalyticsUA}
-      }
+        config: { googleAnalyticsUA },
+      },
     } = this.context.metadata
 
     if (isProduction && isBrowser) {
       ga.initialize(googleAnalyticsUA)
     }
     if (!isProduction && isBrowser) {
-      console.info('ga.initialize', googleAnalyticsUA)
+      console.info("ga.initialize", googleAnalyticsUA)
     }
     this.logPageview()
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     if (props.params.splat !== this.props.params.splat) {
       this.logPageview()
     }
   }
 
-  logPageview () {
+  logPageview() {
     if (isProduction && isBrowser) {
       ga.pageview(window.location.href)
     }
     if (!isProduction && isBrowser) {
-      console.info('New pageview', window.location.href)
+      console.info("New pageview", window.location.href)
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
-        {this.props.children}
+        { this.props.children }
       </div>
     )
   }
