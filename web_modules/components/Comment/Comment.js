@@ -1,35 +1,27 @@
 /* eslint-disable no-new */
-import React, { Component, PropTypes } from 'react'
-import Disqus from 'react-disqus-thread'
-import Placeholder from '../Placeholder'
-import '../../utils/load-waypoints'
+import React, { Component, PropTypes } from "react"
+import Disqus from "react-disqus-thread"
+import Placeholder from "../Placeholder"
+import "../../utils/load-waypoints"
 
 export default class Comment extends Component {
   static propTypes = {
-    identifier: PropTypes.string
+    identifier: PropTypes.string,
   };
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
-      opened: false
+      opened: false,
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.attachWaypoint()
   }
 
-  componentDidUpdate () {
-    this.attachWaypoint()
-  }
-
-  componentWillUnmount () {
-    this.destroyWaypoint()
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) {
     if (
       this.props.identifier === nextProps.identifier &&
       this.state.opened === nextState.opened
@@ -39,19 +31,27 @@ export default class Comment extends Component {
     return true
   }
 
+  componentDidUpdate() {
+    this.attachWaypoint()
+  }
+
+  componentWillUnmount() {
+    this.destroyWaypoint()
+  }
+
   /**
    * Attach Waypoint to comment div
    * @return {Void}
    */
-  attachWaypoint () {
+  attachWaypoint() {
     this._waypoint = new window.Waypoint({
       element: this._div,
-      offset: 'bottom-in-view',
+      offset: "bottom-in-view",
       handler: () => {
         if (!this.state.opened) {
           this.setState({ opened: true })
         }
-      }
+      },
     })
   }
 
@@ -59,25 +59,25 @@ export default class Comment extends Component {
    * Destroy attached waypoint
    * @return {void}
    */
-  destroyWaypoint () {
+  destroyWaypoint() {
     if (this._waypoint) {
       this._waypoint.destroy()
     }
   }
 
-  render () {
+  render() {
     return (
       <div
-        ref={(ref) => { this._div = ref }}
+        ref={ (ref) => this._div = ref }
       >
         {
           this.state.opened &&
-          process.env.NODE_ENV === 'production' &&
+          process.env.NODE_ENV === "production" &&
             <Disqus {...this.props} />
         }
         {
           this.state.opened &&
-          process.env.NODE_ENV !== 'production' &&
+          process.env.NODE_ENV !== "production" &&
             <Placeholder>
               Disqus loaded (development mode)
             </Placeholder>

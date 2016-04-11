@@ -1,1 +1,1 @@
-export default from './PageLoading'
+export default from "./PageLoading"

@@ -9,9 +9,8 @@
     "lint:md": "remark --quiet --frail content",
     "lint:css": "stylelint web_modules/**/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:md && npm run lint:css",
-    "statinamic": "BABEL_ENV=statinamic BABEL_DISABLE_CACHE=1 DEBUG=statinamic:* babel-node scripts/build",
-    "start": "npm run statinamic -- --server --dev",
-    "build": "npm run statinamic -- --static --production",
+    "start": "statinamic start",
+    "build": "statinamic build",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "statinamic": {
@@ -36,32 +35,33 @@
       "babel-preset-es2015",
       "babel-preset-stage-1"
     ],
-    "plugins": [
-      "babel-plugin-transform-runtime"
-    ],
     "env": {
-      "statinamic": {
+      "production": {
         "plugins": [
-          [
-            "babel-plugin-webpack-loaders",
-            {
-              "config": "./scripts/webpack.config.babel.js",
-              "verbose": false
-            }
-          ]
+          "babel-plugin-lodash",
+          "transform-react-remove-prop-types"
         ]
       }
-    }
+    },
+    "plugins": [
+      "babel-plugin-transform-runtime"
+    ]
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "rules": {
-      "react/jsx-no-bind": 0
-    },
     "extends": [
-      "standard",
-      "standard-react"
-    ]
+      "eslint-config-i-am-meticulous/react"
+    ],
+    "rules": {
+      "max-len": [
+        2,
+        100,
+        4
+      ],
+      "react/jsx-no-literals": 0,
+      "react/jsx-no-bind": 0,
+      "react/prefer-stateless-function": 0
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
@@ -102,22 +102,15 @@
     "babel-runtime": "^6.5.0",
     "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
     "chalk": "^1.1.1",
-    "cross-env": "^1.0.7",
     "css-loader": "^0.17.0",
-    "cssnano": "^3.4.0",
     "debug": "^2.2.0",
     "eslint": "^2.2.0",
-    "eslint-config-standard": "^5.1.0",
-    "eslint-config-standard-jsx": "^1.1.1",
-    "eslint-config-standard-react": "^2.3.0",
+    "eslint-config-i-am-meticulous": "^4.1.0",
     "eslint-loader": "^1.3.0",
-    "eslint-plugin-promise": "^1.0.8",
     "eslint-plugin-react": "^4.0.0",
-    "eslint-plugin-standard": "^1.3.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "gh-pages": "^0.11.0",
-    "highlight.js": "^9.1.0",
     "history": "^2.0.0",
     "imports-loader": "^0.6.5",
     "invariant": "^2.2.0",
@@ -134,24 +127,21 @@
     "react-redux": "^4.3.0",
     "react-router": "^2.0.0",
     "redux": "^3.3.1",
-    "redux-devtools": "^3.0.1",
-    "redux-devtools-dock-monitor": "^1.0.1",
-    "redux-devtools-log-monitor": "^1.0.2",
-    "redux-thunk": "^1.0.3",
     "remark": "^4.1.1",
     "remark-lint": "^3.0.0",
     "sass-loader": "^3.1.2",
-    "statinamic": "^0.8.0",
+    "statinamic": "^0.9.3",
     "strip-markdown": "^0.3.1",
     "style-loader": "^0.13.0",
     "stylelint": "^5.0.0",
-    "stylelint-config-standard": "^4.0.0",
+    "stylelint-config-standard": "^5.0.0",
     "webpack": "^1.12.11",
-    "whatwg-fetch": "^0.9.0"
+    "whatwg-fetch": "^0.11.0"
   },
   "dependencies": {
     "algoliasearch": "^3.12.0",
     "classnames": "^2.2.3",
+    "highlight.js": "^9.3.0",
     "lodash": "^4.3.0",
     "moment": "^2.11.1",
     "react-disqus-thread": "^0.3.1",

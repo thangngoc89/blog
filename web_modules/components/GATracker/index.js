@@ -1,1 +1,1 @@
-export default from './GATracker'
+export default from "./GATracker"
