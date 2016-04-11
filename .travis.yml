@@ -6,12 +6,14 @@ env:
   global:
     # GITHUB_TOKEN
     - secure: KkhG4Avd5Pezy2cTnhD3F1BC37r2V/F/xUAfS/M44RfrUGINZLO3R01kPe+4OTxb9F4cd2ycY7Y9xI5FNqp9cMvrh/ZBYP5xJYYOi9B2jXnqAOtoMTxOPLXYcG1dTRRY5huomXk+56sQYDWYX2d6GRQZT8FqNRv/jiZcZ6XJf2Tj+hfM5dfA5pmNTlF/V83CLTBi1HftFvgUSih5TdxEwJIGWt6t/ZT+QZnSssbL1fPbJ+kxv4It8Q6tAcnr2wo7ptmPOqYfy2HznW7UJ7RJOkakz5uEJJQX3/cAOWPzBsHirGEdHIXUsxlEwbCnlxQPxv2/ja0k9dgCFy8qy4q417yeBo2A9wMDClF7YxtTlAjrFYmI4J29Uqvi4jb5pEkMOmvb0a73VDWnCr+sr2x5b6gXNATND3fR7Tc1Gs96qVAOJSMJ+yfQBdeo/rJjJ1eqw+9QQDsOMBzI9u/p87qjv+Yn4QwLmIZELidnT8GUfrjB7dcuxk2P+R5IzmBynWPxwkxS4uAg/OatoXkmMvPF1fj1IcQWWJKh/7hAOlL5f+gTegqS8yWG+oPISuYmUWP7A5q0JD3I8IvpqD25qczp0IA/jddoJBQCYJIcGuYRaa+PpEx12TB4B0Ot+OVmNyUUKUkUYlnQSJWW3t9zNagTmZGaqyEyWsWIPJ0DRkSoAkg=
-    # AGOLIA_ADMIN_KEY
-    - secure: qRet/3IGPewMjlrPhz9tTKy3Z+c7ubavksNNAsAjD9K7Sy0ksTpl1s3iTOowR8gWXuJLVSYEyOWGoy/pS025ytkJ1yCgj8zadzPOqtTiszp3Jy4cz+E5S8ZkWv3XQfGr3xMsgRpAfbhlGzRDvoR0yGJ4Ibfddu5YN9voDwBfaeKCXX924IoKfL2TOSnXHKnCoKU96wMoVb+gME3R1yc5nXyGeupk57TLH3VaRdcdSsFasG4bsVV+ORyrIoUDNaMbt4qpPYcYFcDVXUorUJGWupF2awYwkBKOEV69NorjCSrvAXwBBh2b73nZUmX4ji90BFmhv3OCRGu87FTehcYUlZt2ApJeEKMPpgxVVt8+Abd33vahEhy0j57M3seGP1WN5rhk8G8J2sN5DJ67x9Ta8F0ggRbW4oZm10Yr0S8zHmp1nW4ZSTAo9JLAlFFgKJE4JlyRDv2FGf8e/nXJugFno5VXXbzD994NzBX4Q7ClfqwiiBFHuMGkGr7hDqW2YRvC5Ia7bEoBqghxyMJix9PF4cfzKeOhscJPz9iu+F+9pYomezB3dT1NRLR5CZ/W1NDvZwpSVWDhYfmDzjQFNOVUh85eBDcPAzw/MEXUHkayPqAbtCP30hOhTxaXe48crdeiacG92oVLJIDq6UhFdwel3dM14JWvPdlZY9ibWg40Emc=
     - NPM_CONFIG_PROGRESS="false"
-
+cache:
+  directories:
+    - node_modules
 before_script:
   - git submodule foreach git pull origin master
+before_install:
+  - npm prune
 script:
   - 'npm run lint && npm run build'
 before_deploy:
