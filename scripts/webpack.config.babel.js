@@ -43,9 +43,16 @@ export default ({ config, pkg }) => ({
         ),
       },
       {
-        test: /\.(html|ico|jpe?g|png|gif|svg)$/,
-        loader: "file-loader?name=assets/images/[hash:base64]__[name].[ext]&context=" +
-        path.join(config.cwd, config.destination),
+        test: /content(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
+        loader: "file-loader?name=[path][name].[ext]&context=./content",
+      },
+      {
+        test: /web_modules(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
+        loader: "file-loader",
+        query: {
+          name: "images/[path][name].[ext]",
+          context: "./web_modules",
+        },
       },
       {
         test: /\.(ttf|eot|svg|woff)(\?[a-z0-9]+)?$/,
