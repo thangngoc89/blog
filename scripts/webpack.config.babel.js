@@ -109,6 +109,21 @@ export default ({ config, pkg }) => ({
     require("postcss-import")(),
     require("postcss-cssnext")({
       browsers: [ "last 2 versions", "ie >= 8", "iOS >= 6", "Android >= 4" ],
+      features: {
+        customProperties: {
+          variables: {
+            colorPrimary: "#FF9800",
+          },
+        },
+        customMedia: {
+          extensions: {
+            "--sm": "screen and (min-width: 35.5rem)",
+            "--md": "screen and (min-width: 48rem)",
+            "--lg": "screen and (min-width: 64rem)",
+            "--xl": "screen and (min-width: 80rem)",
+          },
+        },
+      },
     }),
     require("postcss-browser-reporter")(),
     require("postcss-reporter")(),
