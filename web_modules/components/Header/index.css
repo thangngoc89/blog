@@ -1,5 +1,5 @@
 :root {
-  --colorBackground: rgba(0, 133, 161, 0.8);
+  --colorBackground: color(var(--colorPrimary) saturation(+10%));
 }
 /*
  * https://css-tricks.com/flexbox-nav-bar-fixed-variable-take-rest-elements/
@@ -8,21 +8,25 @@
   display: flex;
   align-items: center;
   width: 100%;
-  flex-wrap: wrap;
   max-width: 1000px;
   margin: 0 auto;
 
   & a {
     color: #fff !important;
-    transition: 0.3s;
+    transition: 0.2s;
   }
 }
 
 .name {
   margin-right: 1rem;
   flex: 2;
-  font-size: 1.5rem;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+
+  @media (--sm) {
+    font-size: 1.5rem;
+    padding: 0 1.5rem;
+  }
 }
 
 .item {
