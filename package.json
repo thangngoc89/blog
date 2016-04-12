@@ -11,6 +11,7 @@
     "lint": "npm run lint:js && npm run lint:md && npm run lint:css",
     "start": "statinamic start",
     "build": "statinamic build",
+    "postbuild": "babel-node scripts/imagemin.js",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "statinamic": {
