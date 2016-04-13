@@ -27,6 +27,8 @@ export class LayoutContainer extends Component {
           meta={ [
             { property: "og:site_name", content: pkg.config.siteName },
             { name: "twitter:site", content: `@${pkg.config.twitter}` },
+            { name: "theme-color", content: "#0275d8" },
+            { name: "msapplication-TileColor", content: "#0275d8" },
           ] }
         />
         <Header />
