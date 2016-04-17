@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import { Route } from "react-router"
 import PhenomicPageContainer from "phenomic/lib/PageContainer"
-import Homepage from "../routes/Homepage"
-import Archive from "../routes/Archive"
 import "../styles/global.styles"
 
 // components
@@ -10,6 +8,9 @@ import LayoutContainer from "../LayoutContainer"
 import Page from "../layouts/Page"
 import PageError from "../layouts/PageError"
 import PageLoading from "../layouts/PageLoading"
+import Post from "../layouts/Post"
+import Homepage from "../routes/Homepage"
+import Archive from "../routes/Archive"
 
 class PageContainer extends Component {
   render() {
@@ -21,6 +22,7 @@ class PageContainer extends Component {
           Page,
           PageError,
           PageLoading,
+          Post,
           Homepage,
           Archive,
         } }

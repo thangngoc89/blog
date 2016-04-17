@@ -1,13 +1,11 @@
 import "whatwg-fetch"
 import phenomicClient from "phenomic/lib/client"
 
-import * as layouts from "layouts"
 import metadata from "app/metadata"
 import routes from "app/routes"
 import store from "app/store"
 
 phenomicClient({
-  layouts,
   metadata,
   routes,
   store,
