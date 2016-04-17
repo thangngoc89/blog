@@ -1,12 +1,33 @@
-import React from "react"
+import React, { Component } from "react"
 import { Route } from "react-router"
-import PageContainer from "statinamic/lib/PageContainer"
+import PhenomicPageContainer from "phenomic/lib/PageContainer"
 import Homepage from "../routes/Homepage"
 import Archive from "../routes/Archive"
 import "../styles/global.styles"
 
 // components
 import LayoutContainer from "../LayoutContainer"
+import Page from "../layouts/Page"
+import PageError from "../layouts/PageError"
+import PageLoading from "../layouts/PageLoading"
+
+class PageContainer extends Component {
+  render() {
+    const { props } = this
+    return (
+      <PhenomicPageContainer
+        { ...props }
+        layouts={ {
+          Page,
+          PageError,
+          PageLoading,
+          Homepage,
+          Archive,
+        } }
+      />
+    )
+  }
+}
 
 // routes
 export default (

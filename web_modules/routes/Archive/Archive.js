@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react"
 import moment from "moment"
 import groupBy from "lodash/groupBy"
 import map from "lodash/map"
-import enhanceCollection from "statinamic/lib/enhance-collection"
+import enhanceCollection from "phenomic/lib/enhance-collection"
 
 import ArchiveList from "./ArchiveList"
 import Page from "../../layouts/Page"

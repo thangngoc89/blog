@@ -10,9 +10,9 @@ export default ({ config, pkg }) => ({
   },
   module: {
     loaders: [
-      { // statinamic requirement
+      { // phenomic requirement
         test: /\.md$/,
-        loader: "statinamic/lib/content-loader",
+        loader: "phenomic/lib/content-loader",
       },
       {
         test: /\global.styles$/,
@@ -60,7 +60,7 @@ export default ({ config, pkg }) => ({
       },
     ],
   },
-  statinamic: {
+  phenomic: {
     loader: {
       context: path.join(config.cwd, config.source),
       renderer: (text) => (
@@ -142,7 +142,7 @@ export default ({ config, pkg }) => ({
       NODE_ENV: JSON.stringify(
         config.production ? "production" : process.env.NODE_ENV
       ),
-      STATINAMIC_PATHNAME: JSON.stringify(process.env.STATINAMIC_PATHNAME),
+      PHENOMIC_PATHNAME: JSON.stringify(process.env.PHENOMIC_PATHNAME),
     } }),
     ...config.production && [
       new webpack.optimize.DedupePlugin(),

@@ -3,7 +3,7 @@ import Page from "../../layouts/Page"
 import PostItem from "./PostItem"
 import { Link } from "react-router"
 import styles from "./HomePage.scss"
-import enhanceCollection from "statinamic/lib/enhance-collection"
+import enhanceCollection from "phenomic/lib/enhance-collection"
 import Icon from "../../components/Icon"
 
 export default class Homepage extends Component {

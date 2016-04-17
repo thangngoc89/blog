@@ -1,12 +1,12 @@
 import "whatwg-fetch"
-import statinamicClient from "statinamic/lib/client"
+import phenomicClient from "phenomic/lib/client"
 
 import * as layouts from "layouts"
 import metadata from "app/metadata"
 import routes from "app/routes"
 import store from "app/store"
 
-statinamicClient({
+phenomicClient({
   layouts,
   metadata,
   routes,
@@ -20,7 +20,7 @@ require.context("../content", true, /\.(html|ico|jpe?g|png|gif)$/)
 let mdContext = require.context("../content", true, /\.md$/)
 mdContext.keys().forEach(mdContext)
 if (module.hot) {
-  const mdHotUpdater = require("statinamic/lib/client/hot-md").default
+  const mdHotUpdater = require("phenomic/lib/client/hot-md").default
   module.hot.accept(mdContext.id, () => {
     mdContext = require.context("../content", true, /\.md$/)
     const requireUpdate = mdHotUpdater(mdContext, window.__COLLECTION__, store)

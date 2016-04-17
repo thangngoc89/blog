@@ -1,6 +1,6 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from "react"
-import Link from "statinamic/lib/Link"
+import Link from "phenomic/lib/Link"
 import Headroom from "react-headroom"
 import styles from "./index.css"
 import Icon from "../Icon"

@@ -1,19 +1,19 @@
-import cache from "statinamic/lib/md-collection-loader/cache"
-import enhanceCollection from "statinamic/lib/enhance-collection"
+import cache from "phenomic/lib/md-collection-loader/cache"
+import enhanceCollection from "phenomic/lib/enhance-collection"
 import algoliasearch from "algoliasearch"
 import remark from "remark"
 import strip from "strip-markdown"
 import debug from "debug"
 import color from "chalk"
 
-const log = debug("statinamic:plugin:agolia")
+const log = debug("phenomic:plugin:agolia")
 /**
  * Webpack plugin section
  */
-const StatinamicAgoliaPlugin = function(opts) {
+const PhenomicAgoliaPlugin = function(opts) {
   this.opts = opts
 }
-StatinamicAgoliaPlugin.prototype.apply = function(compiler) {
+PhenomicAgoliaPlugin.prototype.apply = function(compiler) {
   compiler.plugin("done", () => sendToAgolia(this.opts))
 }
 
@@ -65,4 +65,4 @@ const sendToAgolia = (opts) => {
   })
 }
 
-module.exports = StatinamicAgoliaPlugin
+module.exports = PhenomicAgoliaPlugin
