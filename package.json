@@ -40,17 +40,20 @@
   },
   "babel": {
     "presets": [
-      "babel-preset-react",
-      "babel-preset-es2015",
-      "babel-preset-stage-1"
+      "es2015",
+      "stage-1",
+      "react"
     ],
     "env": {
       "production": {
+        "presets": [
+          "es2015",
+          "stage-1",
+          "react",
+          "react-optimize"
+        ],
         "plugins": [
-          "babel-plugin-lodash",
-          "transform-react-remove-prop-types",
-          "transform-react-constant-elements",
-          "transform-react-inline-elements"
+          "babel-plugin-lodash"
         ]
       }
     },
@@ -103,14 +106,12 @@
     "babel-eslint": "^6.0.0",
     "babel-loader": "^6.2.1",
     "babel-plugin-lodash": "^2.0.1",
-    "babel-plugin-transform-react-constant-elements": "^6.5.0",
-    "babel-plugin-transform-react-inline-elements": "^6.6.5",
-    "babel-plugin-transform-react-remove-prop-types": "^0.2.2",
     "babel-plugin-transform-runtime": "^6.5.2",
     "babel-plugin-webpack-loaders": "^0.3.2",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
+    "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-1": "^6.3.13",
     "babel-runtime": "^6.5.0",
     "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
