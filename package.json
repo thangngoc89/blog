@@ -8,7 +8,7 @@
     "lint:js": "eslint --ignore-path .gitignore --fix .",
     "lint:md": "remark --quiet --frail content",
     "lint:css": "stylelint web_modules/**/**/*.scss --syntax scss",
-    "lint": "npm run lint:js && npm run lint:md && npm run lint:css",
+    "lint": "npm-run-all --parallel lint:*",
     "start": "phenomic start",
     "build": "phenomic build",
     "postbuild": "babel-node scripts/imagemin.js",
@@ -20,7 +20,12 @@
     "offline": {
       "serviceWorker": true,
       "appcache": false,
-      "pattern": ["index.html", "**/**.json", "**.css", "**.js"]
+      "pattern": [
+        "index.html",
+        "**/**.json",
+        "**.css",
+        "**.js"
+      ]
     }
   },
   "config": {
@@ -127,6 +132,7 @@
     "markdown-it-toc-and-anchor-fork": "^2.1.1",
     "markdown-it-video": "^0.2.1",
     "node-sass": "^3.4.2",
+    "npm-run-all": "^1.7.0",
     "phenomic": "^0.10.2",
     "postcss-browser-reporter": "^0.4.0",
     "postcss-cssnext": "^2.5.2",
