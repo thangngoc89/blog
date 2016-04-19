@@ -11,7 +11,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "start": "phenomic start",
     "build": "phenomic build",
-    "postbuild": "babel-node scripts/imagemin.js",
+    "predeploy": "babel-node scripts/imagemin.js",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "phenomic": {
