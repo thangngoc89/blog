@@ -26,20 +26,32 @@ export default ({ config, pkg }) => ({
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
           "style-loader",
-          "css-loader" +
-            "?modules" +
-            "&localIdentName=[name]--[local]--[hash:base64:5]" +
-          "!postcss!sass-loader"
+          "css-loader" + (
+            "?modules"+
+            "&localIdentName=" +
+            (
+              process.env.NODE_ENV === "production"
+              ? "[hash:base64:5]"
+              : "[path][name]--[local]--[hash:base64:5]"
+            ).toString()
+          ) + "!" +
+          "postcss-loader!sass-loader",
         ),
       },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           "style-loader",
-          "css-loader" +
-            "?modules" +
-            "&localIdentName=[name]--[local]--[hash:base64:5]" +
-          "!postcss"
+          "css-loader" + (
+            "?modules"+
+            "&localIdentName=" +
+            (
+              process.env.NODE_ENV === "production"
+              ? "[hash:base64:5]"
+              : "[path][name]--[local]--[hash:base64:5]"
+            ).toString()
+          ) + "!" +
+          "postcss-loader",
         ),
       },
       {
