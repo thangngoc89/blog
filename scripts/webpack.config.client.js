@@ -1,5 +1,5 @@
 import path from "path"
-
+import webpack from "webpack"
 // ! client side loader only \\
 export default ({ config }) => {
   const { webpackConfig } = config
@@ -30,26 +30,31 @@ export default ({ config }) => {
     },
     // ↓ HANDLE WITH CARE ↓ \\
 
-    output: {
-      ...webpackConfig.output,
-      libraryTarget: "var",
-      filename: "[name].[hash].js",
-      ...config.production && {
-        filename: "[name].[chunkhash].js",
-      },
-    },
     entry: {
-      // 'w-1-vendor': [
-      //   'react',
-      //   'react-redux',
-      //   'react-helmet',
-      //   'react-router',
-      //   'redux',
-      //   'whatwg-fetch',
-      //   'moment',
-      //   'classnames'
-      // ],
-      "w-2-client": path.join(__dirname, "index-client"),
+      "phenomic-client": path.join(__dirname, "index-client"),
+      "phenomic-bundle": [
+        "react",
+        "react-dom",
+        "redux",
+        "react-redux",
+        "react-helmet",
+        "whatwg-fetch",
+      ],
+    },
+
+    ...config.production && {
+      output: {
+        ...webpackConfig.output,
+        filename: "[name].[chunkhash].js",
+        chunkFilename: "[chunkhash].js",
+      },
+
+      plugins: [
+        ...webpackConfig.plugins,
+        new webpack.optimize.CommonsChunkPlugin({
+          names: [ "phenomic-bundle", "manifest" ],
+        }),
+      ],
     },
   }
 }
