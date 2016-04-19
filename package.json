@@ -145,7 +145,7 @@
     "react-helmet": "^2.3.1",
     "react-overlays": "^0.6.0",
     "react-redux": "^4.3.0",
-    "react-router": "^2.0.0",
+    "react-router": "^2.2.3",
     "redux": "^3.3.1",
     "remark": "^4.1.1",
     "remark-lint": "^3.0.0",
