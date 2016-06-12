@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  margin-top: 2rem;
+  border-top: 1px solid var(--colorDivider);
+  padding: 2rem 3rem;
+  color: var(--colorGrey);
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  font-weight: 300;
+  min-width: 100%;
+}
+
+.heart {
+  color: red;
+  font-size: 1rem;
+}
+
+.copyright,
+.info {
+  flex: 0 0 100%;
+  text-align: center;
+
+  @media (--md) {
+    flex: 0 0 50%;
+  }
+}
+
+@media (--md) {
+  .info {
+    text-align: left;
+  }
+
+  .copyright {
+    text-align: right;
+  }
+}

@@ -148,6 +148,8 @@ export const makeConfig = (config = {}) => {
           customProperties: {
             variables: {
               colorPrimary: "#FF9800",
+              colorGrey: "#9e9e9e",
+              colorAccent: "#0275d8",
               colorDivider: "#eeeeee",
             },
           },
