@@ -13,7 +13,9 @@
 
 .spinner {
   height: 8vh;
+  min-height: 5rem;
   width: 8vh;
+  min-width: 5rem;
   border: 6px solid var(--spinner-Color-back);
   border-top-color: var(--spinner-Color-front);
   border-radius: 100%;
