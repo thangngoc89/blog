@@ -169,7 +169,7 @@
     "react-topbar-progress-indicator": "^1.0.0",
     "react-window-resize-listener": "^1.0.0",
     "reading-time": "^1.0.2",
-    "recompose": "^0.15.0",
+    "recompose": "^0.18.0",
     "smoothscroll": "^0.2.2",
     "waypoints": "^4.0.0"
   }
