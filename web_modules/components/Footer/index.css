@@ -1,13 +1,17 @@
 .footer {
-  display: flex;
-  margin-top: 2rem;
-  border-top: 1px solid var(--colorDivider);
-  padding: 2rem 3rem;
   color: var(--colorGrey);
+  border-top: 1px solid var(--colorDivider);
+  margin-top: 2rem;
+  padding: 2rem 3rem;
   font-size: 0.8rem;
   line-height: 0.8rem;
   font-weight: 300;
-  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (--md) {
+    flex-direction: row;
+  }
 }
 
 .heart {
