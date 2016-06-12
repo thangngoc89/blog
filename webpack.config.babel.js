@@ -53,6 +53,30 @@ export const makeConfig = (config = {}) => {
           ),
         },
         {
+          test: /\global.styles$/,
+          loader: ExtractTextPlugin.extract(
+            "style-loader",
+            "css-loader" +
+            "!postcss!sass-loader"
+          ),
+        },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract(
+            "style-loader",
+            "css-loader" + (
+              "?modules"+
+              "&localIdentName=" +
+              (
+                process.env.NODE_ENV === "production"
+                ? "[hash:base64:5]"
+                : "[path][name]--[local]--[hash:base64:5]"
+              ).toString()
+            ) + "!" +
+            "postcss-loader!sass-loader",
+          ),
+        },
+        {
           test: /content(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
           loader: "file-loader?name=[path][name].[ext]&context=./content",
         },
@@ -68,15 +92,11 @@ export const makeConfig = (config = {}) => {
           test: /\.(ttf|eot|svg|woff)(\?[a-z0-9]+)?$/,
           loader: "file-loader?name=font/[hash:base64].[ext]",
         },
-        {
-          test: /\.svg$/,
-          loader: "raw-loader",
-        },
       ],
     },
 
     phenomic: {
-      loader: {
+      contentLoader: {
         context: path.join(config.cwd, config.source),
         renderer: (text) => (
           require("markdown-it")({
@@ -143,6 +163,14 @@ export const makeConfig = (config = {}) => {
       require("postcss-browser-reporter")(),
       require("postcss-reporter")(),
     ],
+
+    sassLoader: {
+      includePaths: [
+        path.join(config.cwd, "web_modules/styles"),
+        path.join(config.cwd, "web_modules"),
+        path.join(config.cwd, "node_modules"),
+      ],
+    },
 
     plugins: [
       new ExtractTextPlugin("[name].[hash].css", { disable: config.dev }),
