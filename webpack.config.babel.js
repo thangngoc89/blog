@@ -148,6 +148,7 @@ export const makeConfig = (config = {}) => {
           customProperties: {
             variables: {
               colorPrimary: "#FF9800",
+              colorDivider: "#eeeeee",
             },
           },
           customMedia: {

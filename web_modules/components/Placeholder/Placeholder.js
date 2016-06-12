@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react"
-import styles from "./Placeholder.scss"
+import styles from "./Placeholder.css"
 
 export default class Placeholder extends Component {
   static propTypes = {
@@ -14,14 +14,10 @@ export default class Placeholder extends Component {
   render() {
     return (
       <div
-        className={ styles.block }
+        className={ styles.placeholder }
         style={ { height: this.props.height } }
       >
-        <div
-          className={ styles.placeholder }
-        >
-          { this.props.children }
-        </div>
+        { this.props.children }
       </div>
     )
   }
