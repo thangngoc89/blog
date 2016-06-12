@@ -134,7 +134,7 @@
     "markdown-it-video": "^0.2.1",
     "node-sass": "^3.4.2",
     "npm-run-all": "^1.7.0",
-    "phenomic": "^0.14.0",
+    "phenomic": "^0.13.0",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^2.5.2",
     "postcss-import": "^8.1.0",
