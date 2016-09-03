@@ -170,6 +170,6 @@
     "reading-time": "^1.0.2",
     "recompose": "^0.20.0",
     "smoothscroll": "^0.2.2",
-    "waypoints": "^4.0.0"
+    "waypoints": "^4.0.1"
   }
 }
