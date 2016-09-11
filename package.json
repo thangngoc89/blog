@@ -14,10 +14,6 @@
     "predeploy": "babel-node scripts/imagemin.js",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
-    "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=3.0.0"
-  },
   "phenomic": {
     "assets": "images",
     "CNAME": true,
