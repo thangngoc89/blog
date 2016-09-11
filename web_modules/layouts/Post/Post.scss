@@ -15,7 +15,7 @@
   font-size: $font-size-huge;
   font-weight: $font-weight-bolder;
   text-align: center;
-  padding: 1rem 0 3rem 0;
+  padding: 1rem 0 3rem;
 }
 
 .readTime,
@@ -40,7 +40,6 @@
   word-break: break-all;
   word-break: break-word;
   hyphens: auto;
-
   margin-top: 2rem;
 
   p {
@@ -62,7 +61,7 @@
 }
 
 .sibling {
-  padding: 2rem 0 0 0;
+  padding: 2rem 0 0;
 }
 
 .siblingRight {

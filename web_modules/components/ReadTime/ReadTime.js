@@ -8,7 +8,7 @@ const ReadTime = (props) => {
   const timeToString = moment.duration(time.time).humanize()
 
   return (
-    <span {...props}>
+    <span { ...props }>
       ~ { timeToString }
     </span>
   )

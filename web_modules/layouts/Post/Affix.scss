@@ -16,6 +16,7 @@
 
 .active {
   font-weight: $font-weight-bold;
+
   > a {
     color: $color-text;
   }
@@ -23,20 +24,24 @@
 
 .toc-h1 {
   @extend .toc;
+
   padding: 0.3rem 0;
 }
 
 .toc-h2 {
   @extend .toc;
+
   padding: 0.3rem 0.7rem;
 }
 
 .toc-h3 {
   @extend .toc;
+
   padding: 0.3rem 1.4rem;
 }
 
 .toc-h4 {
   @extend .toc;
+
   padding: 0.3rem 2rem;
 }

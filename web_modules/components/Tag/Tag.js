@@ -5,7 +5,7 @@ const Tag = ({ name, ...props }) => {
   return (
     <span
       className={ styles.tag }
-      {...props}
+      { ...props }
     >
       #{ name }
     </span>

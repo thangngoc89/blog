@@ -27,6 +27,7 @@
 .article {
   @extend .col-lg-10;
   @extend .col-xs-12;
+
   padding: 1.5rem 1rem;
   border-bottom: 2px solid darken($color-divider, 0.2);
   margin: 0 auto;

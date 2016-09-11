@@ -35,7 +35,7 @@ export default class PostConnect extends Component {
     return (
       <Post
         sibling={ this.sibling }
-        {...this.props}
+        { ...this.props }
       />
     )
   }

@@ -73,7 +73,7 @@ export default class Comment extends Component {
         {
           this.state.opened &&
           process.env.NODE_ENV === "production" &&
-            <Disqus {...this.props} />
+            <Disqus { ...this.props } />
         }
         {
           this.state.opened &&

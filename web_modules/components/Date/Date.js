@@ -6,7 +6,7 @@ moment.locale("vi")
 const Date = (props) => {
   const date = moment(props.date).utc().format("DD MMMM YYYY")
   return (
-    <span {...props}>{ date }</span>
+    <span { ...props }>{ date }</span>
   )
 }
 
