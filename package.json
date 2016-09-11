@@ -153,7 +153,7 @@
     "style-loader": "^0.13.0",
     "stylelint": "^7.1.0",
     "stylelint-config-standard": "^12.0.0",
-    "webpack": "^1.12.11",
+    "webpack": "^1.13.2",
     "whatwg-fetch": "^1.0.0"
   },
   "dependencies": {
