@@ -128,7 +128,7 @@
     "imagemin": "^4.0.0",
     "invariant": "^2.2.0",
     "json-loader": "^0.5.4",
-    "markdown-it": "^6.0.0",
+    "markdown-it": "^7.0.1",
     "markdown-it-toc-and-anchor-fork": "^2.1.1",
     "markdown-it-video": "^0.2.1",
     "node-sass": "^3.4.2",
