@@ -147,7 +147,7 @@
     "react-router": "^2.0.0",
     "redux": "^3.3.1",
     "remark": "^4.1.1",
-    "remark-lint": "^4.0.0",
+    "remark-lint": "^5.0.0",
     "sass-loader": "^4.0.0",
     "strip-markdown": "^0.3.1",
     "style-loader": "^0.13.0",
