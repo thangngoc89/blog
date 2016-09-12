@@ -1,7 +1,6 @@
 ---
 layout: Post
-title: 'Tôi đã thiết kế trang web học C++ của Dạy Nhau Học phục vụ hàng chục nghìn
-lượt truy cập mỗi tháng với $0.0002 thế nào'
+title: 'Thiết kế trang web phục vụ hàng chục nghìn truy cập mỗi tháng với $0.0002'
 date: 2016-09-11 17:00:00
 tags: [case study, phenomic, static website]
 toc: true

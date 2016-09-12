@@ -1,0 +1,36 @@
+$spinner-color: $accent-color;
+$spinner-color-front: rgba($spinner-color, .8);
+$spinner-color-back: rgba($spinner-color, .2);
+
+.loader {
+  float: left;
+  height: 60vh;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.spinner {
+  height: 8vh;
+  min-height: 5rem;
+  width: 8vh;
+  min-width: 5rem;
+  border: 6px solid $spinner-color-back;
+  border-top-color: $spinner-color-front;
+  border-radius: 100%;
+  animation: rotation 0.6s infinite linear 0.25s;
+
+  /* the opacity is used to lazyload the spinner, see animation delay */
+  opacity: 0;
+  margin: 0 auto;
+}
+
+@keyframes rotation {
+  from {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(359deg);
+  }
+}

@@ -2,7 +2,7 @@
 layout: Post
 title: 'Omnia3: Xem video, upload video kiếm tiền'
 date: 2014-11-22 11:38:32
-tag: [mmo]
+tags: [mmo]
 ---
 
 Omina3 là 1 site mới khai trương và còn trong giai đoạn beta cách thức hoạt động site này rất đơn giản. Chỉ cần bạn xem video (tức là xem quảng cáo của nó) thì các bạn sẽ được tiền. Đơn vị tiền tệ sử dụng là Euro.

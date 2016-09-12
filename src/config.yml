@@ -1,0 +1,51 @@
+---
+theme_settings:
+  # Meta
+  title: Khoa Nguyen
+  avatar:
+  gravatar: a8915a67cbc1917c7a1404a1889c701c
+  description: "Web development, React.js, Redux.js, Webpack và các vấn đề liên quan"
+
+  # Header and footer text
+  header_text:
+  header_text_feature_image:
+  footer_text: >
+   Powered by <a href="https://phenomic.io">Phenomic.io</a> with Type Theme
+
+  # Icons
+  rss: true
+  email_address: hi@khoanguyen.me
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  github: "thangngoc89"
+  google_plus:
+  instagram:
+  linkedin:  # Full URL
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter: "khoanguyenme"
+  wordpress:
+  youtube:
+
+  # Scripts
+  google_analytics: # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname:
+
+  # Localization strings
+  str_follow_on: "Theo dõi qua"
+  str_rss_follow: "Theo dõi qua RSS"
+  str_email: "Email"
+  str_next:
+  str_prev:
+  str_continue_reading: "Xem thêm"
+
+  edit_on_github: "https://github.com/thangngoc89/blog/blob/master/content/"
+
+mailchimp: "//khoanguyen.us9.list-manage.com/subscribe/post?u=4a057e312e7df36d829b86841&amp;id=e95b37829f"

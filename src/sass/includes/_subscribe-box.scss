@@ -1,0 +1,54 @@
+.subscribe-box {
+  @extend %padding-regular;
+  background: $accent-color;
+
+  h2 {
+    cursor: initial;
+  }
+
+  form {
+    display: flex;
+    margin: 0.5em 0;
+  }
+
+  input[type=email] {
+    border: .2em $text-color solid;
+    border-radius: 0.3em;
+    padding: 1em;
+    margin: 0 .2em 0 0;
+    width: 100%;
+    flex: 6;
+    background: none;
+
+    &::-webkit-input-placeholder {
+      color: $text-color;
+    }
+    &:-moz-placeholder {
+      color: $text-color;
+    }
+    &::-moz-placeholder {
+      color: $text-color;
+    }
+    &:-ms-input-placeholder {
+      color: $text-color;
+    }
+  }
+
+  input[type=submit] {
+    border: .2em $text-color solid;
+    border-radius: 0.3em;
+    color: $text-color;
+    background: none;
+    padding: 1em;
+    margin: 0 0 0 .2em;
+    width: 100%;
+    flex: 1;
+    font-weight: 700;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+      background: $text-color;
+    }
+  }
+}

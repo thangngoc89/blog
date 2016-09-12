@@ -1,10 +1,9 @@
 import "whatwg-fetch"
-
-import metadata from "../src/metadata.js"
-import routes from "../src/routes.js"
-import store from "../src/store.js"
-
 import phenomicClient from "phenomic/lib/client"
+
+import metadata from "app/metadata"
+import routes from "app/routes"
+import store from "app/store"
 
 phenomicClient({
   metadata,
@@ -15,7 +14,6 @@ phenomicClient({
 // Require images in each posts folder
 require.context("../content", true, /\.(html|ico|jpe?g|png|gif)$/)
 
-// hot loading
 // md files → JSON && generate collection + hot loading for dev
 let mdContext = require.context("../content", true, /\.md$/)
 mdContext.keys().forEach(mdContext)

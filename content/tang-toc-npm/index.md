@@ -3,6 +3,7 @@ layout: Post
 title: 'npm: Tăng tốc và sử dụng offline'
 date: 2016-04-12 17:00:00
 route: tang-toc-npm
+feature-img: ./feature-img.png
 tags: [javascript]
 toc: false
 ---

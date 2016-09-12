@@ -1,0 +1,112 @@
+article,
+.comments {
+  @extend %padding-regular;
+  border-bottom: 1px solid $border-color;
+  float: left;
+  width: 100%;
+}
+article {
+  header {
+    margin-bottom: 6%;
+    text-align: center;
+  }
+  a:hover {
+    @extend %link-hover;
+  }
+  .footnotes {
+    font-size: 0.9em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .phenomic-HeadingAnchor {
+    position: absolute;
+    left: -1.5rem;
+    opacity: 0.1;
+    transition: opacity 0.2s;
+    color: $link-color;
+    // @include media-breakpoint-down(xs) {
+    //   position: relative;
+    //   left: 0;
+    // }
+  }
+
+  h1:hover .phenomic-HeadingAnchor,
+  h2:hover .phenomic-HeadingAnchor,
+  h3:hover .phenomic-HeadingAnchor,
+  h4:hover .phenomic-HeadingAnchor,
+  h5:hover .phenomic-HeadingAnchor,
+  h6:hover .phenomic-HeadingAnchor {
+    opacity: 1;
+  }
+
+  .github-edit-link {
+    @extend %padding-regular;
+    padding-top: 0;
+  }
+}
+
+header {
+  h1 {
+    margin: 0;
+  }
+  .meta {
+    color: rgba($text-color, .5);
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+.feature-image {
+  padding: 0%;
+  .post-link {
+    color: $feature-image-text-color;
+  }
+  header {
+    color: $feature-image-text-color;
+    background-size: $feature-image-size;
+    margin-bottom: 0;
+    padding: $padding-large/2.5 $padding-large;
+    .meta {
+      color: rgba($feature-image-text-color, .7);
+    }
+  }
+  .post-content {
+    @extend %padding-regular;
+  }
+}
+// Post navigation
+#post-nav {
+  width:100%;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  float: left;
+
+  a, .page-title {
+    display: inline-block;
+  }
+
+  .page-title {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  a {
+    padding: 2em 3em;
+    border: 1px solid rgba(255, 255, 255, 0);
+    text-align: center;
+    width: 50%;
+  }
+  a:hover {
+    @extend a.button:hover;
+  }
+
+  i {
+    vertical-align: middle;
+  }
+}

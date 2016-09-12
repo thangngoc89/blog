@@ -1,0 +1,166 @@
+{
+  "private": true,
+  "name": "khoanguyen-dot-me",
+  "homepage": "https://khoanguyen.me/",
+  "scripts": {
+    "git-init": "git submodule init && git submodule update",
+    "git-update": "git submodule foreach git pull origin master",
+    "lint:js": "eslint --ignore-path .gitignore --fix .",
+    "lint:md": "remark --quiet --frail content",
+    "lint:css": "stylelint web_modules/**/**/*.scss --syntax scss",
+    "lint": "npm-run-all --parallel lint:*",
+    "start": "phenomic start",
+    "build": "phenomic build",
+    "predeploy": "babel-node scripts/imagemin.js",
+    "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
+  },
+  "phenomic": {
+    "assets": "images",
+    "CNAME": true,
+    "offline": false
+  },
+  "config": {
+    "slogan": "Viết ngẫu hứng. Chủ yếu chuyện công nghệ",
+    "siteName": "Khoa Nguyen Blog",
+    "github": "thangngoc89",
+    "twitter": "khoanguyenme",
+    "email": "hi@khoanguyen.me",
+    "edit-on-github": "https://github.com/thangngoc89/blog/blob/master/content/",
+    "googleAnalyticsUA": "UA-56785612-1",
+    "disqus": "khoanguyenme"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-1",
+      "react"
+    ],
+    "env": {
+      "production": {
+        "presets": [
+          "es2015",
+          "stage-1",
+          "react",
+          "react-optimize"
+        ],
+        "plugins": [
+          "babel-plugin-lodash"
+        ]
+      }
+    },
+    "plugins": [
+      "babel-plugin-transform-runtime"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "eslint-config-i-am-meticulous/react"
+    ],
+    "rules": {
+      "max-len": [
+        2,
+        100,
+        4
+      ],
+      "react/jsx-no-literals": 0,
+      "react/jsx-no-bind": 0,
+      "react/prefer-stateless-function": 0
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "value-list-comma-newline-after": null
+    }
+  },
+  "remarkConfig": {
+    "plugins": {
+      "lint": {
+        "maximum-heading-length": false,
+        "maximum-line-length": false,
+        "no-html": false,
+        "no-heading-punctuation": false,
+        "no-multiple-toplevel-headings": false,
+        "no-shortcut-reference-link": false,
+        "no-undefined-references": false,
+        "list-item-indent": "space",
+        "list-item-spacing": false,
+        "no-emphasis-as-heading": false
+      }
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.1",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-lodash": "^3.1.2",
+    "babel-plugin-transform-runtime": "^6.5.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.0.1",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-1": "^6.3.13",
+    "babel-runtime": "^6.5.0",
+    "bootstrap": "https://github.com/twbs/bootstrap/archive/6ec9aa34a4b6d43b593b97f9b207410eff8f0152.tar.gz",
+    "chalk": "^1.1.1",
+    "css-loader": "^0.23.0",
+    "debug": "^2.2.0",
+    "eslint": "^3.2.2",
+    "eslint-config-i-am-meticulous": "^4.1.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-react": "^5.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "gh-pages": "^0.11.0",
+    "history": "^2.0.0",
+    "imagemin": "^4.0.0",
+    "invariant": "^2.2.0",
+    "json-loader": "^0.5.4",
+    "markdown-it": "^6.0.0",
+    "markdown-it-toc-and-anchor-fork": "^2.1.1",
+    "markdown-it-video": "^0.2.1",
+    "node-sass": "^3.4.2",
+    "npm-run-all": "^2.1.2",
+    "phenomic": "^0.14.0",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-import": "^8.1.0",
+    "postcss-loader": "^0.8.1",
+    "postcss-reporter": "^1.3.3",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-helmet": "^3.0.0",
+    "react-overlays": "^0.6.0",
+    "react-redux": "^4.3.0",
+    "react-router": "^2.0.0",
+    "redux": "^3.3.1",
+    "remark": "^4.1.1",
+    "remark-lint": "^4.0.0",
+    "sass-loader": "^4.0.0",
+    "strip-markdown": "^0.3.1",
+    "style-loader": "^0.13.0",
+    "stylelint": "^7.1.0",
+    "stylelint-config-standard": "^12.0.0",
+    "webpack": "^1.12.11",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "dependencies": {
+    "algoliasearch": "^3.12.0",
+    "classnames": "^2.2.3",
+    "highlight.js": "^9.3.0",
+    "lodash": "^4.3.0",
+    "moment": "^2.11.1",
+    "react-disqus-thread": "^0.4.0",
+    "react-ga": "^2.1.0",
+    "react-headroom": "^2.1.0",
+    "react-topbar-progress-indicator": "^1.0.0",
+    "react-window-resize-listener": "^1.0.0",
+    "reading-time": "^1.0.2",
+    "recompose": "^0.20.0",
+    "smoothscroll": "^0.2.2",
+    "waypoints": "^4.0.0"
+  }
+}

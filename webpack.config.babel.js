@@ -1,10 +1,15 @@
 import path from "path"
+
 import webpack from "webpack"
 import ExtractTextPlugin from "extract-text-webpack-plugin"
-import markdownItTocAndAnchor from "markdown-it-toc-and-anchor-fork"
-import markdownItVideo from "markdown-it-video"
+import { phenomicLoader } from "phenomic"
+
 import pkg from "./package.json"
 
+// note that this webpack file is exporting a "makeConfig" function
+// which is used for phenomic to build dynamic configuration based on your needs
+// see the end of the file if you want to export a default config
+// (eg: if you share your config for phenomic and other stuff)
 export const makeConfig = (config = {}) => {
   return {
     ...config.dev && {
@@ -13,15 +18,28 @@ export const makeConfig = (config = {}) => {
     module: {
       noParse: /\.min\.js/,
       loaders: [
+        // *.md => consumed via phenomic special webpack loader
+        // allow to generate collection and rss feed.
         {
           // phenomic requirement
           test: /\.md$/,
-          loader: "phenomic/lib/content-loader",
+          loader: phenomicLoader,
+          exclude: [
+            /stalled/,
+          ],
+          // config is in `phenomic` section later in the file
+          // so you can use functions (and not just JSON) due to a restriction
+          // of webpack that serialize/deserialize loader `query` option.
         },
+
+        // *.json => like in node, return json
+        // (not handled by webpack by default)
         {
           test: /\.json$/,
           loader: "json-loader",
         },
+
+        // *.js => babel + eslint
         {
           test: /\.js$/,
           loaders: [
@@ -34,143 +52,62 @@ export const makeConfig = (config = {}) => {
           ],
           include: [
             path.resolve(__dirname, "scripts"),
-            path.resolve(__dirname, "web_modules"),
+            path.resolve(__dirname, "src"),
+            path.resolve(__dirname, "node_modules", "react-icons"),
           ],
         },
         {
-          test: /\.css$/,
-          exclude: /\.global\.css$/,
-          include: path.resolve(__dirname, "web_modules"),
-          loader: ExtractTextPlugin.extract(
-            "style-loader",
-            [ `css-loader?modules&localIdentName=${
-                config.production
-                ? "[hash:base64:5]"
-                : "[path][name]--[local]--[hash:base64:5]"
-              }`,
-              "postcss-loader",
-            ].join("!"),
-          ),
-        },
-        {
-          test: /\global.styles$/,
-          loader: ExtractTextPlugin.extract(
-            "style-loader",
-            "css-loader" +
-            "!postcss!sass-loader"
-          ),
-        },
-        {
           test: /\.scss$/,
+          include: path.resolve(__dirname, "src"),
           loader: ExtractTextPlugin.extract(
             "style-loader",
-            "css-loader" + (
-              "?modules"+
-              "&localIdentName=" +
-              (
-                process.env.NODE_ENV === "production"
-                ? "[hash:base64:5]"
-                : "[path][name]--[local]--[hash:base64:5]"
-              ).toString()
-            ) + "!" +
-            "postcss-loader!sass-loader",
+            [ "css-loader", "sass-loader" ].join("!"),
           ),
         },
+        // copy assets and return generated path in js
         {
           test: /content(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
           loader: "file-loader?name=[path][name].[ext]&context=./content",
         },
         {
-          test: /web_modules(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
+          test: /src(\/|\\).*\.(html|ico|jpe?g|png|gif)$/,
           loader: "file-loader",
           query: {
             name: "images/[path][name].[ext]",
-            context: "./web_modules",
+            context: "./src",
           },
         },
+
+        // svg as raw string to be inlined
         {
-          test: /\.(ttf|eot|svg|woff)(\?[a-z0-9]+)?$/,
-          loader: "file-loader?name=font/[hash:base64].[ext]",
+          test: /\.svg$/,
+          loader: "raw-loader",
+        },
+        {
+          test: /\.yml$/,
+          loader: "json-loader!yaml-loader",
         },
       ],
     },
 
     phenomic: {
-      contentLoader: {
-        context: path.join(config.cwd, config.source),
-        renderer: (text) => (
-          require("markdown-it")({
-            html: true,
-            linkify: true,
-            typographer: true,
-            highlight: (code, lang) => {
-              code = code.trim()
-              const hljs = require("highlight.js")
-              // language is recognized by highlight.js
-              if (lang && hljs.getLanguage(lang)) {
-                return hljs.highlight(lang, code).value
-              }
-              // ...or fallback to auto
-              return hljs.highlightAuto(code).value
-            },
-          })
-          .use(markdownItTocAndAnchor, {
-            tocFirstLevel: 1,
-          })
-          .use(markdownItVideo)
-          .render(text)
-        ),
-        description: {
-          pruneLength: 200,
-        },
-        feedsOptions: {
-          title: pkg.config.sitename,
-          site_url: pkg.homepage,
-        },
-        feeds: {
-          "feed.xml": {
-            collectionOptions: {
-              filter: (item) => (item.layout === "Post" && !item.draft),
-              sort: "date",
-              reverse: true,
-              limit: 20,
-            },
+      context: path.join(__dirname, config.source),
+      // plugins: [ ...phenomicLoaderPresets.markdown ]
+      // see https://phenomic.io/docs/usage/plugins/
+      feedsOptions: {
+        title: pkg.name,
+        site_url: pkg.homepage,
+      },
+      feeds: {
+        "feed.xml": {
+          collectionOptions: {
+            filter: { layout: "Post" },
+            sort: "date",
+            reverse: true,
+            limit: 20,
           },
         },
       },
-    },
-
-    postcss: () => [
-      require("postcss-import")(),
-      require("postcss-cssnext")({
-        browsers: [ "last 2 versions", "ie >= 8", "iOS >= 6", "Android >= 4" ],
-        features: {
-          customProperties: {
-            variables: {
-              colorPrimary: "#FF9800",
-              colorDivider: "#eeeeee",
-            },
-          },
-          customMedia: {
-            extensions: {
-              "--sm": "screen and (min-width: 35.5rem)",
-              "--md": "screen and (min-width: 48rem)",
-              "--lg": "screen and (min-width: 64rem)",
-              "--xl": "screen and (min-width: 80rem)",
-            },
-          },
-        },
-      }),
-      require("postcss-browser-reporter")(),
-      require("postcss-reporter")(),
-    ],
-
-    sassLoader: {
-      includePaths: [
-        path.join(config.cwd, "web_modules/styles"),
-        path.join(config.cwd, "web_modules"),
-        path.join(config.cwd, "node_modules"),
-      ],
     },
 
     plugins: [
@@ -196,3 +133,6 @@ export const makeConfig = (config = {}) => {
     resolveLoader: { root: [ path.join(__dirname, "node_modules") ] },
   }
 }
+
+// you might want to export a default config for another usage ?
+// export default makeConfig()

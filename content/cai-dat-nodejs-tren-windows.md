@@ -2,7 +2,7 @@
 layout: Post
 title: Cài đặt Node.JS trên Windows
 date: 2015-01-04 23:48:11.000000000 -05:00
-tags: [js]
+tags: [javascript]
 toc: false
 ---
 

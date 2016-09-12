@@ -1,0 +1,17 @@
+.text {
+  color: var(--colorPrimary);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-top: 2px solid var(--colorDivider);
+
+  a {
+    color: var(--colorPrimary);
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: var(--colorPrimary);
+    }
+  }
+}

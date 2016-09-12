@@ -1,6 +1,6 @@
 ---
 layout: Post
-title: 'Tìm hiểu định dạng MDict (MDD/MDX)'
+title: 'Tìm hiểu định dạng .mdd và .mdx của MDict'
 date: 2016-04-05 07:00:00
 route: tim-hieu-dinh-dang-mdict
 tags: [algorithm]

@@ -2,7 +2,7 @@
 layout: Post
 title: "json ⊄ js"
 date: 2016-02-19 23:22:00
-tags: [js, json]
+tags: [javascript, json]
 translate:
   url: "https://medium.com/joys-of-javascript/json-js-42a28471221d#.m23ozaapw"
   author: "Dan Pupius"
