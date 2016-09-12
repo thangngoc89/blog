@@ -17,16 +17,7 @@
   "phenomic": {
     "assets": "images",
     "CNAME": true,
-    "offline": {
-      "serviceWorker": true,
-      "appcache": false,
-      "pattern": [
-        "index.html",
-        "**/**.json",
-        "**.css",
-        "**.js"
-      ]
-    }
+    "offline": false
   },
   "config": {
     "slogan": "Viết ngẫu hứng. Chủ yếu chuyện công nghệ",
