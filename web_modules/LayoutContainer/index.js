@@ -30,6 +30,9 @@ export class LayoutContainer extends Component {
             { name: "theme-color", content: "#0275d8" },
             { name: "msapplication-TileColor", content: "#0275d8" },
           ] }
+          link={ [
+            { rel: "icon", content: "/images/favicon.ico" },
+          ] }
         />
         <Header />
         { this.props.children }
