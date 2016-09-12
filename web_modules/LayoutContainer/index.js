@@ -31,7 +31,7 @@ export class LayoutContainer extends Component {
             { name: "msapplication-TileColor", content: "#0275d8" },
           ] }
           link={ [
-            { rel: "icon", content: "/images/favicon.ico" },
+            { rel: "icon", href: "/images/favicon.ico" },
           ] }
         />
         <Header />
