@@ -1,8 +1,9 @@
 ---
 layout: Post
-title: 'Học flux bằng truyện tranh'
+title: 'Học Flux bằng truyện tranh'
 date: 2016-09-18
-feature-img: ./feature
+feature-img: ./feature.jpg
+light_theme: true
 tags: [javascript, cartoon]
 ---
 
