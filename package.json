@@ -16,6 +16,7 @@
   },
   "phenomic": {
     "assets": "images",
+    "offline": true,
     "CNAME": true
   },
   "babel": {
