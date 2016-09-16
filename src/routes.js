@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import { Route } from "react-router"
 
 import AppContainer from "./AppContainer"
-import { PageContainer as PhenomicPageContainer } from "phenomic"
-
+import { default as PhenomicPageContainer } from "phenomic/lib/PageContainer"
 import Page from "./layouts/Page"
 import PageError from "./layouts/PageError"
 import PageLoading from "./layouts/PageLoading"
@@ -12,7 +11,7 @@ import Archive from "./layouts/Archive"
 import Post from "./layouts/Post"
 import Tag from "./layouts/Tag"
 
-class PageContainer extends Component {
+class MainPageContainer extends Component {
   render() {
     const { props } = this
     return (
@@ -38,6 +37,6 @@ class PageContainer extends Component {
 export default (
   <Route component={ AppContainer }>
     <Route path="tag/:tag" component={ Tag } />
-    <Route path="*" component={ PageContainer } />
+    <Route path="*" component={ MainPageContainer } />
   </Route>
 )
