@@ -12,6 +12,7 @@ git rebase -i master
 ```
 
 Chọn `r` (rename) để đặt lại tên cho commit đầu
+
 Chọn `f` (fixup) hoặc `s` (squash) trên từng commit
 
 ![](rebase.png)
