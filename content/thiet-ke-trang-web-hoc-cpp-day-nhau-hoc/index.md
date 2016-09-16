@@ -2,7 +2,7 @@
 layout: Post
 title: 'Thiết kế trang web phục vụ hàng chục nghìn truy cập mỗi tháng với $0.0002'
 date: 2016-09-11 17:00:00
-tags: [case study, phenomic, static website]
+tags: [case-study, phenomic, static-website]
 toc: true
 ---
 
