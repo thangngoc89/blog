@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "khoa-nguyen-blog",
-  "homepage": "https://phenomic-theme-type.khoanguyen.me",
+  "homepage": "https://khoanguyen.me",
   "twitter": "thangngoc89",
   "repository": "https://github.com/thangngoc89/phenomic-theme-type",
   "scripts": {
@@ -14,6 +14,7 @@
     "test": "npm run build",
     "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
+  "googleAnalyticsUA": "UA-56785612-1",
   "phenomic": {
     "assets": "images",
     "offline": true,
@@ -92,6 +93,7 @@
   "dependencies": {
     "gh-pages": "^0.11.0",
     "node-sass": "^3.9.3",
+    "react-google-analytics": "^0.2.0",
     "react-icons": "^2.2.1",
     "sass-loader": "^4.0.2",
     "yaml-loader": "^0.4.0"
