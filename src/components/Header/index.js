@@ -54,6 +54,14 @@ export default class Header extends Component {
                 { "Bài viết" }
               </Link>
             </li>
+            <li>
+              <Link
+                to="/tag/til"
+                activeClassName="page-link-active"
+              >
+                { "#TIL" }
+              </Link>
+            </li>
             <NavIcons />
           </ul>
         </nav>
