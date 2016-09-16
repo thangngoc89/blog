@@ -85,7 +85,7 @@
     "style-loader": "^0.12.3",
     "stylelint": "^6.8.0",
     "stylelint-config-standard": "^10.0.0",
-    "phenomic": "MoOx/phenomic"
+    "phenomic": "0.16.2"
   },
   "dependencies": {
     "node-sass": "^3.9.3",
