@@ -20,5 +20,6 @@ Nhanh hơn
 
 ```sh
 git reset --soft master
-git commit -m "Tên cho commit đầu ở đây"
+git add .
+git commit -am "Tên cho commit đầu ở đây"
 ```
