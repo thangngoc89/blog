@@ -11,7 +11,8 @@
     "start": "phenomic start",
     "build": "phenomic build",
     "pretest": "npm run lint",
-    "test": "npm run build"
+    "test": "npm run build",
+    "deploy": "gh-pages --silent --branch master --repo https://$GITHUB_TOKEN@github.com/thangngoc89/thangngoc89.github.io.git --dist dist"
   },
   "phenomic": {
     "assets": "images",
@@ -88,6 +89,7 @@
     "phenomic": "0.16.2"
   },
   "dependencies": {
+    "gh-pages": "^0.11.0",
     "node-sass": "^3.9.3",
     "react-icons": "^2.2.1",
     "sass-loader": "^4.0.2",
