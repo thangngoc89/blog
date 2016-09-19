@@ -8,7 +8,7 @@ tags: [til, git]
 Mình thường tạo ra rất nhiều branch khi làm việc với git. Nhiều khi vài chục
 branch cùng một lúc.
 
-![](git-branch-mess.jpg)
+![](git-branch-mess.png)
 
 Nếu các bạn muốn xóa nhanh tất cả các branch và chỉ chừa lại branch master,
 câu lệnh dưới đây dành cho bạn:
