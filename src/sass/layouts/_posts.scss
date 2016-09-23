@@ -86,6 +86,10 @@ header {
   display: flex;
   float: left;
 
+  @media (max-width: 35.5rem) {
+    flex-direction: column;
+  }
+
   a, .page-title {
     display: inline-block;
   }
@@ -101,6 +105,10 @@ header {
     border: 1px solid rgba(255, 255, 255, 0);
     text-align: center;
     width: 50%;
+
+    @media (max-width: 35.5rem) {
+      width: 100%;
+    }
   }
   a:hover {
     @extend a.button:hover;
