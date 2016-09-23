@@ -42,6 +42,7 @@ Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ 
 ứng dụng.
 
 ![](3-model-view.png)
+
 *Model truyền dữ liệu với View*
 
 Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view để render.
@@ -52,7 +53,8 @@ khác.
 Thêm vào đó, nhiều khi một thay đổi sẽ kích hoạt dây chuyền các thay đổi khác trong model. Hãy tưởng tượng nhưng bạn chơi trò Pong, bạn sẽ không thể nào biết được quả bóng sẽ chạm vào đâu (hoặc là rơi ra khỏi màn hình).
 
 ![](4.png)
-*View cập nhật model. Model cập nhật model khác. Nó giống như quả bóng trong trò Pong*
+
+*View cập nhật model. Model cập nhật model khác. Nó giống như quả bóng khi chơi Pong*
 
 Bỏ qua sự thật hiển nhên là những thay đổi này có thể xảy ra không đồng bộ (async). Một thay đổi có thể kích hoạt nhiều thay đổi khác. Tưởng tượng việc nào giống như đổ hẳn một túi bóng vào màn hình trong trò Pong. Các quả bóng này sẽ chạy tự tung loạn xạ.
 
