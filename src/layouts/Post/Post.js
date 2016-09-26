@@ -8,6 +8,21 @@ import cx from "classnames"
 import site from "../../config.yml"
 
 class Post extends Component {
+  componentDidMount() {
+    this.moveImageToCenter()
+  }
+
+  componentDidUpdate() {
+    this.moveImageToCenter()
+  }
+
+  moveImageToCenter = () => {
+    Array.from(
+      document.querySelectorAll(".post-content img")
+    ).forEach((img) => {
+      img.parentElement.style["text-align"] = "center"
+    })
+  }
   render() {
     const { head, body, navigation, ...others } = this.props
 
