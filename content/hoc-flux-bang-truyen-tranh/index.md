@@ -33,7 +33,6 @@ Vấn đề nêu trên khi chỉ là vòng lặp cho người dùng mà nó cũn
 Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ liệu được truyền đi trong ứng dụng.
 
 ![](3-model-view.png)
-
 *Model truyền dữ liệu với View*
 
 Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view để render. Bởi vì người dùng tương tác thông qua view, nên view cần phải cập nhật model dựa trên tương tác của người dùng. Model thì nhiều khi lại cần cập nhất model khác.
@@ -41,7 +40,6 @@ Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view
 Thêm vào đó, một thay đổi có thể kích hoạt một loạt các thay đổi dây chuyền. Hãy tưởng tượng bạn đang chơi trò Pong, bạn sẽ không thể nào biết được quả bóng sẽ chạm vào đâu (hoặc là rơi ra khỏi màn hình).
 
 ![](4.png)
-
 *View cập nhật model. Model cập nhật model khác. Nó giống như quả bóng khi chơi Pong*
 
 Bỏ qua sự thật hiển nhên là những thay đổi này có thể xảy ra không đồng bộ (async). Một thay đổi có thể kích hoạt nhiều thay đổi khác. Tưởng tượng việc này giống như đổ hẳn một túi bóng vào màn hình trong trò Pong. Các quả bóng này sẽ chạy tứ tung loạn xạ.
@@ -50,14 +48,14 @@ Tóm lại thì mô hình trên làm cho việc debug luồng đi của dữ li�
 
 ## Giải pháp: luồng dữ liệu một chiều
 
-Vì các lí do đã giải thích ở trên, Facebook đã thử nghiệm một mô hình, mà dữ liệu di chuyển theo một chiều - chỉ một chiều - và khi bạn cần thêm dữ liệu mới vào, các luồng này bắt đầu tại điểm xuất phát. Họ gọi nó là mô hình Flux.
+Vì các lí do đã giải thích ở trên, Facebook đã thử nghiệm một mô hình, mà dữ liệu di chuyển theo một chiều - chỉ một chiều - và khi bạn cần thêm dữ liệu mới vào, quá trình bắt đầu tại điểm xuất phát. Họ gọi nó là mô hình Flux.
 
 ![](assets/index-cc610.png)
 *Sơ đồ từ tài liệu về Flux của Facebook. Nó tuyệt vời hơn bạn tường*
 
 Flux thực sự rất tuyệt vời ... nhưng bạn không thể biết chỉ bằng việc nhìn vào sơ đồ trên.
 
-Một khi bạn đã hiểu Flux, sơ đồ trên trở nên rất rõ ràng. Vấn đề là khi bạn tìm hiểu về Flux thông qua tài liệu chính thức, mình không nghĩ là sơ đồ trên sẽ giúp bạn hiểu về nó. Nhiệm vụ của một sơ đồ là cho bạn cái nhìn toàn cảnh về hệ thống trước khi bắt đầu nghiên cứu sâu về nó.
+Một khi bạn đã hiểu Flux, sơ đồ trên trở nên rất rõ ràng. Vấn đề là khi bạn tìm hiểu về Flux thông qua tài liệu chính thức, mình không nghĩ là sơ đồ trên sẽ giúp ích được bạn. Nhiệm vụ của một sơ đồ là cho bạn cái nhìn toàn cảnh về hệ thống trước khi bắt đầu nghiên cứu sâu về nó.
 
 Mình hiểu về Flux không phải nhờ sơ đồ kiểu này, mà là suy nghĩ về hệ thống thông qua các nhân vật cùng làm việc để đạt được mục tiêu. Hôm nay, mình sẽ giới thiệu với các bạn phần diễn xuất của các nhân vật do mình tự nghĩ ra.
 
@@ -69,7 +67,7 @@ Mình sẽ giới thiệu nhân về các nhân vật trước khi giải thích
 
 > Lưu ý: Trong bài này mình sẽ không dịch các thuật ngữ liên quan trực tiếp đến Flux.
 
-Nhân vật đầu tiên chính là action creator. Nó có nhiệm vụ tại hành động. Hành động là cách thức mà mọi thay đổi và tương tác xảy ra. Mỗi khi bạn muốn thay đổi trạng thái app hay render một view khác hoàn toàn, bạn sẽ tạo ra một hành động.
+Nhân vật đầu tiên chính là action creator. Nó có nhiệm vụ tạo hành động. Hành động là cách thức mà mọi thay đổi và tương tác xảy ra. Mỗi khi bạn muốn thay đổi trạng thái app hay render một view khác hoàn toàn, bạn sẽ tạo ra một hành động.
 
 Mình ví action creator như là một nhân viên tiếp tân của tổng đài điện thoại. Bạn gửi những thông tin bạn cần truyền đi đến action creator, sau đó action creator sẽ định dạng thông tin theo cách mà toàn bộ hệ thống có thể hiểu được.
 
@@ -77,15 +75,15 @@ Mình ví action creator như là một nhân viên tiếp tân của tổng đ�
 
 Action creator tạo ra một hành động với một kiểu hành động (action's type) và nội dung hành động (action's payload). Mỗi kiểu hành động sẽ là một trong những kiểu hành động bạn đã định nghĩa sẵn trong hệ thống (thường là một danh sách các hằng - constant). `MESSAGE_CREATE` và `MESSAGE_READ` là các ví dụ cụ thể của hành động.
 
-Một hiệu ứng tuyệt vời khi mà hệ thống của bạn biết được tất cả các hành động có thể xảy ra, đó là một lập trình viến mới tiếp cận với dự án, mở file định nghĩa action creator và có thể xem được toàn bộ API, biết đường được toàn bộ các thay đổi có thể xảy ra trong hệ thống cùa bạn.
+Khi hệ thống biết được tất cả các hành động có thể xảy ra, một hệ quả tất yếu là một lập trình viến mới tiếp cận với dự án, mở file định nghĩa action creator và có thể xem được toàn bộ API, biết được toàn bộ các thay đổi có thể xảy ra trong hệ thống cùa bạn.
 
 Một khi action creator tạo ra một hành động, nó sẽ truyền hành động này tới dispatcher.
 
 ### Dispatcher (người truyền tin)
 
-Về cơ bản, dispatcher là một danh bạ callback lớn. Nó như là một nhân viên tổng đài điện thoại làm việc ở bảng điều khiển. Nó sẽ giữ một dành sách lớn các store cần nhận hành động. Mỗi khi hành động đến từ action creator, nó sẽ truyền hành động này đến các store khác nhau.
+Về cơ bản, dispatcher là một danh bạ lớn. Nó như là một nhân viên tổng đài điện thoại làm việc ở bảng điều khiển. Nó sẽ giữ một dành sách lớn các store cần nhận hành động. Mỗi khi hành động đến từ action creator, nó sẽ truyền hành động này đến các store khác nhau.
 
-Dispatcher thực hiện việc truyền tin của mình một cách đồng bộ. Việc này giúp giải quyết vấn để nhiều quả bóng cùng lúc trong trò Pong mà mình đã nói ở trên. Bạn có thể thiết lập để một store nhận cập nhật trước một store khác thông qua `waitFor()`.
+Dispatcher thực hiện việc truyền tin của mình một tuần tự cho từng store. Việc này giúp giải quyết vấn để nhiều quả bóng cùng lúc trong trò Pong mà mình đã nói ở trên. Bạn có thể thiết lập để một store nhận cập nhật trước một store khác thông qua `waitFor()`.
 
 ![](assets/index-0d906.png)
 
@@ -103,7 +101,7 @@ Một khi store đã áp dụng các thay đổi cho state, nó sẽ phát ra t�
 
 ### Controller view và view
 
-View có trách nhiều nhận thông tin từ state và render giao diện cũng như là nhận lại tương tác của người dùng.
+View có trách nhiệm nhận thông tin từ state và render giao diện và tiếp nhận tương tác của người dùng.
 
 View chỉ là người đại diện, nó không có bất kì ý thức gì về logic của ứng dụng. Nó chỉ nhận dữ liệu, định dạng và xuất ra thành HTML markup.
 
@@ -138,7 +136,7 @@ Một khi quá trình thiết lập hoàn tất, ứng dụng đã sẵn sàng �
 
 ![](assets/index-24d0f.png)
 
-2. Action creator định dạng hành động và gửi nó tới dispatcher
+2. Action creator định dạng hành động và gửi nó tới dispatcher.
 
 ![action creator gửi hành động tới dispatcher](assets/index-c3aa5.png)
 
@@ -146,7 +144,7 @@ Một khi quá trình thiết lập hoàn tất, ứng dụng đã sẵn sàng �
 
 ![store nhận action từ dispatcher và thay đổi state](assets/index-29626.png)
 
-4. Khi store đã hoàn thành thay đổi state, nó sẽ báo cho các controller view đã liên kết biết
+4. Khi store đã hoàn thành thay đổi state, nó sẽ báo cho các controller view đã liên kết biết.
 
 5. Các controller view sẽ yêu cầu store gửi chúng những cập nhật mới về state.
 
