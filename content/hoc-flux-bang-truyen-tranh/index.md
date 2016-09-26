@@ -30,7 +30,7 @@ Vấn đề nêu trên khi chỉ là vòng lặp cho người dùng mà nó cũn
 
 ## Vấn đề cốt lõi
 
-Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ liệu di chuyển trong ứng dụng.
+Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ liệu được truyền đi trong ứng dụng.
 
 ![](3-model-view.png)
 
@@ -38,15 +38,15 @@ Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ 
 
 Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view để render. Bởi vì người dùng tương tác thông qua view, nên view cần phải cập nhật model dựa trên tương tác của người dùng. Model thì nhiều khi lại cần cập nhất model khác.
 
-Thêm vào đó, nhiều khi một thay đổi sẽ kích hoạt dây chuyền các thay đổi khác trong model. Hãy tưởng tượng nhưng bạn chơi trò Pong, bạn sẽ không thể nào biết được quả bóng sẽ chạm vào đâu (hoặc là rơi ra khỏi màn hình).
+Thêm vào đó, một thay đổi có thể kích hoạt một loạt các thay đổi dây chuyền. Hãy tưởng tượng bạn đang chơi trò Pong, bạn sẽ không thể nào biết được quả bóng sẽ chạm vào đâu (hoặc là rơi ra khỏi màn hình).
 
 ![](4.png)
 
 *View cập nhật model. Model cập nhật model khác. Nó giống như quả bóng khi chơi Pong*
 
-Bỏ qua sự thật hiển nhên là những thay đổi này có thể xảy ra không đồng bộ (async). Một thay đổi có thể kích hoạt nhiều thay đổi khác. Tưởng tượng việc nào giống như đổ hẳn một túi bóng vào màn hình trong trò Pong. Các quả bóng này sẽ chạy tự tung loạn xạ.
+Bỏ qua sự thật hiển nhên là những thay đổi này có thể xảy ra không đồng bộ (async). Một thay đổi có thể kích hoạt nhiều thay đổi khác. Tưởng tượng việc này giống như đổ hẳn một túi bóng vào màn hình trong trò Pong. Các quả bóng này sẽ chạy tứ tung loạn xạ.
 
-Tóm lại thì mô hình trên làm cho việc debug luồng đi của dữ liệu trở nên khó khăn.
+Tóm lại thì mô hình trên làm cho việc debug luồng đi của dữ liệu trở nên cực kì khó khăn.
 
 ## Giải pháp: luồng dữ liệu một chiều
 
@@ -97,7 +97,7 @@ Tiếp theo là store. Store sẽ giữ tất cả các thông tin về trạng 
 
 Mình tưởng tượng store là một vị công chức lạm quyền. Mọi thay đổi trạng thái phải được thông qua bởi vị này. Và bạn không thể trực tiếp yêu cầu store thay đổi state, vì store không có setter. Để thực hiện một thay đổi đối với state, bạn chỉ có thể thực hiện bằng một phương thức duy nhất đó là thông qua action creator và dispatcher.
 
-Nhưng mình đã nói ở trên thì nếu một store được kết nối với dispatcher thì nó sẽ nhận được tất cả mọi hành động. Trong mỗi store thường sẽ có một câu lệnh `switch` để phân loại kiểu hành động. Nếu đây đúng là hành động mà store quan tâm, nó sẽ thực hiện những thay đổi cần thiết và cập nhật state.
+Như mình đã nói ở trên thì nếu một store được kết nối với dispatcher thì nó sẽ nhận được tất cả mọi hành động. Trong mỗi store thường sẽ có một câu lệnh `switch` để phân loại kiểu hành động. Nếu đây đúng là hành động mà store quan tâm, nó sẽ thực hiện những thay đổi cần thiết và cập nhật state.
 
 Một khi store đã áp dụng các thay đổi cho state, nó sẽ phát ra tín hiệu báo cho controller view về sự thay đổi này.
 
@@ -119,7 +119,7 @@ Có một bước thiết lập nhỏ để các nhân vật có thể tương t
 
 ![](assets/index-792ca.png)
 
-2. Sau đó controller view sẽ hỏi store để nhận state mới nhất
+2. Sau đó controller view sẽ nhận state mới nhất từ store.
 3. Khi controller view nhận được state từ store thì chúng sẽ gửi các state này tới các view chịu sự quản lí của chúng để render.
 
 ![](assets/index-238ee.png)
