@@ -1,7 +1,7 @@
 ---
 layout: Post
 title: 'Học Flux bằng truyện tranh'
-date: 2016-09-18
+date: 2016-09-26
 feature-img: ./feature.jpg
 light_theme: true
 tags: [javascript, cartoon]
@@ -12,43 +12,27 @@ Bài viết này sẽ cố gắng để giải thích Flux theo cách đơn gi�
 
 ## Vấn đề
 
-Đầu tiên, mình sẽ giải thích vấn đề mà Flux sinh ra để giải quyết.
-Flux là một quy trình để xử lí dữ liệu trong ứng dụng của bạn.
-Flux và React cùng được phát triển tại Facebook. Nhiều lập trình viên dùng
-cả hai trong ứng dụng, nhưng mà các bạn có thể dùng chúng riêng lẻ.
-Flux và React được phát triển để giải quyết một số vấn đề mà Facebook gặp phải.
+Đầu tiên, mình sẽ giải thích vấn đề mà Flux sinh ra để giải quyết. Flux là một quy trình để xử lí dữ liệu trong ứng dụng của bạn. Flux và React cùng được phát triển tại Facebook. Nhiều lập trình viên thường dùng chúng chung với nhau nhưng các bạn có thể dùng chúng riêng lẻ. Flux và React được phát triển để giải quyết một số vấn đề mà Facebook gặp phải.
 
-
-Trong số những vấn đề đó thì điển hình nhất là lỗi của thanh thông báo.
-Bạn đăng nhập vào Facebook, bạn sẽ thấy thông báo trên biểu tượng chat.
+Trong số những vấn đề đó thì điển hình nhất là lỗi của thanh thông báo. Bạn đăng nhập vào Facebook, bạn sẽ thấy thông báo trên biểu tượng chat.
 
 ![Thanh thông báo của Facebook](1-notification.jpg)
 
-Kì lạ thay, bạn nhấn vào biểu tượng chat thì không có tin nhắn nào cả.
-Sau khi lướt news feed vài phút thì thông báo xuất hiện lại.
-Bạn nhấn vào biểu tượng chat lần nữa ... vẫn không có bất kì tin nhắn nào.
-Vấn đề này cứ tiếp diễn thành một vòng lặp.
+Kì lạ thay, bạn nhấn vào biểu tượng chat thì không có tin nhắn nào cả. Sau khi lướt news feed vài phút thì thông báo xuất hiện lại. Bạn nhấn vào biểu tượng chat lần nữa ... vẫn không có bất kì tin nhắn nào. Vấn đề này cứ tiếp diễn thành một vòng lặp.
 
 ![](2.jpg)
 
-Vấn đề nêu trên khi chỉ là vòng lặp cho người dùng mà nó cũng là
-vòng lặp cho các kĩ sư Facebook. Họ sửa bug này, mọi thứ hoạt động bình thường
-rồi lỗi này lại xuất hiện. Các kĩ sư tiếp tục sửa lỗi, rồi nó cứ xuất hiện
-trở lại.
+Vấn đề nêu trên khi chỉ là vòng lặp cho người dùng mà nó cũng là vòng lặp cho các kĩ sư Facebook. Họ sửa bug này, mọi thứ hoạt động bình thường rồi lỗi này lại xuất hiện. Các kĩ sư tiếp tục sửa lỗi, rồi nó cứ xuất hiện trở lại.
 
 ## Vấn đề cốt lõi
 
-Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ liệu di chuyển trong
-ứng dụng.
+Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ liệu di chuyển trong ứng dụng.
 
 ![](3-model-view.png)
 
 *Model truyền dữ liệu với View*
 
-Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view để render.
-Bởi vì người dùng tương tác thông qua view, nên view cần phải cập nhật model
-dựa trên tương tác của người dùng. Model thì nhiều khi lại cần cập nhất model
-khác.
+Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view để render. Bởi vì người dùng tương tác thông qua view, nên view cần phải cập nhật model dựa trên tương tác của người dùng. Model thì nhiều khi lại cần cập nhất model khác.
 
 Thêm vào đó, nhiều khi một thay đổi sẽ kích hoạt dây chuyền các thay đổi khác trong model. Hãy tưởng tượng nhưng bạn chơi trò Pong, bạn sẽ không thể nào biết được quả bóng sẽ chạm vào đâu (hoặc là rơi ra khỏi màn hình).
 
@@ -102,3 +86,70 @@ Dispatcher thực hiện việc truyền tin của mình một cách đồng b�
 ![](assets/index-0d906.png)
 
 Người truyền tin của Flux khác với người truyền tin trong các mô mình khác. Hành động sẽ được truyền tới tất cả các store đã được đăng kí với người truyền tin mà không phân biệt kiểu hành động. Hay nói cách khác, các store không chỉ lắng nghe (subscribe) các hành cụ thể mà chúng sẽ lắng nghe tất cả các hành động rồi lọc ra các hành động mà nó quan tâm để tiếp tục xử lí.
+
+### Store
+
+Tiếp theo là store. Store sẽ giữ tất cả các thông tin về trạng thái ứng dụng và tất cả logic để thay đổi trạng thái nằm trong store.
+
+Mình tưởng tượng store là một vị công chức lạm quyền. Mọi thay đổi trạng thái phải được thông qua bởi vị này. Và bạn không thể trực tiếp yêu cầu store thay đổi state, vì store không có setter. Để thực hiện một thay đổi đối với state, bạn chỉ có thể thực hiện bằng một phương thức duy nhất đó là thông qua action creator và dispatcher.
+
+Nhưng mình đã nói ở trên thì nếu một store được kết nối với dispatcher thì nó sẽ nhận được tất cả mọi hành động. Trong mỗi store thường sẽ có một câu lệnh `switch` để phân loại kiểu hành động. Nếu đây đúng là hành động mà store quan tâm, nó sẽ thực hiện những thay đổi cần thiết và cập nhật state.
+
+Một khi store đã áp dụng các thay đổi cho state, nó sẽ phát ra tín hiệu báo cho controller view về sự thay đổi này.
+
+### Controller view và view
+
+View có trách nhiều nhận thông tin từ state và render giao diện cũng như là nhận lại tương tác của người dùng.
+
+View chỉ là người đại diện, nó không có bất kì ý thức gì về logic của ứng dụng. Nó chỉ nhận dữ liệu, định dạng và xuất ra thành HTML markup.
+
+Controller view đóng vai trò như là một người quản lí trung gian giữa store và view. Store sẽ báo controller view mỗi khi có sự thay đổi từ state. Nó sẽ nhận state mới và truyền tới tất cả các view mà nó quản lí.
+
+## Tương tác giữa các nhân vật
+
+### Thiết lập
+
+Có một bước thiết lập nhỏ để các nhân vật có thể tương tác với nhau. Ứng dụng chỉ cần làm việc này duy nhất vào lúc khởi động.
+
+1. Store sẽ báo cho dispatcher biết nó muốn được thông báo khi có action.
+
+![](assets/index-792ca.png)
+
+2. Sau đó controller view sẽ hỏi store để nhận state mới nhất
+3. Khi controller view nhận được state từ store thì chúng sẽ gửi các state này tới các view chịu sự quản lí của chúng để render.
+
+![](assets/index-238ee.png)
+
+4. Controller view cũng yêu cầu store thông báo khi state được cập nhật.
+
+![](assets/index-95280.png)
+
+### Luồng dữ liệu
+
+Một khi quá trình thiết lập hoàn tất, ứng dụng đã sẵn sàng để nhận tương tác của người dùng. Chúng ta sẽ bắt đầu bằng việc kích hoạt một action thông qua thay đổi từ phía người dùng.
+
+![](assets/index-ce6af.png)
+
+1. Một khi có tương tác của người dùng, view sẽ báo cho action creator chuẩn bị một hành động mới.
+
+![](assets/index-24d0f.png)
+
+2. Action creator định dạng hành động và gửi nó tới dispatcher
+
+![action creator gửi hành động tới dispatcher](assets/index-c3aa5.png)
+
+3. Dispatcher sẽ gửi hành động này tới các store theo tuần tự. Mỗi store sẽ được thông báo về tất cả các hành động. Sau đó, store sẽ quyết định xem nó có nên xử lí hành động này hay không, nếu có thì cập nhật state cho phù hợp.
+
+![store nhận action từ dispatcher và thay đổi state](assets/index-29626.png)
+
+4. Khi store đã hoàn thành thay đổi state, nó sẽ báo cho các controller view đã liên kết biết
+
+5. Các controller view sẽ yêu cầu store gửi chúng những cập nhật mới về state.
+
+![controller view nhận thông báo mới về state](assets/index-3abc8.png)
+
+6. Sau khi đã nhận được state, controller view sẽ báo cho các view do nó quản lí render dựa trên state mới.
+
+![view render dựa trên state](assets/index-4a835.png)
+
+Đó là cách mà mình suy nghĩ về Flux. Hy vọng nó giúp ích cho bạn!
