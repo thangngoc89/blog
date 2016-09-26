@@ -7,12 +7,16 @@ light_theme: true
 tags: [javascript, cartoon]
 ---
 
+*Bài viết được dịch từ [A cartoon guide to Flux của tác giả Lin Clark](https://code-cartoons.com/a-cartoon-guide-to-flux-6157355ab207)*
+
+---
+
 Flux là một trong những chủ đề nóng hổi cũng như khó hiểu trong phát triển web hiện tại.
 Bài viết này sẽ cố gắng để giải thích Flux theo cách đơn giản nhất.
 
 ## Vấn đề
 
-Đầu tiên, mình sẽ giải thích vấn đề mà Flux sinh ra để giải quyết. Flux là một quy trình để xử lí dữ liệu trong ứng dụng của bạn. Flux và React cùng được phát triển tại Facebook. Nhiều lập trình viên thường dùng chúng chung với nhau nhưng các bạn có thể dùng chúng riêng lẻ. Flux và React được phát triển để giải quyết một số vấn đề mà Facebook gặp phải.
+Đầu tiên, mình sẽ giải thích vấn đề mà Flux sinh ra để giải quyết. Flux là một mô hình để xử lí dữ liệu trong ứng dụng của bạn. Flux và React cùng được phát triển tại Facebook. Nhiều lập trình viên thường dùng chúng chung với nhau nhưng các bạn có thể dùng chúng riêng lẻ. Flux và React được phát triển để giải quyết một số vấn đề mà Facebook gặp phải.
 
 Trong số những vấn đề đó thì điển hình nhất là lỗi của thanh thông báo. Bạn đăng nhập vào Facebook, bạn sẽ thấy thông báo trên biểu tượng chat.
 
