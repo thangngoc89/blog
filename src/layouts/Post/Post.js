@@ -4,9 +4,25 @@ import IconLeft from "react-icons/fa/chevron-left"
 import Link from "react-router/lib/Link"
 import BaseLayout from "../BaseLayout"
 import GitHubEditLink from "../../components/GithubEditLink/index.js"
+import cx from "classnames"
 import site from "../../config.yml"
 
 class Post extends Component {
+  componentDidMount() {
+    this.moveImageToCenter()
+  }
+
+  componentDidUpdate() {
+    this.moveImageToCenter()
+  }
+
+  moveImageToCenter = () => {
+    Array.from(
+      document.querySelectorAll(".post-content img")
+    ).forEach((img) => {
+      img.parentElement.style["text-align"] = "center"
+    })
+  }
   render() {
     const { head, body, navigation, ...others } = this.props
 
@@ -21,6 +37,9 @@ class Post extends Component {
           className="feature-image"
         >
           <header
+            className={ cx({
+              "header-light": head.light_theme,
+            }) }
             style={ {
               ...!head["feature-img"] && { background: "#F98752" },
               backgroundImage: `url('${head["feature-img"]}')`,

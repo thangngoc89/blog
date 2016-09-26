@@ -66,11 +66,17 @@ header {
   .post-link {
     color: $feature-image-text-color;
   }
+  .header-light {
+    color: $text-color;
+    .meta {
+      color: rgba($text-color, 0.7);
+    }
+  }
   header {
     color: $feature-image-text-color;
     background-size: $feature-image-size;
     margin-bottom: 0;
-    padding: $padding-large/2.5 $padding-large;
+    padding: $padding-large/1.5 $padding-large;
     .meta {
       color: rgba($feature-image-text-color, .7);
     }
@@ -85,10 +91,6 @@ header {
   border-bottom: 1px solid $border-color;
   display: flex;
   float: left;
-
-  @media (max-width: 35.5rem) {
-    flex-direction: column;
-  }
 
   a, .page-title {
     display: inline-block;
@@ -105,10 +107,6 @@ header {
     border: 1px solid rgba(255, 255, 255, 0);
     text-align: center;
     width: 50%;
-
-    @media (max-width: 35.5rem) {
-      width: 100%;
-    }
   }
   a:hover {
     @extend a.button:hover;
