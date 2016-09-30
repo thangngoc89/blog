@@ -17,7 +17,7 @@
   "googleAnalyticsUA": "UA-56785612-1",
   "phenomic": {
     "assets": "images",
-    "offline": true,
+    "offline": false,
     "devPort": 5445,
     "cache": true,
     "CNAME": true
