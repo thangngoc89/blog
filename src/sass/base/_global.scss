@@ -121,6 +121,7 @@ a {
 iframe, img, embed, object, video {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
 }
 img[align=left] {
   margin-right: 3%;
