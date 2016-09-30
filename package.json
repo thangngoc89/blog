@@ -18,6 +18,8 @@
   "phenomic": {
     "assets": "images",
     "offline": true,
+    "devPort": 5445,
+    "cache": true,
     "CNAME": true
   },
   "babel": {
