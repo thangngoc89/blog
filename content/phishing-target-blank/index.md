@@ -22,9 +22,11 @@ if (window.opener) {
 }
 ```
 
-Đâu có gì nghiêm trọng phải không nào? Hãy thử tưởng tượng `https://khoanguyen.me/phishing` là một trang mồi của mấy anh câu cá với giao diện đăng nhập như trang của bạn, người dùng sẽ bị mất mật khẩu một cách dễ dàng.
+Đâu có gì nghiêm trọng phải không nào? Hãy thử tưởng tượng `https://khoanguyen.me/phishing-target-blank/landing.html` là một trang mồi của mấy anh câu cá với giao diện đăng nhập như trang của bạn, người dùng sẽ bị mất mật khẩu một cách dễ dàng.
 
 ## Ví dụ
+
+![](./poc.gif)
 
 1. Vào fanpage [Khoa Nguyen dot me](https://www.facebook.com/khoanguyendotme/about)
 2. Bấm Like giúp mình (câu like rẻ tiền)
