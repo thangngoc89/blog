@@ -28,7 +28,7 @@ export default class AppContainer extends Component {
           link={ [
             {
               rel: "amphtml",
-              href: "https://mercury.postlight.com/amp?url=http://www.example.com/" + this.props.params + "/",
+              href: "https://mercury.postlight.com/amp?url=https://khoanguyen.me/" + this.props.params.splat,
             },
           ] }
         />
