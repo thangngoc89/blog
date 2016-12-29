@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react"
-
 import "./sass/main.scss"
 
+import Helmet from "react-helmet"
 import DefaultHeadMeta from "./components/DefaultHeadMeta"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -24,6 +24,14 @@ export default class AppContainer extends Component {
     return (
       <Ga params={ this.props.params }>
         <DefaultHeadMeta />
+        <Helmet
+          link={ [
+            {
+              rel: "amphtml",
+              href: "https://mercury.postlight.com/amp?url=http://www.example.com/" + this.props.params + "/",
+            },
+          ] }
+        />
         <Header />
         <div className="content">
           { this.props.children }
