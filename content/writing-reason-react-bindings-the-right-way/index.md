@@ -118,7 +118,7 @@ Ah. This totally makes sense. `age` property has value `undefined`.
 
 Quick note:
 
-I know that the above code is not idiomatic React code. I can reimplement the React compponent like this to fix it:
+I know that the above code is not idiomatic React code. I can reimplement the React component like this to fix it:
 
 ```js
 <p>
