@@ -9,16 +9,16 @@ tags: [reasonml]
 
 In this post, I'll show you how to write ReasonReact bindings for React.js components.
 
-> For all of you who don't know about ReasonML: ReasonML is a syntactic sugar on top of OCaml toolchain.
+> For all of you who don't know about ReasonML: ReasonML is syntactic sugar on top of the OCaml toolchain.
 >
 > ReasonML/OCaml can be compiled into optimized Javascript with [Bucklescript](https://bucklescript.github.io/).
 >
-> You can learn more about it checkout this article by
+> You can learn more about it by checking out this article by
 > Dr. Axel Rauschmayer: [What is ReasonML?](http://2ality.com/2017/11/about-reasonml.html)
 
 # The official way according to the docs
 
-ReasonReact provides a great way to inteprop with React.js components with `ReasonReact.wrapJsForReason`. Here is [an example from the ReasonReact](https://reasonml.github.io/reason-react/docs/en/interop.html#reasonreact-using-reactjs)
+ReasonReact provides a great way to inteprop with React.js components using `ReasonReact.wrapJsForReason`. Here is [an example from the ReasonReact docs:](https://reasonml.github.io/reason-react/docs/en/interop.html#reasonreact-using-reactjs)
 
 ```reason
 /* PersonalInformation.re */
@@ -50,7 +50,7 @@ Now we'll use the above component like this:
 }
 ```
 
-Everything is working as expected. Now let's try with a slightly different props:
+Everything is working as expected. Now let's try with slightly different props:
 
 ```reason
 <PersonalInformation name="Khoa Nguyen" age=None />
@@ -65,7 +65,7 @@ Everything is working as expected. Now let's try with a slightly different props
 }
 ```
 
-`age` is now has `undefined` value. It's not so bad in most cases, but it could problematic.
+`age` now has an `undefined` value. It's not so bad in most cases, but it could problematic.
 
 Here is how I implemented my `PersonalInformation.js` component:
 
@@ -90,15 +90,15 @@ const PersonalInformation = props => {
 export default PersonalInformation;
 ```
 
-I've made a CodeSandbox [here](https://codesandbox.io/s/9zqznp0mq4) for you to play with it.
+I've created a CodeSandbox [here](https://codesandbox.io/s/9zqznp0mq4) for you to play around with.
 
 With the the first example (`~age=Some(24)`), it renders **My name is Khoa Nguyen. I'm 24 years old** as expected.
 
-But with the second example (`~age=None`), it renders **My name is Khoa Nguyen. I'm years old**.
+With the second example (`~age=None`), however, it renders **My name is Khoa Nguyen. I'm years old**.
 
 What is going on?
 
-Let's open node repl and try it out:
+Let's open the node repl and try it out:
 
 ```js
 ❯ node
@@ -114,11 +114,11 @@ true
 true  
 ```
 
-Ah. This totally makes sense. `age` property has value `undefined`.
+Ah. This totally makes sense. The `age` property has a value of `undefined`.
 
 Quick note:
 
-I know that the above code is not idiomatic React code. I can reimplement the React component like this to fix it:
+I know that the above code is not idiomatic React code. I can re-implement the React compponent like this to fix it:
 
 ```js
 <p>
@@ -127,15 +127,15 @@ I know that the above code is not idiomatic React code. I can reimplement the Re
 </p>
 ```
 
-This should works even with `age = undefined`. But the fact that I have to change the original component to write binding isn't ideal. And the pattern I use here (`props.hasOwnPropty("age")`) is common for switching between controlled/uncontrolled mode of a component.
+This should work even with `age = undefined`, but the fact that I have to change the original component to write a binding isn't ideal. The pattern I use here (`props.hasOwnPropty("age")`) is common for switching between controlled/uncontrolled mode of a component.
 
 # "The right way" of writing ReasonReact bindings
 
-Now we identify our problem, let's fix it.
+Now we've identified our problem, let's fix it.
 
 We need to find a way for not defining `age` in props.
 
-Lucky for us, Bucklescript provides a function named [**Special Creation Function**](https://bucklescript.github.io/docs/en/object.html#special-creation-function)
+Lucky for us, Bucklescript provides a function called the [**Special Creation Function**](https://bucklescript.github.io/docs/en/object.html#special-creation-function)
 
 The idea is simple:
 
@@ -161,7 +161,7 @@ var props2 = {
 };
 ```
 
-As you can see, Bucklescript create an object for us, no intermediate step. And `age` property is not in `props2`.
+As you can see, Bucklescript creates an object for us so no intermediate step is needed, and the `age` property is not in `props2`.
 
 With this knowledge, we can rewrite our binding like this:
 
@@ -179,12 +179,12 @@ let make = (~name, ~age=?, children) =>
   );
 ```
 
-As you can see, I removed the type annotations in `make` and put it in `makeProps`. It's unreasonable to annotate types everywhere with a great compiler. Now, our binding works as expected.
+As you can see, I removed the type annotations in `make` and put them in `makeProps`. It's not necessary to annotate types everywhere with a great compiler. Now, our binding works as expected.
 
 # Transform props
 
-The above is a simple case. We sometime need to apply some transformations to the props before passing them to React.js.
-A common case must be transforming between `Js.boolean` and ReasonML's boolean.
+The above is a simple case. We sometimes need to apply some transformations to the props before passing them to React.js.
+A common case might be transforming between `Js.boolean` and ReasonML's boolean.
 
 Here is a small snippet on how you can do that:
 
