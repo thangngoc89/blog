@@ -24,14 +24,6 @@ export default class AppContainer extends Component {
     return (
       <Ga params={ this.props.params }>
         <DefaultHeadMeta />
-        <Helmet
-          link={ [
-            {
-              rel: "amphtml",
-              href: "https://mercury.postlight.com/amp?url=https://khoanguyen.me/" + this.props.params.splat,
-            },
-          ] }
-        />
         <Header />
         <div className="content">
           { this.props.children }
