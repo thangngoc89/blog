@@ -1,12 +1,16 @@
 
 .PHONY: all clean
 
-all: png
+all: reasonml-architechture bsb-vs-jsoo
 
 clean:
-	rm reasonml-architechture.svg reasonml-architechture.png
+	rm *.svg
+	rm *.png
 
-svg: reasonml-architechture.dot
+reasonml-architechture: reasonml-architechture.dot
 	dot -Tsvg $< > reasonml-architechture.svg
-png: reasonml-architechture.dot
 	dot -Tpng $< > reasonml-architechture.png
+
+bsb-vs-jsoo: bsb-vs-jsoo.dot
+	dot -Tsvg $< > bsb-vs-jsoo.svg
+	dot -Tpng $< > bsb-vs-jsoo.png

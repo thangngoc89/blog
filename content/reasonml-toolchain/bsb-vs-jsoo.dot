@@ -1,0 +1,35 @@
+digraph jsoo {
+  node [shape="box", width=2];
+  reason[
+    label="Reason Syntax\n (.re, .rei)"
+  ]
+  ocaml[
+    label="Ocaml Syntax\n (.ml, .mli)"
+  ]
+  ast[
+    label="OCaml AST"
+  ]
+
+  reason -> ast[label="refmt"]
+  ocaml -> ast[label="OCaml parser"]
+
+  {
+    node [width=1.5]
+    native[label="Native code"]
+    bytecode[label="Bytecode"]
+    bucklescript[
+      label="Bucklescript",
+      color=blue
+    ]
+  }
+
+  ast -> bytecode
+  ast -> native
+  ast -> bucklescript
+  jsoo[
+    label="js_of_ocaml",
+    color=blue
+  ]
+
+  bytecode -> jsoo
+}
