@@ -1,0 +1,26 @@
+digraph ReasonML {
+  node [shape="box", width=2];
+  reason[
+    label="Reason Syntax\n (.re, .rei)"
+  ]
+  ocaml[
+    label="Ocaml Syntax\n (.ml, .mli)"
+  ]
+  ast[
+    label="OCaml AST"
+  ]
+
+  reason -> ast[label="refmt"]
+  ocaml -> ast[label="OCaml parser"]
+
+  {
+    node [width=1.5]
+    bytecode[label="Bytecode"]
+    native[label="Native code"]
+    bucklescript[label="Javascript"]
+  }
+
+  ast -> bytecode[label="ocamlc"]
+  ast -> native[label="ocamlopt"]
+  ast -> bucklescript[label="bucklescript"]
+}
