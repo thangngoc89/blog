@@ -4,7 +4,7 @@ title: 'Writing ReasonReact bindings "the right way"'
 
 date: 2018-01-23 07:00:00
 route: writing-reason-react-bindings-the-right-way
-tags: [reasonml]
+tags: [reasonml, reason-react]
 ---
 
 In this post, I'll show you how to write ReasonReact bindings for React.js components.
