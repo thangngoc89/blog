@@ -44,6 +44,7 @@ Bucklescript operates at higher level in the compiler tool chain than JSOO. This
 
 Side note: [Bucklescript's Lead developer Hongbo Zhang have shared the ideas of Bucklescript before making it](https://github.com/ocsigen/js_of_ocaml/issues/338). So I can say that no wheels were invented in the process of making Bucklescript.
 
+<!--
 # esy - the package manager
 
 ReasonML brings esy, a new package manager to the game. Here is a brief explanation about different package managers in the ecosystem:
@@ -53,10 +54,11 @@ ReasonML brings esy, a new package manager to the game. Here is a brief explanat
 * [esy](http://esy.sh): Makes opam feel like npm/yarn. Allows access to both ecosystems.
 
 I'll have a post introducing [esy](http://esy.sh) soon. Stay tuned!
+-->
 
 # Build systems
 
-ReasonML bring bsb (acronym of Bucklescript) and bsb-native to the game. Here is some available build systems:
+Bucklescript actually contains 2 parts: bsb - the build system and bsc - the compiler. They are often referenced as a single unit: Bucklescript to avoid churn. ReasonML bring bsb and bsb-native to the game. Here is some available build systems:
 
 * bsb: Build system for JS projects that are composed of other packages that use bsb.
 * bsb-native: Like bsb but also compiles those same kinds of projects to native.
@@ -64,7 +66,7 @@ ReasonML bring bsb (acronym of Bucklescript) and bsb-native to the game. Here is
 * Make/ninja
 * webpack/rollup
 
-Bucklescript is both a compiler (as it compiles to JS) and a build systems because it has to deal with dependencies and linking,...
+According to @chenglou, the OCaml build story has always been messy. bsb (and bsb-native) is doing a great job to clean that up.
 
 # JS developers
 
