@@ -66,8 +66,6 @@ Bucklescript actually contains 2 parts: bsb - the build system and bsc - the com
 * Make/ninja
 * webpack/rollup
 
-According to @chenglou, the OCaml build story has always been messy. bsb (and bsb-native) is doing a great job to clean that up.
-
 # JS developers
 
 It would be a mistake to not mentioning the JS developers ReasonML is bringing to the ecosystem. This helps expanding the user base, push OCaml towards new landscape.
