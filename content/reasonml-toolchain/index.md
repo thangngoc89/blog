@@ -72,7 +72,7 @@ It would be a mistake to not mentioning the JS developers ReasonML is bringing t
 
 # Conclusion
 
-ReasonML is a promising project and it's moving really fast. If you want to sleep well at night, try ReasonML. The advanced type system inherited from OCaml with 20 years of development has made it the best option availaable. It eliminates an entire class of bugs in the JS world related to program types.
+ReasonML is a promising project and it's moving really fast. If you want to sleep well at night, try ReasonML. The advanced type system inherited from OCaml with 20 years of development has made it the best option available. It eliminates an entire class of bugs in the JS world related to program types.
 
 ---
 
