@@ -245,4 +245,10 @@ I think this is enough for this blog post. If you want to see more example of th
 
 This is my first time writing a blog post in English, so please let me know If I wrote anything that's incorrect.
 
+---
+
+Update **3/16/2018**: If you're having troubles running the code in the example, you could try with [this repository](https://github.com/idkjs/binding-rr-demo#babel-for-jsx)
+
+---
+
 You can reach me via Twitter([@thangngoc89](https://twitter.com/thangngoc89)) or **@thangngoc89** on Discord channel.
