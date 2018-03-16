@@ -245,4 +245,4 @@ I think this is enough for this blog post. If you want to see more example of th
 
 This is my first time writing a blog post in English, so please let me know If I wrote anything that's incorrect.
 
-You can reach me via Twitter([@khoanguyenme](https://twitter.com/khoanguyenme)) or **@thangngoc89** on Discord channel.
+You can reach me via Twitter([@thangngoc89](https://twitter.com/thangngoc89)) or **@thangngoc89** on Discord channel.
