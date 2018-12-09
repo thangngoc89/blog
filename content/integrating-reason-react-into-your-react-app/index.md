@@ -1,7 +1,7 @@
 ---
 layout: Post
 title: "Integrating ReasonReact into your React app"
-route: reasonml-toolchain
+route: integrating-reason-react-into-your-react-app
 date: 2018-12-09 07:00:00
 tags: [reasonml, reason-react]
 ---
@@ -16,6 +16,13 @@ I recently gave a talk at a local meetup about integrating ReasonReact into your
 
 Here is final code, you can clone and start coding right away:
 
+```
+git clone https://github.com/thangngoc89/reason-react-starter my-app
+cd my-app
+npm install
+```
+
+Run `npm run start` and `npm run bsb:watch` in another tab
 
 # Installations
 
