@@ -13,7 +13,9 @@ cache:
 before_script:
   - git submodule foreach git pull origin master
 before_install:
-  - npm prune
+  - npm install -g npm
+install:
+  - npm ci
 script:
   - 'npm run lint && npm run build'
 before_deploy:
