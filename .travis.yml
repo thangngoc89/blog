@@ -9,9 +9,7 @@ env:
     - NPM_CONFIG_PROGRESS="false"
 cache:
   directories:
-    - node_modules
-before_script:
-  - git submodule foreach git pull origin master
+    - ~/.npm
 before_install:
   - npm install -g npm
 install:
