@@ -5,10 +5,10 @@ const GitHubEditLink = ({ baseUrl, fileName, ...props }) => {
 
   return (
     <section {...props}>
-      { "Bài viết sai chính tả? Có điểm chưa rõ ràng?" }
+      { "Spotted typos or incorrect information?" }
       { '  ' }
       <a href={ url } target="_blank">
-        { "Sửa bài viết trên Github" }
+        { "Send me a PR on Github" }
       </a>
     </section>
   )
