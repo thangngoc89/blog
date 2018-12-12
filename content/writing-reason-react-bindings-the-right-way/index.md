@@ -18,7 +18,7 @@ In this post, I'll show you how to write ReasonReact bindings for React.js compo
 
 # The official way according to the docs
 
-ReasonReact provides a great way to inteprop with React.js components using `ReasonReact.wrapJsForReason`. Here is [an example from the ReasonReact docs:](https://reasonml.github.io/reason-react/docs/en/interop.html#reasonreact-using-reactjs)
+ReasonReact provides a great way to interop with React.js components using `ReasonReact.wrapJsForReason`. Here is [an example from the ReasonReact docs:](https://reasonml.github.io/reason-react/docs/en/interop.html#reasonreact-using-reactjs)
 
 ```reason
 /* PersonalInformation.re */
@@ -118,7 +118,7 @@ Ah. This totally makes sense. The `age` property has a value of `undefined`.
 
 Quick note:
 
-I know that the above code is not idiomatic React code. I can re-implement the React compponent like this to fix it:
+I know that the above code is not idiomatic React code. I can re-implement the React component like this to fix it:
 
 ```js
 <p>
@@ -127,7 +127,7 @@ I know that the above code is not idiomatic React code. I can re-implement the R
 </p>
 ```
 
-This should work even with `age = undefined`, but the fact that I have to change the original component to write a binding isn't ideal. The pattern I use here (`props.hasOwnPropty("age")`) is common for switching between controlled/uncontrolled mode of a component.
+This should work even with `age = undefined`, but the fact that I have to change the original component to write a binding isn't ideal. The pattern I use here (`props.hasOwnProperty("age")`) is common for switching between controlled/uncontrolled mode of a component.
 
 # "The right way" of writing ReasonReact bindings
 
