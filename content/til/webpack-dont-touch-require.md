@@ -6,7 +6,7 @@ tags: [til, webpack]
 ---
 
 When using Webpack, it transforms all of your require/import statements.
-But sometime, you don't want that behaviour, you want to Webpack to keep it as is.
+But sometimes, you don't want that behaviour, you want to Webpack to keep it as is.
 
 You can use `__non_webpack_require__` to generate a require function that is not parsed by Webpack.
 
