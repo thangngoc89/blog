@@ -11,7 +11,9 @@ Alright folks, in the first post, I introduced briefly about [js_of_ocaml](https
 
 # Overview about OCaml's REPL
 
-Official distribution of OCaml comes with a built-in REPL (OCaml folks usually call them Toplevel). you can execute it by typing `ocaml` in your shell. 
+Official distribution of OCaml comes with a built-in REPL (OCaml folks usually call them Toplevel). you can execute it by typing `ocaml` in your shell. Though it works, the user interface is very primitive so [utop](https://opam.ocaml.org/blog/about-utop/) was born to address the problem. utop has an excellent user interface with context aware code completion and better typing experience. I have to say that utop is the best REPL I have used.
+
+> You might wondering what is the relation
 
 ```
 $ ocaml
@@ -21,6 +23,8 @@ $ ocaml
 - : int = 2
 ```
 
-Toplevel provides an interactive interface over the module Toploop. It works by compiling the input code into bytecode, executing and getting the result back. 
+Toplevel provides an interactive interface over the module Toploop. It works by compiling the input code into bytecode, executing and getting the result back.
 
+# js_of_ocaml compilation
 
+[js_of_ocaml](https://ocsigen.org/js_of_ocaml)
