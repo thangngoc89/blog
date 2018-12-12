@@ -134,7 +134,7 @@ let make = (~message, _children) => {
 
 With `bsb` watcher running in the background, you'll see that a new file called `Greetings.bs.js` was created inside `src` folder. This is what the `in-source` option in `bsconfig.json` does. 
 
-If you want to use `Greetings` inside the rest of your React app, you have to export it first with [`wrapReasonForJs`](https://reasonml.github.io/reason-react/docs/en/interop#reactjs-using-reasonreact) because ReasonReact and React components aren't compaitable:
+If you want to use `Greetings` inside the rest of your React app, you have to export it first with [`wrapReasonForJs`](https://reasonml.github.io/reason-react/docs/en/interop#reactjs-using-reasonreact) because ReasonReact and React components aren't compatible:
 
 ```reason
 let component = ReasonReact.statelessComponent("Greetings");
