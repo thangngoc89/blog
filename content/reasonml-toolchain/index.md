@@ -40,7 +40,7 @@ You can learn more about the differences between the two of them [in Bucklescrip
 
 ![Bucklescript vs js_of_ocaml](./bsb-vs-jsoo.png)
 
-Bucklescript operates at higher level in the compiler tool chain than JSOO. This means JSOO could use advanced tools to do whole program tree-shaking (I forgot the name). Bucklescript on the other hand, outputing hints that JS bundlers could use for tree-shaking. This isn't ideal but it's already an incredible work by Bucklescript team. Thank you!
+Bucklescript operates at higher level in the compiler tool chain than JSOO. This means JSOO could use advanced tools to do whole program tree-shaking (I forgot the name). Bucklescript on the other hand, outputting hints that JS bundlers could use for tree-shaking. This isn't ideal but it's already an incredible work by Bucklescript team. Thank you!
 
 Side note: [Bucklescript's Lead developer Hongbo Zhang have shared the ideas of Bucklescript before making it](https://github.com/ocsigen/js_of_ocaml/issues/338). So I can say that no wheels were invented in the process of making Bucklescript.
 
