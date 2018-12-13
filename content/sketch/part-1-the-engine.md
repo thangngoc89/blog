@@ -49,7 +49,24 @@ And you'll a `my_app.js` file ready to be embed in your website.
 
 # Building instructions
 
-The code example in the post is [here]()
+The code example in the post is [here](https://github.com/thangngoc89/blog/tree/master/content/sketch/examples). 
+
+I'm using [esy](https://esy.sh) as the main packages manager so you need to install esy first:
+
+```
+npm install --global esy
+```
+
+Clone the code:
+
+```
+git clone https://github.com/thangngoc89/blog
+cd content/sketch/examples
+esy install
+esy build
+```
+
+You can run `esy build` for building all the examples. In each sections, I'll tell you which command to build the example as well.
 
 # First version of Sketch engine
 
@@ -148,7 +165,73 @@ Great! So we got ourselves a usable engine that you embed in your website or cal
 - It executes all code at once. We want it to return the result for each individual statement (they are called phrases in OCaml term).
 - It doesn't support ReasonML syntax.
 
-# Turn `stdout` and `stderr` into return value
+# Turn `stdout` and `stderr` into values
 
+`stdout` and `stderr` are `out_channel`. They are flushed to Javscript console by default but we can flush them into a buffer instead.
 
+```reason
+let stderr_buffer = Buffer.create(100);
+let stdout_buffer = Buffer.create(100);
+
+Sys_js.set_channel_flusher(stdout, Buffer.add_string(stdout_buffer));
+Sys_js.set_channel_flusher(stderr, Buffer.add_string(stderr_buffer));
+```
+
+Add these lines to the end of `execute` function: 
+
+```reason
+let result = Buffer.contents(buffer);
+let stderr_result = Buffer.contents(stderr_buffer);
+let stdout_result = Buffer.contents(stdout_buffer);
+
+Buffer.clear(stderr_buffer);
+Buffer.clear(stdout_buffer);
+
+[%js {
+  val result = Js.string(result);
+  val stderr = Js.string(stderr_result);
+  val stdout = Js.string(stdout_result)
+}]
+```
+
+Here we bind the content of execution result, stderr and stdout into variables and clear the buffer after that. We also return an Javascript object with this shape:
+
+```js
+{
+  result: string,
+  stderr: string,
+  stdout: string
+}
+```
+
+We can build this example with:
+
+```
+esy dune build two/engine.bc.js --profile release
+```
+
+Test it:
+
+```
+❯ node
+> const { execute } = require("./_build/default/two/engine.bc.js")
+undefined
+
+> execute("1 + 1;;")
+{ result: '- : int = 2\n', stderr: '', stdout: '' }
+
+> execute(`print_endline "Hello world from OCaml";;`);
+{ result: '- : unit = ()\n',
+  stderr: '',
+  stdout: 'Hello world from OCaml\n' }
+
+> execute(`syntax error`);
+{ result: '',
+  stderr: 'File "", line 1, characters 12-12:\nError: Syntax error\n',
+  stdout: '' }
+```
+
+That looks more promising! We get `stderr` and `stdout` as return values. In Sketch UI, This information will be display inline like this
+
+![Sketch inline errors and values](./images/display-inline.png)
 
