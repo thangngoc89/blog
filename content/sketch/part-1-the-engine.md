@@ -128,7 +128,7 @@ let () = Js.export_all(
 
 The first line is for initialization of the toplevel, it does several things like polulating the toplevel environment, setting up look up paths,... but we don't need to worry about it right now.
 
-The next line, we are telling js_of_ocaml that "Hey, we want the `execute` function to be callable in Javascript side" and `js_of_ocaml` exports it as `window.execute` if you embed the script or `const { execute } = require("./engine.jsoo.js")` if you're requiring it from Node.js.
+The next line, we are telling js_of_ocaml that "Hey, we want the `execute` function to be callable in Javascript side" and `js_of_ocaml` exports it as `window.execute` if you embed the script or `const { execute } = require("./engine.bc.js")` if you're requiring it from Node.js.
 
 You can build our first version of the engine with this command:
 
@@ -145,7 +145,13 @@ undefined
 
 > execute("1 + 1;;")
 '- : int = 2\n'
+```
 
+Great! So we got ourselves a usable engine that you can embed in your website or calling it from Node.js. But this naive version of the engine has some limitations:
+
+- Errors and logs (stdout, stderr in OCaml) is printed directly to Javascript console, we want to catch them and return them as result of `execute` function for displaying in the UI.
+
+```bash
 > execute(`print_endline "Hello world from OCaml";;`);
 Hello world from OCaml
 '- : unit = ()\n'
@@ -154,16 +160,16 @@ Hello world from OCaml
 File "", line 1, characters 12-12:
 Error: Syntax error
 ''
+```
 
+- It executes all code at once. We want it to return the result for each individual statement (they are called phrases in OCaml's term).
+
+```bash
 > execute(`let add = (+);; add 1 2;; add 3 4;;`);
 'val add : int -> int -> int = <fun>\n- : int = 3\n- : int = 7\n'
 ```
 
-Great! So we got ourselves a usable engine that you embed in your website or calling it from Node.js. But this naive version of this engine has some limitations:
-
-- Errors and logs (stdout, stderr in OCaml) is printed directly to Javascript console, we want to catch them and return them as result of `execute` function for displaying in the UI.
-- It executes all code at once. We want it to return the result for each individual statement (they are called phrases in OCaml term).
-- It doesn't support ReasonML syntax.
+- It doesn't support ReasonML syntax yet.
 
 # Turn `stdout` and `stderr` into values
 
