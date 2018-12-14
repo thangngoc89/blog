@@ -8,7 +8,7 @@ tags: [sketch-sh]
 This is post is part of **Sketch.sh development series**:
 
 1. [Part 1: Introduction](/sketch/index.html)
-2. [Part 2: The engine](/sketch/part-2-the-engine.html)
+2. [Part 2: The engine](/sketch/part-2-the-engine/)
 3. Part 3: The optimization
 4. Part 4: The links
 5. Part 5: The packages
