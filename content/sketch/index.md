@@ -1,8 +1,19 @@
 ---
 layout: Post
-title: 'About Sketch.sh development'
+title: '[Sketch.sh development] Part 1: Introduction'
 date: 2018-12-10 07:00:00
 tags: [sketch-sh]
+---
+
+This is post is part of **Sketch.sh development series**:
+
+1. [Part 1: Introduction](/sketch/index.html)
+2. [Part 2: The engine](/sketch/part-2-the-engine.html)
+3. Part 3: The optimization
+4. Part 4: The links
+5. Part 5: The packages
+6. Part 6: The bridge
+
 ---
 
 In the past few months, I have been building [Sketch.sh](https://sketch.sh) as a platform for sharing interactive ReasonML and OCaml program. It's like a Jupyter notebook with bells and whistles.
