@@ -5,7 +5,7 @@ date: 2018-12-10 07:00:00
 tags: [sketch-sh, reasonml]
 ---
 
-> This post is part 1 of [Sketch.sh development series](https://khoanguyen.me/sketch)
+> This post is part of [Sketch.sh development series](https://khoanguyen.me/sketch)
 
 Alright folks, in the first post, I introduced briefly about [js_of_ocaml](https://ocsigen.org/js_of_ocaml) being used for executing the code in the browser. I call this part of the code base [**Sketch engine**](https://github.com/Sketch-sh/engine).
 
