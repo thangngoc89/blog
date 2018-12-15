@@ -5,7 +5,7 @@ date: 2018-12-10 07:00:00
 tags: [sketch-sh, reasonml]
 ---
 
-> This post is part of [Sketch.sh development series](https://khoanguyen.me/sketch)
+> This post is part of [Sketch.sh development series](/sketch)
 
 Alright folks, [in the first post](/sketch), I introduced briefly about [js_of_ocaml](https://ocsigen.org/js_of_ocaml) being used for executing the code in the browser. I call this part of the code base [**Sketch engine**](https://github.com/Sketch-sh/engine).
 
@@ -70,7 +70,7 @@ You can run `esy build` for building all the examples. In each section, details 
 
 # First version of Sketch engine
 
-So getting back to our Sketch engine, `Toploop` can be compiled to Javascript by default and that's great because it's the heart of our Sketch engine. In the early version of Sketch engine, I used `JsooTop` module which is an abstraction over `Toploop` module providing by `js_of_ocaml-toplevel` package.
+So getting back to our Sketch engine, `Toploop` can be compiled to Javascript by default and that's great because it's the heart of our Sketch engine. In the early version of Sketch engine, I used [`JsooTop`](https://github.com/ocsigen/js_of_ocaml/blob/c2a5c19163b757153ec5d408af773789fca022cb/toplevel/lib/jsooTop.mli) module which is an abstraction over `Toploop` module providing by `js_of_ocaml-toplevel` package.
 
 Our first version of the engine is simple, you expose a function that take the source code and return the result:
 
@@ -239,7 +239,7 @@ undefined
 
 That looks more promising! We get `stderr` and `stdout` as return values. In Sketch UI, This information will be display inline like this
 
-![Sketch inline errors and values](./images/display-inline.png)
+![Sketch inline errors and values](/sketch/images/display-inline.png)
 
 # Support ReasonML syntax
 
@@ -286,7 +286,7 @@ let reasonSyntax = () => {
 };
 ```
 
-What's going here? `Toploop` module contains several functions for parsing  and printing values: `parse_toplevel_phrase`, `parse_use_file`, `print_out_*`,... These functions are mutable so we can swap out the original OCaml parser and printer with ReasonML ones. [I didn't figure this out myself, the ReasonML team did](https://github.com/facebook/reason/blob/9914cc69934991b485943847a9196d0d3576d603/src/rtop/reason_utop.ml#L60-L77).
+What's going here? [`Toploop`](https://github.com/ocaml/ocaml/blob/62de6552f8ae6b7ac9068823274dc5446b9422c4/toplevel/toploop.mli) module contains several functions for parsing  and printing values: `parse_toplevel_phrase`, `parse_use_file`, `print_out_*`,... These functions are mutable so we can swap out the original OCaml parser and printer with ReasonML ones. [I didn't figure this out myself, the ReasonML team did](https://github.com/facebook/reason/blob/9914cc69934991b485943847a9196d0d3576d603/src/rtop/reason_utop.ml#L60-L77).
 
 We also need to copy `reason_utils.ml` from [rtop's source code](https://github.com/facebook/reason/blob/9914cc69934991b485943847a9196d0d3576d603/src/rtop/reason_util.ml) to our project. I chose to vendor this file instead of installing it because `rtop` depends on `utop`, and that's a heavy dependencies with lots of primitives that `js_of_ocaml` can't compile to Javscript.
 
