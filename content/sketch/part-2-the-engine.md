@@ -47,7 +47,7 @@ js_of_ocaml my_app.byte
 
 # Goals of this post
 
-As Sketch's codebase changes rapidly, it's would be hard to document the code and explaining about each module. Instead, I'm going to walk you through building a naive version of Sketch engine. I hope that you can easily understand Sketch's codebase after this. 
+As Sketch's codebase changes rapidly, it would be hard to document the code and explain about each module. Instead, I'm going to walk you through building a naive version of Sketch engine. I hope that you can easily understand Sketch's codebase after this. 
 
 There are several code examples in this post, they are located [here](https://github.com/thangngoc89/blog/tree/master/content/sketch/examples). 
 
