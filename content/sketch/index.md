@@ -24,13 +24,13 @@ All code executions happen locally inside your browser, the server is used for s
 
 # Why did I build it? 
 
-I want to reduce the barrier for learning ReasonML as much as possible. Having a REPL right inside the browser would help trememdously with the adoption of the language. Newcomers could test the code the just read in the docs, seasoned programer could send the sketch links around and asking for help.
+I want to reduce the barrier for learning ReasonML as much as possible. Having a REPL right inside the browser would help tremendously with the adoption of the language. Newcomers could test the code the just read in the docs, seasoned programer could send the sketch links around and ask for help.
 
 # What was the process for building it?
 
-It was all started when I saw this website [http://ocsigen.org/js_of_ocaml/toplevel.html#version=4.06.0](http://ocsigen.org/js_of_ocaml/toplevel.html#version=4.06.0). It's OCaml's Toploop inside the browser. It was quite facinating that such thing is possible and I set out to build the elaquent with ReasonML syntax. 
+It was all started when I saw this website [http://ocsigen.org/js_of_ocaml/3.1.0/manual/files/toplevel/index.html](http://ocsigen.org/js_of_ocaml/3.1.0/manual/files/toplevel/index.html). It's OCaml's Toploop inside the browser. It was quite fascinating that such thing is possible and I set out to build the equivalent with ReasonML syntax. 
 
-After a very bumpy ride, I'm able to replicate that toplevel with ReasonML syntax and using ReasonReact for the UI. [It's still running here in case you want to give it a try](https://rtop.khoanguyen.me/).
+After a very bumpy ride, I'm able to replicate that toplevel with ReasonML syntax and using ReasonReact for the UI.
 
 I received many positive feedbacks with the product and someone asked me: 
 
@@ -51,7 +51,7 @@ First of all, I want to thank you all contributors for helping me with the proje
 - Nimish Gupta ([@nimish-gupta](https://github.com/nimish-gupta))
 - (and more...)(https://github.com/Sketch-sh/sketch-sh/graphs/contributors)
 
-I also want to thank you Jordan Walke for being an nice mentor on building and executing my ideas, Gabriel Radanne for always answer my dumbs questions about OCaml's compiler internal, @hhugo (Js_of_ocaml's maintainer) for responding quickly and resolving the issues quickly.
+I also want to thank you Jordan Walke for being an nice mentor on building and executing my ideas, Gabriel Radanne for always answer my dumb questions about OCaml's compiler internal, @hhugo (Js_of_ocaml's maintainer) for responding quickly and resolving the issues quickly.
 
 
 # Conclusion
