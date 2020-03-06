@@ -3,5 +3,5 @@
 
 # Technical specifications
 
-`khoanguyen.me` uses [Statinamic](http://moox.io/statinamic/) as a static site generator. Statinamic is based on [React](https://github.com/facebook/react), a user interface library made by Facebook. Other top of that we use CSS Modules, Redux, Babel, Webpack,...
+`khoanguyen.me` uses [phenomic](https://phenomic.io/) as a static site generator. Statinamic is based on [React](https://github.com/facebook/react), a user interface library made by Facebook. Other top of that we use CSS Modules, Redux, Babel, Webpack,...
 
