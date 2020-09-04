@@ -94,7 +94,7 @@
   },
   "dependencies": {
     "gh-pages": "^0.11.0",
-    "node-sass": "^3.9.3",
+    "node-sass": "^4.13.1",
     "react-google-analytics": "^0.2.0",
     "react-icons": "^2.2.1",
     "sass-loader": "^4.0.2",
